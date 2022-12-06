@@ -3,7 +3,7 @@
 // *** Declare Function SQL
 class PermissionSQL {
   // *** get permissionCheck
-  static getPermissionCheck = (dataItem) => {
+  static getPermissionCheck = async (dataItem) => {
     let sql = ` SELECT A.PERMISSION_ID,
                       F.USER_NAME,
                       B.USER_GROUP_NAME,
@@ -39,7 +39,7 @@ class PermissionSQL {
   };
 
   // *** get Signin
-  static signin = (dataItem) => {
+  static signin = async (dataItem) => {
     let sql = ` SELECT USER_SECURITY_ID ,
                       USER_NAME ,
                       USER_PASSWORD   
@@ -55,7 +55,7 @@ class PermissionSQL {
   };
 
   // *** getUserGroup
-  static getUserGroup = (dataItem) => {
+  static getUserGroup = async (dataItem) => {
     let sql = `  SELECT  DISTINCT(B.USER_GROUP_ID) AS USER_GROUP_ID,
                          B.USER_GROUP_NAME
                 FROM USER_SECURITY_HAVE_GROUP AS A
@@ -70,7 +70,7 @@ class PermissionSQL {
   };
 
   // *** getMenu
-  static getLoginMenu = (dataItem) => {
+  static getLoginMenu = async (dataItem) => {
     let sql = `  SELECT A.APPLICATION_ID,
                         A.APPLICATION_NAME,
                         B.MENU_ID,

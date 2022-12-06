@@ -22,7 +22,6 @@ class ProductCategoryService {
       query = await ProductMainSQL.searchByProductCategoryId(dataItem);
       resultData = MySQLExecute.searchList(query, result);
     }
-
     return resultData;
   }
 

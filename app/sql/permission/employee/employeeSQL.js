@@ -2,7 +2,7 @@
 
 // *** Declare Function SQL
 class EmployeeSQL {
-  static getEmployeeAll = () => {
+  static getEmployeeAll = async () => {
     let sql = `   SELECT EmpCode AS EMP_CODE,
                         EmpName AS EMP_NAME,
                         EmpSurname AS EMP_SURNAME,
@@ -19,7 +19,7 @@ class EmployeeSQL {
     return sql;
   };
 
-  static getEmployeeByEmpCode = (dataItem) => {
+  static getEmployeeByEmpCode = async (dataItem) => {
     let sql = `    SELECT EmpCode AS EMP_CODE,
                     EmpName AS EMP_NAME,
                     EmpSurname AS EMP_SURNAME,

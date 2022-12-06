@@ -3,7 +3,7 @@
 // *** Declare Function SQL
 class ProductMainSQL {
   // *** Function Get
-  static getProductMain = (dataItem) => {
+  static getProductMain = async (dataItem) => {
     let sql = `      SELECT
                           PRODUCT_MAIN_ID
                         , PRODUCT_MAIN_ID
@@ -23,7 +23,7 @@ class ProductMainSQL {
   };
 
   // ***  Function Search
-  static searchProductMain = (dataItem) => {
+  static searchProductMain = async (dataItem) => {
     let sqlList = [];
 
     let sql = `   SELECT 
@@ -104,7 +104,7 @@ class ProductMainSQL {
   };
 
   // *** Function Insert
-  static createProductMain = (dataItem) => {
+  static createProductMain = async (dataItem) => {
     let sql = `  
                   INSERT INTO PRODUCT_MAIN
                   (
@@ -140,13 +140,13 @@ class ProductMainSQL {
       "dataItem.PRODUCT_MAIN_ALPHABET",
       dataItem["PRODUCT_MAIN_ALPHABET"]
     );
-    sql = sql.replace("dataItem.CREATE_BY", dataItem["CREATE_BY"]);
+    sql = sql.replaceAll("dataItem.CREATE_BY", dataItem["CREATE_BY"]);
 
     return sql;
   };
 
   // *** Function update
-  static updateProductMain = (dataItem) => {
+  static updateProductMain = async (dataItem) => {
     let sql = `   UPDATE 
                         PRODUCT_MAIN 
                     SET                       
@@ -180,7 +180,7 @@ class ProductMainSQL {
   };
 
   // *** Function Delete
-  static deleteProductMain = (dataItem) => {
+  static deleteProductMain = async (dataItem) => {
     let sql = `   UPDATE 
                         PRODUCT_MAIN 
                     SET
@@ -198,7 +198,7 @@ class ProductMainSQL {
   };
 
   // ***  Function Search
-  static searchByProductCategoryId = (dataItem) => {
+  static searchByProductCategoryId = async (dataItem) => {
     let sqlList = [];
 
     let sql = `   SELECT
@@ -284,7 +284,7 @@ class ProductMainSQL {
   };
 
   // *** Function Getlike
-  static getByLikeProductMainNameAndInuse = (dataItem) => {
+  static getByLikeProductMainNameAndInuse = async (dataItem) => {
     let sql = `   SELECT
                         PRODUCT_MAIN_ID 
                       , PRODUCT_MAIN_NAME 
@@ -310,7 +310,9 @@ class ProductMainSQL {
   };
 
   // *** Function Get
-  static getByLikeProductMainNameAndProductCategoryIdAndInuse = (dataItem) => {
+  static getByLikeProductMainNameAndProductCategoryIdAndInuse = async (
+    dataItem
+  ) => {
     let sql = `      SELECT
                             tb_1.PRODUCT_MAIN_ID 
                           , tb_1.PRODUCT_MAIN_NAME 
@@ -334,16 +336,19 @@ class ProductMainSQL {
     );
     sql = sql.replace(
       "dataItem.PRODUCT_CATEGORY_ID",
-      dataItem["PRODUCT_CATEGORY_ID"]
+      dataItem["PRODUCT_CATEGORY_ID"] ? dataItem["PRODUCT_CATEGORY_ID"] : ""
     );
 
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replace(
+      "dataItem.INUSE",
+      dataItem["INUSE"] ? dataItem["INUSE"] : ""
+    );
 
     return sql;
   };
 
   // *** Function Get
-  static getByProductCategoryId = (dataItem) => {
+  static getByProductCategoryId = async (dataItem) => {
     let sql = `      SELECT
                             PRODUCT_MAIN_ID
                           , PRODUCT_MAIN_NAME

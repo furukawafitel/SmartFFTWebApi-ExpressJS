@@ -11,7 +11,7 @@ module.exports = (app) => {
 
   // *** Get Data
   router.get(
-    "/getByLikeProductCategoryNameAndInuse",
+    "/getByLikeProductMainNameAndInuse",
     productMain.GetByLikeProductMainNameAndInuse
   );
 
@@ -23,6 +23,11 @@ module.exports = (app) => {
 
   // *** Delete product-category
   router.delete("/delete", productMain.DeleteProductMain);
+
+  router.get(
+    "/getByLikeProductMainNameAndProductCategoryIdAndInuse",
+    productMain.GetByLikeProductMainNameAndProductCategoryIdAndInuse
+  );
 
   app.use("/api/product-main", router);
 };

@@ -1,7 +1,7 @@
-const ProductMainModels = require("../../models/productGroup/productMainModel");
+const ProductSubModels = require("../../models/productGroup/productSubModel");
 
-// ** Get productMain
-const GetProductMain = async (req, res) => {
+// ** Get productCategory
+const getProductSub = async (req, res) => {
   try {
     let dataItem;
     if (Object.entries(req.body).length === 0) {
@@ -11,7 +11,7 @@ const GetProductMain = async (req, res) => {
     }
 
     if (dataItem !== "") {
-      ProductMainModels.getProductMain(dataItem, (err, data) => {
+      ProductSubModels.getProductSub(dataItem, (err, data) => {
         for (let i = 0; i < data.length; i++) {
           data["No"] = i + 1;
         }
@@ -19,7 +19,7 @@ const GetProductMain = async (req, res) => {
           Status: true,
           Message: "Search Data Success",
           ResultOnDb: data,
-          MethodOnDb: "Search Product Main",
+          MethodOnDb: "Search Product-Sub",
           TotalCountOnDb: data["TOTAL_COUNT"]
         });
       });
@@ -32,7 +32,7 @@ const GetProductMain = async (req, res) => {
   }
 };
 
-const SearchProductMain = async (req, res) => {
+const searchProductSub = async (req, res) => {
   try {
     let dataItem;
     if (Object.entries(req.body).length === 0) {
@@ -44,40 +44,28 @@ const SearchProductMain = async (req, res) => {
     dataItem["Start"] = Number(dataItem["Start"]) * Number(dataItem["Limit"]);
     let orderBy = "";
 
-    if (dataItem["PRODUCT_CATEGORY_ID"] == "") {
-      if (!dataItem.hasOwnProperty("Order")) {
-        orderBy = "tb_1.UPDATE_DATE DESC";
-      } else {
-        for (let i = 0; i < dataItem["Order"].length; i++) {
-          const word = dataItem["Order"][i];
-          if (word["id"] == "PRODUCT_CATEGORY_NAME") {
-            orderBy +=
-              "tb_2." + word["id"] + (word["desc"] ? " DESC" : " ASC") + ",";
-          } else {
-          }
+    if (!dataItem.hasOwnProperty("Order")) {
+      orderBy = "tb_1.UPDATE_DATE DESC";
+    } else {
+      for (let i = 0; i < dataItem["Order"].length; i++) {
+        const word = dataItem["Order"][i];
+        if (word["id"] == "PRODUCT_CATEGORY_NAME") {
+          orderBy +=
+            "tb_3." + word["id"] + (word["desc"] ? " DESC" : " ASC") + ",";
+        } else if (word["id"] == "PRODUCT_MAIN_NAME") {
+          orderBy +=
+            "tb_2." + word["id"] + (word["desc"] ? " DESC" : " ASC") + ",";
+        } else {
           orderBy +=
             "tb_1." + word["id"] + (word["desc"] ? " DESC" : " ASC") + ",";
         }
-        orderBy = orderBy.slice(0, -1);
       }
-
-      dataItem["Order"] = orderBy;
-    } else {
-      if (!dataItem.hasOwnProperty("Order")) {
-        orderBy = "UPDATE_DATE DESC";
-      } else {
-        for (let i = 0; i < dataItem["Order"].length; i++) {
-          const word = dataItem["Order"][i];
-
-          orderBy += word["id"] + (word["desc"] ? " DESC" : " ASC") + ",";
-        }
-        orderBy = orderBy.slice(0, -1);
-      }
-      dataItem["Order"] = orderBy;
+      orderBy = orderBy.slice(0, -1);
     }
+    dataItem["Order"] = orderBy;
 
     if (dataItem !== "") {
-      ProductMainModels.searchProductMain(dataItem, (err, data) => {
+      ProductSubModels.searchProductSub(dataItem, (err, data) => {
         for (let i = 0; i < data[1].length; i++) {
           data[1][i]["No"] = i + 1;
         }
@@ -85,7 +73,7 @@ const SearchProductMain = async (req, res) => {
           Status: true,
           Message: "Search Data Success",
           ResultOnDb: data[1],
-          MethodOnDb: "Search ProductCategory",
+          MethodOnDb: "Search ProductSub",
           TotalCountOnDb: data[0][0]["TOTAL_COUNT"]
         });
       });
@@ -98,7 +86,7 @@ const SearchProductMain = async (req, res) => {
   }
 };
 
-const CreateProductMain = async (req, res) => {
+const createProductSub = async (req, res) => {
   try {
     let dataItem;
     if (Object.entries(req.body).length === 0) {
@@ -108,12 +96,12 @@ const CreateProductMain = async (req, res) => {
     }
 
     if (dataItem !== "") {
-      ProductMainModels.createProductMain(dataItem, (err, data) => {
+      ProductSubModels.createProductSub(dataItem, (err, data) => {
         res.send({
           Status: true,
           Message: "Insert Data Success",
           ResultOnDb: data,
-          MethodOnDb: "Create Product Category",
+          MethodOnDb: "Create Product Sub",
           TotalCountOnDb: ""
         });
       });
@@ -126,7 +114,7 @@ const CreateProductMain = async (req, res) => {
   }
 };
 
-const UpdateProductMain = async (req, res) => {
+const updateProductSub = async (req, res) => {
   try {
     let dataItem;
     if (Object.entries(req.body).length === 0) {
@@ -136,12 +124,12 @@ const UpdateProductMain = async (req, res) => {
     }
 
     if (dataItem !== "") {
-      ProductMainModels.updateProductMain(dataItem, (err, data) => {
+      ProductSubModels.updateProductSub(dataItem, (err, data) => {
         res.send({
           Status: true,
           Message: "Update Data Success",
           ResultOnDb: data,
-          MethodOnDb: "Update Product Category",
+          MethodOnDb: "Update Product Sub",
           TotalCountOnDb: ""
         });
       });
@@ -154,7 +142,7 @@ const UpdateProductMain = async (req, res) => {
   }
 };
 
-const DeleteProductMain = async (req, res) => {
+const deleteProductSub = async (req, res) => {
   try {
     let dataItem;
     if (Object.entries(req.body).length === 0) {
@@ -163,7 +151,7 @@ const DeleteProductMain = async (req, res) => {
       dataItem = req.body;
     }
     if (dataItem !== "") {
-      ProductMainModels.deleteProductMain(dataItem, (err, data) => {
+      ProductSubModels.deleteProductSub(dataItem, (err, data) => {
         res.send({
           Status: true,
           Message: "Delete Data Success",
@@ -181,7 +169,7 @@ const DeleteProductMain = async (req, res) => {
   }
 };
 
-const GetByLikeProductMainNameAndInuse = async (req, res) => {
+const getByLikeProductSubNameAndInuse = async (req, res) => {
   try {
     let dataItem;
     if (Object.entries(req.body).length === 0) {
@@ -190,14 +178,14 @@ const GetByLikeProductMainNameAndInuse = async (req, res) => {
       dataItem = req.body;
     }
     if (dataItem !== "") {
-      ProductMainModels.getByLikeProductMainNameAndInuse(
+      ProductSubModels.getByLikeProductSubNameAndInuse(
         dataItem,
         (err, data) => {
           res.send({
             Status: true,
             Message: "Search Data Success",
             ResultOnDb: data,
-            MethodOnDb: "Search Product Category",
+            MethodOnDb: "Search Product Sub",
             TotalCountOnDb: ""
           });
         }
@@ -211,10 +199,7 @@ const GetByLikeProductMainNameAndInuse = async (req, res) => {
   }
 };
 
-const GetByLikeProductMainNameAndProductCategoryIdAndInuse = async (
-  req,
-  res
-) => {
+const getByLikeProductSubNameAndProductMainIdAndInuse = async (req, res) => {
   try {
     let dataItem;
     if (Object.entries(req.body).length === 0) {
@@ -222,20 +207,46 @@ const GetByLikeProductMainNameAndProductCategoryIdAndInuse = async (
     } else {
       dataItem = req.body;
     }
-
     if (dataItem !== "") {
-      ProductMainModels.getByLikeProductMainNameAndProductCategoryIdAndInuse(
+      ProductSubModels.getByLikeProductSubNameAndProductMainIdAndInuse(
         dataItem,
         (err, data) => {
           res.send({
             Status: true,
-            Message: "Get Data Success",
+            Message: "Search Data Success",
             ResultOnDb: data,
-            MethodOnDb: "Get Product-main",
+            MethodOnDb: "Search Product Sub",
             TotalCountOnDb: ""
           });
         }
       );
+    }
+  } catch (err) {
+    res.send({
+      Message: err.message,
+      Status: false
+    });
+  }
+};
+
+const getByProductMainId = async (req, res) => {
+  try {
+    let dataItem;
+    if (Object.entries(req.body).length === 0) {
+      dataItem = JSON.parse(req.query.data);
+    } else {
+      dataItem = req.body;
+    }
+    if (dataItem !== "") {
+      ProductSubModels.getByProductMainId(dataItem, (err, data) => {
+        res.send({
+          Status: true,
+          Message: "Search Data Success",
+          ResultOnDb: data,
+          MethodOnDb: "Search Product Sub",
+          TotalCountOnDb: ""
+        });
+      });
     }
   } catch (err) {
     res.send({
@@ -246,11 +257,12 @@ const GetByLikeProductMainNameAndProductCategoryIdAndInuse = async (
 };
 
 module.exports = {
-  GetProductMain,
-  SearchProductMain,
-  CreateProductMain,
-  UpdateProductMain,
-  DeleteProductMain,
-  GetByLikeProductMainNameAndInuse,
-  GetByLikeProductMainNameAndProductCategoryIdAndInuse
+  getProductSub,
+  searchProductSub,
+  createProductSub,
+  updateProductSub,
+  deleteProductSub,
+  getByLikeProductSubNameAndInuse,
+  getByLikeProductSubNameAndProductMainIdAndInuse,
+  getByProductMainId
 };

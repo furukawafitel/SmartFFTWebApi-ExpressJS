@@ -24,9 +24,11 @@ app.get("/", (req, res) => {
 require("./app/routes/permission/permission/permissionRoutes")(app);
 require("./app/routes/productGroup/productCategoryRoutes")(app);
 require("./app/routes/productGroup/productMainRoutes")(app);
+require("./app/routes/productGroup/productSubRoutes")(app);
+require("./app/routes/productGroup/productTypeRoutes")(app);
 require("./app/routes/common/commonRoutes")(app);
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8091;
 app.listen(PORT, () => {
   console.log(`Server is running on port : ${PORT}`);
 });

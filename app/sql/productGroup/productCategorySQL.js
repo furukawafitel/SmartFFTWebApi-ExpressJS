@@ -3,7 +3,7 @@
 // *** Declare Function SQL
 class ProductCategorySQL {
   // *** Function Get
-  static getProductcategory = (dataItem) => {
+  static getProductcategory = async (dataItem) => {
     let sql = `     SELECT
                             PRODUCT_CATEGORY_ID
                           , PRODUCT_CATEGORY_NAME
@@ -25,7 +25,7 @@ class ProductCategorySQL {
   };
 
   // ***  Function Search
-  static searchProductcategory = (dataItem) => {
+  static searchProductcategory = async (dataItem) => {
     let sqlList = [];
 
     let sql = ` SELECT COUNT(*) AS TOTAL_COUNT
@@ -50,6 +50,7 @@ class ProductCategorySQL {
     sql = ` SELECT PRODUCT_CATEGORY_ID,
                       PRODUCT_CATEGORY_CODE,
                       PRODUCT_CATEGORY_NAME,
+                      PRODUCT_CATEGORY_ALPHABET,
                       UPDATE_BY,
                       DATE_FORMAT(UPDATE_DATE, '%d-%b-%Y %H:%i:%s') AS MODIFIED_DATE,
                       INUSE
@@ -68,6 +69,10 @@ class ProductCategorySQL {
       "dataItem.PRODUCT_CATEGORY_CODE",
       dataItem["PRODUCT_CATEGORY_CODE"]
     );
+    sql = sql.replace(
+      "dataItem.PRODUCT_CATEGORY_ALPHABET",
+      dataItem["PRODUCT_CATEGORY_ALPHABET"]
+    );
     sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
     sql = sql.replace("dataItem.Order", dataItem["Order"]);
     sql = sql.replace("dataItem.Start", dataItem["Start"]);
@@ -81,11 +86,12 @@ class ProductCategorySQL {
   };
 
   // *** Function Insert
-  static createProductcategory = (dataItem) => {
+  static createProductcategory = async (dataItem) => {
     let sql = `  INSERT INTO PRODUCT_CATEGORY
        (
         PRODUCT_CATEGORY_NAME,
         PRODUCT_CATEGORY_CODE,
+        PRODUCT_CATEGORY_ALPHABET,
         CREATE_BY,
         UPDATE_DATE,
         UPDATE_BY
@@ -94,6 +100,7 @@ class ProductCategorySQL {
         SELECT
          'dataItem.PRODUCT_CATEGORY_NAME',
           CONCAT('PD-C-', LPAD((COUNT(*) + 1), 4, 0)),
+         'dataItem.PRODUCT_CATEGORY_ALPHABET',
          'dataItem.CREATE_BY',
          CURRENT_TIMESTAMP(),
          'dataItem.CREATE_BY'
@@ -104,13 +111,17 @@ class ProductCategorySQL {
       "dataItem.PRODUCT_CATEGORY_NAME",
       dataItem["PRODUCT_CATEGORY_NAME"]
     );
+    sql = sql.replace(
+      "dataItem.PRODUCT_CATEGORY_ALPHABET",
+      dataItem["PRODUCT_CATEGORY_ALPHABET"]
+    );
     sql = sql.replaceAll("dataItem.CREATE_BY", dataItem["CREATE_BY"]);
 
     return sql;
   };
 
   // *** Function update
-  static updateProductcategory = (dataItem) => {
+  static updateProductcategory = async (dataItem) => {
     let sql = `   UPDATE     PRODUCT_CATEGORY 
                   SET        PRODUCT_CATEGORY_NAME = 'dataItem.PRODUCT_CATEGORY_NAME'
                             , PRODUCT_CATEGORY_ALPHABET = 'dataItem.PRODUCT_CATEGORY_ALPHABET'
@@ -140,7 +151,7 @@ class ProductCategorySQL {
   };
 
   // *** Function Delete
-  static deleteProductcategory = (dataItem) => {
+  static deleteProductcategory = async (dataItem) => {
     let sql = `   UPDATE 
                         PRODUCT_CATEGORY 
                     SET

@@ -1,6 +1,6 @@
 module.exports = {
   Default: {
-    HOST: "192.168.0.254",
+    HOST: "192.168.2.99",
     USER: "usrrw",
     PASSWORD: "activerw",
     DB: "production_center"
@@ -15,6 +15,6 @@ module.exports = {
     HOST: "192.168.2.99",
     USER: "usrrw",
     PASSWORD: "activerw",
-    DB: "production_center"
+    DB: "smart_fft_next_gen"
   }
 };

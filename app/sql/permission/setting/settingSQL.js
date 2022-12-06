@@ -1,5 +1,5 @@
 class SettingSQL {
-  static getPermissionAll = (dataItem) => {
+  static getPermissionAll = async (dataItem) => {
     let sql = `  SELECT
                         PERMISSION_ID,
                         USER_GROUP_ID,
@@ -15,7 +15,7 @@ class SettingSQL {
     return sql;
   };
 
-  static getPermissionMenu = (dataItem) => {
+  static getPermissionMenu = async (dataItem) => {
     let sql = `   SELECT 
                     PERMISSION_ID,
                     USER_GROUP_ID,
@@ -37,7 +37,7 @@ class SettingSQL {
     return sql;
   };
 
-  static getPermissionCheck = (dataItem) => {
+  static getPermissionCheck = async (dataItem) => {
     let sql = `  SELECT A.PERMISSION_ID,
                         F.USER_NAME,
                         B.USER_GROUP_NAME,
@@ -73,7 +73,7 @@ class SettingSQL {
     return sql;
   };
 
-  static search = (dataItem) => {
+  static search = async (dataItem) => {
     let sqlList = [];
 
     let sql = `  SELECT COUNT(*) AS TOTAL_COUNT
@@ -119,7 +119,7 @@ class SettingSQL {
     return sqlList;
   };
 
-  static create = (dataItem) => {
+  static create = async (dataItem) => {
     let sql = ` INSERT INTO PERMISSION
                     (
                         PERMISSION_ID,
@@ -163,7 +163,7 @@ class SettingSQL {
     return sql;
   };
 
-  static updateByUserGroupIdApplicationIdMenuId = (dataItem) => {
+  static updateByUserGroupIdApplicationIdMenuId = async (dataItem) => {
     let sql = `    UPDATE PERMISSION SET
                     IS_CREATE = 'dataItem.IS_CREATE',
                     IS_UPDATE = 'dataItem.IS_UPDATE',
@@ -190,7 +190,7 @@ class SettingSQL {
     return sql;
   };
 
-  static update = (dataItem) => {
+  static update = async (dataItem) => {
     let sql = `     UPDATE PERMISSION SET
                     IS_CREATE = 'dataItem.IS_CREATE',
                     IS_UPDATE = 'dataItem.IS_UPDATE',
@@ -211,7 +211,7 @@ class SettingSQL {
     return sql;
   };
 
-  static delete = (dataItem) => {
+  static delete = async (dataItem) => {
     let sql = `    DELETE FROM PERMISSION
                    WHERE PERMISSION_ID = 'dataItem.PERMISSION_ID'
               `;
@@ -221,7 +221,7 @@ class SettingSQL {
     return sql;
   };
 
-  static deleteByUserGroupIdAndApplicationId = (dataItem) => {
+  static deleteByUserGroupIdAndApplicationId = async (dataItem) => {
     let sql = `   DELETE FROM PERMISSION
                     WHERE APPLICATION_ID = 'dataItem.APPLICATION_ID'
                     AND USER_GROUP_ID = 'dataItem.USER_GROUP_ID'

@@ -95,7 +95,7 @@ async function writingFile(sheetId, cntRound) {
       worksheet.getCell(16 + i, 9).value =
         element["MATERIAL_INTERNAL_FULL_NAME"];
       worksheet.getCell(16 + i, 10).value =
-        element["MATERIAL_TYPE_CATEGORY_NAME"];
+        element["MATERIAL_INTERNAL_SHORT_NAME"];
       worksheet.getCell(16 + i, 11).value = element["USAGE_QUANTITY"];
       worksheet.getCell(16 + i, 12).value = element["SYMBOL"];
       worksheet.getCell(16 + i, 13).value = element["NEW_PRICE"];
@@ -148,37 +148,41 @@ async function writingFile(sheetId, cntRound) {
       worksheet.getCell(41, 2).value = element["INDIRECT_COST_SALE_AVE"];
 
       // ** OLD STANDARD COST DETIAL
-      worksheet.getCell(4, 3).value = element["OLD_FISCAL_YEAR"];
-      worksheet.getCell(5, 3).value = element["OLD_SCT_CODE_FOR_SUPPORT_MES"];
-      worksheet.getCell(6, 3).value = element["OLD_REVISION"];
-      worksheet.getCell(7, 3).value = element["DESCRIPTION"];
-      worksheet.getCell(8, 3).value = element["OLD_FROM_DATE"];
-      worksheet.getCell(9, 3).value = element["OLD_TO_DATE"];
-      worksheet.getCell(11, 3).value = element["OLD_SCT_CODE"];
-      worksheet.getCell(12, 3).value = element["MAIN_PRODUCT_CODE"];
-      worksheet.getCell(13, 3).value = element["TYPE"];
-      worksheet.getCell(17, 3).value = element["OLD_DIRECT_UNIT_PROCESS_COST"];
-      worksheet.getCell(18, 3).value =
-        element["OLD_INDIRECT_RATE_OF_DIRECT_PROCESS_COST"];
-      worksheet.getCell(19, 3).value = element["OLD_DIREC_COST_CODE"];
-      worksheet.getCell(20, 3).value = element["OLD_TOTAL_PROCESSING_TIME"];
-      worksheet.getCell(21, 3).value =
-        element["OLD_TOTAL_PROCESSING_TIME_INCLUDING_INDIRECT_RATE"];
-      worksheet.getCell(22, 3).value = element["OLD_TOTAL_DIRECT_COST"];
-      worksheet.getCell(23, 3).value = element["OLD_DIRECT_PROCESS_COST"];
-      worksheet.getCell(24, 3).value =
-        element["OLD_TOTAL_PRICE_OF_RAW_MATERIAL"];
-      worksheet.getCell(25, 3).value = element["OLD_TOTAL_PRICE_OF_SUB_ASSY"];
-      worksheet.getCell(26, 3).value =
-        element["OLD_TOTAL_PRICE_OF_SEMI_FINISHED_GOODS"];
-      worksheet.getCell(27, 3).value = element["OLD_TOTAL_PRICE_OF_CONSUMABLE"];
-      worksheet.getCell(28, 3).value = element["OLD_TOTAL_PRICE_OF_PACKING"];
-      worksheet.getCell(29, 3).value =
-        element["OLD_TOTAL_PRICE_OF_ALL_OF_MATERIALS"];
-      worksheet.getCell(30, 3).value = element["OLD_IMPORTED_FEE"];
-      worksheet.getCell(31, 3).value = element["OLD_IMPORTED_COST"];
-      worksheet.getCell(32, 3).value =
-        element["OLD_TOTAL_PRICE_OF_ALL_OF_MATERIALS_INCLUDE_IMPORTED_COST"];
+      if (element["OLD_FISCAL_YEAR"] !== null) {
+        worksheet.getCell(4, 3).value = element["OLD_FISCAL_YEAR"];
+        worksheet.getCell(5, 3).value = element["OLD_SCT_CODE_FOR_SUPPORT_MES"];
+        worksheet.getCell(6, 3).value = element["OLD_REVISION"];
+        worksheet.getCell(7, 3).value = element["DESCRIPTION"];
+        worksheet.getCell(8, 3).value = element["OLD_FROM_DATE"];
+        worksheet.getCell(9, 3).value = element["OLD_TO_DATE"];
+        worksheet.getCell(11, 3).value = element["OLD_SCT_CODE"];
+        worksheet.getCell(12, 3).value = element["MAIN_PRODUCT_CODE"];
+        worksheet.getCell(13, 3).value = element["TYPE"];
+        worksheet.getCell(17, 3).value =
+          element["OLD_DIRECT_UNIT_PROCESS_COST"];
+        worksheet.getCell(18, 3).value =
+          element["OLD_INDIRECT_RATE_OF_DIRECT_PROCESS_COST"];
+        worksheet.getCell(19, 3).value = element["OLD_DIREC_COST_CODE"];
+        worksheet.getCell(20, 3).value = element["OLD_TOTAL_PROCESSING_TIME"];
+        worksheet.getCell(21, 3).value =
+          element["OLD_TOTAL_PROCESSING_TIME_INCLUDING_INDIRECT_RATE"];
+        worksheet.getCell(22, 3).value = element["OLD_TOTAL_DIRECT_COST"];
+        worksheet.getCell(23, 3).value = element["OLD_DIRECT_PROCESS_COST"];
+        worksheet.getCell(24, 3).value =
+          element["OLD_TOTAL_PRICE_OF_RAW_MATERIAL"];
+        worksheet.getCell(25, 3).value = element["OLD_TOTAL_PRICE_OF_SUB_ASSY"];
+        worksheet.getCell(26, 3).value =
+          element["OLD_TOTAL_PRICE_OF_SEMI_FINISHED_GOODS"];
+        worksheet.getCell(27, 3).value =
+          element["OLD_TOTAL_PRICE_OF_CONSUMABLE"];
+        worksheet.getCell(28, 3).value = element["OLD_TOTAL_PRICE_OF_PACKING"];
+        worksheet.getCell(29, 3).value =
+          element["OLD_TOTAL_PRICE_OF_ALL_OF_MATERIALS"];
+        worksheet.getCell(30, 3).value = element["OLD_IMPORTED_FEE"];
+        worksheet.getCell(31, 3).value = element["OLD_IMPORTED_COST"];
+        worksheet.getCell(32, 3).value =
+          element["OLD_TOTAL_PRICE_OF_ALL_OF_MATERIALS_INCLUDE_IMPORTED_COST"];
+      }
     }
 
     // *** Processing Cost

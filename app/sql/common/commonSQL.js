@@ -12,15 +12,15 @@ class CommonSQL {
                     tb_5.MATERIAL_INTERNAL_CODE,
                     tb_9.MATERIAL_CATEGORY_NAME,
                     tb_5.MATERIAL_INTERNAL_FULL_NAME,
-                    tb_11.MATERIAL_TYPE_CATEGORY_NAME,
+                    tb_5.MATERIAL_INTERNAL_SHORT_NAME,
                     tb_4.USAGE_QUANTITY,
                     tb_12.SYMBOL,
                     tb_7.PRICE AS NEW_PRICE,
                     tb_15.PRICE AS OLD_PRICE,
                     (tb_7.PRICE - tb_15.PRICE) AS DIFF_PRICE,
                     tb_8.SCT_PROCESS_SEQUENCE_CODE,
-                    tb_15.YIELD_ACCUMULATION AS NEW_YIELD_ACCUMULATION,
-                    tb_7.YIELD_ACCUMULATION AS OLD_YIELD_ACCUMULATION,
+                    tb_7.YIELD_ACCUMULATION AS NEW_YIELD_ACCUMULATION,
+                    tb_15.YIELD_ACCUMULATION AS OLD_YIELD_ACCUMULATION,
                     tb_7.AMOUNT AS NEW_AMOUNT,
                     tb_15.AMOUNT AS OLD_AMOUNT,
                     (tb_7.AMOUNT - tb_15.AMOUNT) AS DIFF_AMOUNT,
@@ -42,7 +42,7 @@ class CommonSQL {
                 )
                 INNER JOIN material_category tb_9 ON tb_5.MATERIAL_CATEGORY_ID = tb_9.MATERIAL_CATEGORY_ID
                 INNER JOIN material_type tb_10 ON tb_5.MATERIAL_TYPE_ID = tb_10.MATERIAL_TYPE_ID
-                INNER JOIN material_type_category tb_11 ON tb_10.MATERIAL_TYPE_CATEGORY_ID = tb_11.MATERIAL_TYPE_CATEGORY_ID
+                
                 INNER JOIN unit_of_measurement tb_12 ON tb_5.USAGE_UNIT_ID = tb_12.UNIT_OF_MEASUREMENT_ID
                 LEFT JOIN sct_compare_last_year tb_13 ON tb_1.SCT_ID = tb_13.SCT_CURRENT_YEAR_ID
                 LEFT JOIN sct tb_14 ON tb_13.SCT_LAST_YEAR_ID = tb_14.SCT_ID
