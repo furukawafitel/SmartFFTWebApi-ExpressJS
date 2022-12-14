@@ -1,8 +1,8 @@
 module.exports = {
   Default: {
-    HOST: "192.168.2.99",
-    USER: "usrrw",
-    PASSWORD: "activerw",
+    HOST: "Smart_DB_Server",
+    USER: "SoftwareDev",
+    PASSWORD: "mMQf489^",
     DB: "production_center"
   },
   Permission: {

@@ -207,6 +207,43 @@ async function writingFile(sheetId, cntRound) {
   return workbook;
 }
 
+const resizeFile = (file) =>
+  new Promise((resolve) => {
+    Resizer.imageFileResizer(
+      file,
+      300,
+      300,
+      "JPEG",
+      100,
+      0,
+      (uri) => {
+        resolve(uri);
+      },
+      "base64"
+    );
+  });
+
+const getImageFromUrl = async (req, res) => {
+  try {
+    let dataItem;
+    if (Object.entries(req.body).length === 0) {
+      dataItem = JSON.parse(req.query.data);
+    } else {
+      dataItem = req.body;
+    }
+    if (dataItem !== "") {
+      const picPath = dataItem["URL_PATH"];
+      res.sendFile(picPath);
+    }
+  } catch (err) {
+    res.send({
+      Message: err.message,
+      Status: false
+    });
+  }
+};
+
 module.exports = {
-  GetExcelFromURL
+  GetExcelFromURL,
+  getImageFromUrl
 };

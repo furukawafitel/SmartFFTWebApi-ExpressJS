@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "/subscriptions/01781603-2c62-4ac9-bf10-3730a632afcb/AppServices/subscriptions/01781603-2c62-4ac9-bf10-3730a632afcb/resourceGroups/rg-fft-ea-spoke-prd/providers/Microsoft.Web/sites/fitelsmart-chatbot",
+  "appService.deploySubpath": "."
+}
