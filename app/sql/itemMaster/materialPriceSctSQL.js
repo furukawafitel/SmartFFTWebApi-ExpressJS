@@ -27,7 +27,7 @@ class MaterialPriceSctSQL {
                                       
                                 `;
 
-    sql = sql.replace("dataItem.SCT_ID", dataItem["SCT_ID"]);
+    sql = sql.replaceAll("dataItem.SCT_ID", dataItem["SCT_ID"]);
     sql = sql.replaceAll("dataItem.CREATE_BY", dataItem["CREATE_BY"]);
 
     return sql;
@@ -45,12 +45,12 @@ class MaterialPriceSctSQL {
                         MATERIAL_PRICE_ID = 'dataItem.MATERIAL_PRICE_ID'
                         `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_PRICE_ID",
       dataItem["MATERIAL_PRICE_ID"]
     );
-    sql = sql.replace("dataItem.SCT_ID", dataItem["SCT_ID"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.SCT_ID", dataItem["SCT_ID"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
     return sql;
   };
 }

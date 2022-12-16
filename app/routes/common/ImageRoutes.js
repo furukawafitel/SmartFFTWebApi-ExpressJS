@@ -6,5 +6,12 @@ module.exports = (app) => {
 
   router.post("/getImageFromUrl", common.getImageFromUrl);
 
+  router.get("/getYearNow", common.GetYearNow);
+
+  router.get(
+    "/getByLikeMonthShortNameEnglish",
+    common.GetByLikeMonthShortNameEnglish
+  );
+
   app.use("/api/common", router);
 };

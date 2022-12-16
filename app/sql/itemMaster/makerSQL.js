@@ -15,7 +15,7 @@ class MakerSQL {
                         MAKER_ID = 'dataItem.MAKER_ID'
                     `;
 
-    sql = sql.replace("dataItem.MAKER_ID", dataItem["MAKER_ID"]);
+    sql = sql.replaceAll("dataItem.MAKER_ID", dataItem["MAKER_ID"]);
 
     return sql;
   };
@@ -32,8 +32,8 @@ class MakerSQL {
                             MAKER_NAME LIKE '%dataItem.MAKER_NAME%'
                         AND INUSE LIKE '%dataItem.INUSE%' `;
 
-    sql = sql.replace("dataItem.MAKER_NAME", dataItem["MAKER_NAME"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.MAKER_NAME", dataItem["MAKER_NAME"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
     sqlList.push(sql);
 
@@ -56,11 +56,11 @@ class MakerSQL {
                 , dataItem.Limit
             `;
 
-    sql = sql.replace("dataItem.MAKER_NAME", dataItem["MAKER_NAME"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.Order", dataItem["Order"]);
-    sql = sql.replace("dataItem.Start", dataItem["Start"]);
-    sql = sql.replace("dataItem.Limit", dataItem["Limit"]);
+    sql = sql.replaceAll("dataItem.MAKER_NAME", dataItem["MAKER_NAME"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.Order", dataItem["Order"]);
+    sql = sql.replaceAll("dataItem.Start", dataItem["Start"]);
+    sql = sql.replaceAll("dataItem.Limit", dataItem["Limit"]);
     sqlList.push(sql);
 
     sqlList = sqlList.join(";");
@@ -88,7 +88,7 @@ class MakerSQL {
                    
                               `;
 
-    sql = sql.replace("dataItem.MAKER_NAME", dataItem["MAKER_NAME"]);
+    sql = sql.replaceAll("dataItem.MAKER_NAME", dataItem["MAKER_NAME"]);
     sql = sql.replaceAll("dataItem.CREATE_BY", dataItem["CREATE_BY"]);
 
     return sql;
@@ -107,10 +107,10 @@ class MakerSQL {
                         MAKER_ID = 'dataItem.MAKER_ID'
                       `;
 
-    sql = sql.replace("dataItem.MAKER_ID", dataItem["MAKER_ID"]);
-    sql = sql.replace("dataItem.MAKER_NAME", dataItem["MAKER_NAME"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.MAKER_ID", dataItem["MAKER_ID"]);
+    sql = sql.replaceAll("dataItem.MAKER_NAME", dataItem["MAKER_NAME"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
     return sql;
   };
 
@@ -126,8 +126,8 @@ class MakerSQL {
                         MAKER_ID = 'dataItem.MAKER_ID'
                       `;
 
-    sql = sql.replace("dataItem.MAKER_ID", dataItem["MAKER_ID"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.MAKER_ID", dataItem["MAKER_ID"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
 
     return sql;
   };
@@ -147,8 +147,8 @@ class MakerSQL {
                             50
                                                 `;
 
-    sql = sql.replace("dataItem.MAKER_NAME", dataItem["MAKER_NAME"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.MAKER_NAME", dataItem["MAKER_NAME"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
     return sql;
   };
 }

@@ -37,7 +37,7 @@ class EmployeeSQL {
                 AND (EmpCodeResign IS NULL OR EmpCodeResign = '')
               `;
 
-    sql = sql.replace("dataItem.EMP_CODE", dataItem["USER_NAME"]);
+    sql = sql.replaceAll("dataItem.EMP_CODE", dataItem["USER_NAME"]);
 
     return sql;
   };

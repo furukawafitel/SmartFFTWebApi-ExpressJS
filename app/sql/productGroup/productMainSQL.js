@@ -17,7 +17,10 @@ class ProductMainSQL {
                         PRODUCT_MAIN_ID = 'dataItem.PRODUCT_MAIN_ID'
               `;
 
-    sql = sql.replace("dataItem.PRODUCT_MAIN_ID", dataItem["PRODUCT_MAIN_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_MAIN_ID",
+      dataItem["PRODUCT_MAIN_ID"]
+    );
 
     return sql;
   };
@@ -36,19 +39,19 @@ class ProductMainSQL {
                       AND tb_1.PRODUCT_MAIN_ALPHABET LIKE '%dataItem.PRODUCT_MAIN_ALPHABET%'	                        
                       AND tb_1.INUSE LIKE '%dataItem.INUSE%' `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_MAIN_NAME",
       dataItem["PRODUCT_MAIN_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_MAIN_ALPHABET",
       dataItem["PRODUCT_MAIN_ALPHABET"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_MAIN_CODE",
       dataItem["PRODUCT_MAIN_CODE"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
     sqlList.push(sql);
 
@@ -78,23 +81,23 @@ class ProductMainSQL {
                     dataItem.Start
                   , dataItem.Limit  `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_MAIN_NAME",
       dataItem["PRODUCT_MAIN_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_MAIN_ALPHABET",
       dataItem["PRODUCT_MAIN_ALPHABET"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_MAIN_CODE",
       dataItem["PRODUCT_MAIN_CODE"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.Order", dataItem["Order"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.Order", dataItem["Order"]);
 
-    sql = sql.replace("dataItem.Start", dataItem["Start"]);
-    sql = sql.replace("dataItem.Limit", dataItem["Limit"]);
+    sql = sql.replaceAll("dataItem.Start", dataItem["Start"]);
+    sql = sql.replaceAll("dataItem.Limit", dataItem["Limit"]);
 
     sqlList.push(sql);
 
@@ -128,15 +131,15 @@ class ProductMainSQL {
                       PRODUCT_MAIN
               `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_CATEGORY_ID",
       dataItem["PRODUCT_CATEGORY_ID"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_MAIN_NAME",
       dataItem["PRODUCT_MAIN_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_MAIN_ALPHABET",
       dataItem["PRODUCT_MAIN_ALPHABET"]
     );
@@ -160,21 +163,24 @@ class ProductMainSQL {
                         PRODUCT_MAIN_ID = 'dataItem.PRODUCT_MAIN_ID'
                 `;
 
-    sql = sql.replace("dataItem.PRODUCT_MAIN_ID", dataItem["PRODUCT_MAIN_ID"]);
-    sql = sql.replace(
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_MAIN_ID",
+      dataItem["PRODUCT_MAIN_ID"]
+    );
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_CATEGORY_ID",
       dataItem["PRODUCT_CATEGORY_ID"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_MAIN_NAME",
       dataItem["PRODUCT_MAIN_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_MAIN_ALPHABET",
       dataItem["PRODUCT_MAIN_ALPHABET"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
 
     return sql;
   };
@@ -191,8 +197,11 @@ class ProductMainSQL {
                         PRODUCT_MAIN_ID = 'dataItem.PRODUCT_MAIN_ID'
                 `;
 
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
-    sql = sql.replace("dataItem.PRODUCT_MAIN_ID", dataItem["PRODUCT_MAIN_ID"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_MAIN_ID",
+      dataItem["PRODUCT_MAIN_ID"]
+    );
 
     return sql;
   };
@@ -212,20 +221,20 @@ class ProductMainSQL {
                         AND INUSE LIKE '%dataItem.INUSE%'
                         AND PRODUCT_CATEGORY_ID = 'dataItem.PRODUCT_CATEGORY_ID' `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_MAIN_NAME",
       dataItem["PRODUCT_MAIN_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_MAIN_ALPHABET",
       dataItem["PRODUCT_MAIN_ALPHABET"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_MAIN_CODE",
       dataItem["PRODUCT_MAIN_CODE"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace(
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_CATEGORY_ID",
       dataItem["PRODUCT_CATEGORY_ID"]
     );
@@ -255,23 +264,23 @@ class ProductMainSQL {
                     dataItem.Start
                   , dataItem.Limit `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_MAIN_NAME",
       dataItem["PRODUCT_MAIN_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_MAIN_ALPHABET",
       dataItem["PRODUCT_MAIN_ALPHABET"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_MAIN_CODE",
       dataItem["PRODUCT_MAIN_CODE"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.Order", dataItem["Order"]);
-    sql = sql.replace("dataItem.Start", dataItem["Start"]);
-    sql = sql.replace("dataItem.Limit", dataItem["Limit"]);
-    sql = sql.replace(
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.Order", dataItem["Order"]);
+    sql = sql.replaceAll("dataItem.Start", dataItem["Start"]);
+    sql = sql.replaceAll("dataItem.Limit", dataItem["Limit"]);
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_CATEGORY_ID",
       dataItem["PRODUCT_CATEGORY_ID"]
     );
@@ -300,12 +309,12 @@ class ProductMainSQL {
                       50          
                 `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_MAIN_NAME",
       dataItem["PRODUCT_MAIN_NAME"]
     );
 
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
     return sql;
   };
 
@@ -330,16 +339,16 @@ class ProductMainSQL {
                           50            
               `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_MAIN_NAME",
       dataItem["PRODUCT_MAIN_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_CATEGORY_ID",
       dataItem["PRODUCT_CATEGORY_ID"] ? dataItem["PRODUCT_CATEGORY_ID"] : ""
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.INUSE",
       dataItem["INUSE"] ? dataItem["INUSE"] : ""
     );
@@ -358,7 +367,7 @@ class ProductMainSQL {
                           PRODUCT_CATEGORY_ID = 'dataItem.PRODUCT_CATEGORY_ID'   
               `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_CATEGORY_ID",
       dataItem["PRODUCT_CATEGORY_ID"]
     );

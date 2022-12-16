@@ -15,7 +15,7 @@ class MaterialTypeSQL {
                         MATERIAL_TYPE_ID = 'dataItem.MATERIAL_TYPE_ID'
                     `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_TYPE_ID",
       dataItem["MATERIAL_TYPE_ID"]
     );
@@ -35,11 +35,11 @@ class MaterialTypeSQL {
                             MATERIAL_TYPE_NAME LIKE '%dataItem.MATERIAL_TYPE_NAME%'
                         AND INUSE LIKE '%dataItem.INUSE%' `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_TYPE_NAME",
       dataItem["MATERIAL_TYPE_NAME"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
     sqlList.push(sql);
 
@@ -61,14 +61,14 @@ class MaterialTypeSQL {
                 , dataItem.Limit
             `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_TYPE_NAME",
       dataItem["MATERIAL_TYPE_NAME"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.Order", dataItem["Order"]);
-    sql = sql.replace("dataItem.Start", dataItem["Start"]);
-    sql = sql.replace("dataItem.Limit", dataItem["Limit"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.Order", dataItem["Order"]);
+    sql = sql.replaceAll("dataItem.Start", dataItem["Start"]);
+    sql = sql.replaceAll("dataItem.Limit", dataItem["Limit"]);
 
     sqlList.push(sql);
 
@@ -99,7 +99,7 @@ class MaterialTypeSQL {
                    
                               `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_TYPE_NAME",
       dataItem["MATERIAL_TYPE_NAME"]
     );
@@ -120,17 +120,17 @@ class MaterialTypeSQL {
                         MATERIAL_TYPE_ID = 'dataItem.MATERIAL_TYPE_ID'
                       `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_TYPE_ID",
       dataItem["MATERIAL_TYPE_ID"]
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_TYPE_NAME",
       dataItem["MATERIAL_TYPE_NAME"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
 
     return sql;
   };
@@ -147,11 +147,11 @@ class MaterialTypeSQL {
                         MATERIAL_TYPE_ID = 'dataItem.MATERIAL_TYPE_ID'
                       `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_TYPE_ID",
       dataItem["MATERIAL_TYPE_ID"]
     );
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
 
     return sql;
   };
@@ -171,11 +171,11 @@ class MaterialTypeSQL {
                             50
                                                 `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_TYPE_NAME",
       dataItem["MATERIAL_TYPE_NAME"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
     return sql;
   };
@@ -198,16 +198,16 @@ class MaterialTypeSQL {
                             50
                                                 `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_TYPE_CATEGORY_ID",
       dataItem["MATERIAL_TYPE_CATEGORY_ID"]
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_TYPE_NAME",
       dataItem["MATERIAL_TYPE_NAME"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
     return sql;
   };

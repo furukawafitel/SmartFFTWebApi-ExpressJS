@@ -16,7 +16,7 @@ class FlowSQL {
                         FLOW_ID = 'dataItem.FLOW_ID'
                   `;
 
-    sql = sql.replace("dataItem.FLOW_ID", dataItem["FLOW_ID"]);
+    sql = sql.replaceAll("dataItem.FLOW_ID", dataItem["FLOW_ID"]);
 
     return sql;
   };
@@ -34,9 +34,9 @@ class FlowSQL {
                     AND tb_1.FLOW_CODE LIKE '%dataItem.FLOW_CODE%'
                     AND tb_1.INUSE LIKE '%dataItem.INUSE%' `;
 
-    sql = sql.replace("dataItem.FLOW_NAME", dataItem["FLOW_NAME"]);
-    sql = sql.replace("dataItem.FLOW_CODE", dataItem["FLOW_CODE"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.FLOW_NAME", dataItem["FLOW_NAME"]);
+    sql = sql.replaceAll("dataItem.FLOW_CODE", dataItem["FLOW_CODE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
     sqlList.push(sql);
 
@@ -66,12 +66,12 @@ class FlowSQL {
               dataItem.Start, dataItem.Limit
           `;
 
-    sql = sql.replace("dataItem.FLOW_NAME", dataItem["FLOW_NAME"]);
-    sql = sql.replace("dataItem.FLOW_CODE", dataItem["FLOW_CODE"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.Order", dataItem["Order"]);
-    sql = sql.replace("dataItem.Start", dataItem["Start"]);
-    sql = sql.replace("dataItem.Limit", dataItem["Limit"]);
+    sql = sql.replaceAll("dataItem.FLOW_NAME", dataItem["FLOW_NAME"]);
+    sql = sql.replaceAll("dataItem.FLOW_CODE", dataItem["FLOW_CODE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.Order", dataItem["Order"]);
+    sql = sql.replaceAll("dataItem.Start", dataItem["Start"]);
+    sql = sql.replaceAll("dataItem.Limit", dataItem["Limit"]);
     sqlList.push(sql);
 
     sqlList = sqlList.join(";");
@@ -111,19 +111,19 @@ class FlowSQL {
                  
                             `;
 
-    sql = sql.replace("dataItem.FLOW_NAME", dataItem["FLOW_NAME"]);
+    sql = sql.replaceAll("dataItem.FLOW_NAME", dataItem["FLOW_NAME"]);
 
-    sql = sql.replace("dataItem.FLOW_ALPHABET", dataItem["FLOW_ALPHABET"]);
-    sql = sql.replace(
+    sql = sql.replaceAll("dataItem.FLOW_ALPHABET", dataItem["FLOW_ALPHABET"]);
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_MAIN_ALPHABET",
       dataItem["PRODUCT_MAIN_ALPHABET"]
     );
-    sql = sql.replace("dataItem.FLOW_TYPE_ID", dataItem["FLOW_TYPE_ID"]);
+    sql = sql.replaceAll("dataItem.FLOW_TYPE_ID", dataItem["FLOW_TYPE_ID"]);
     sql = sql.replaceAll(
       "dataItem.PRODUCT_MAIN_ID",
       dataItem["PRODUCT_MAIN_ID"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.TOTAL_COUNT_PROCESS",
       dataItem["TOTAL_COUNT_PROCESS"]
     );
@@ -146,14 +146,14 @@ class FlowSQL {
                         FLOW_ID = 'dataItem.FLOW_ID' ;
                     `;
 
-    sql = sql.replace("dataItem.FLOW_NAME", dataItem["FLOW_NAME"]);
-    sql = sql.replace(
+    sql = sql.replaceAll("dataItem.FLOW_NAME", dataItem["FLOW_NAME"]);
+    sql = sql.replaceAll(
       "dataItem.TOTAL_COUNT_PROCESS",
       dataItem["TOTAL_COUNT_PROCESS"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
-    sql = sql.replace("dataItem.FLOW_ID", dataItem["FLOW_ID"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.FLOW_ID", dataItem["FLOW_ID"]);
     return sql;
   };
 
@@ -169,8 +169,8 @@ class FlowSQL {
                           FLOW_ID = 'dataItem.FLOW_ID'
                     `;
 
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
-    sql = sql.replace("dataItem.FLOW_ID", dataItem["FLOW_ID"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.FLOW_ID", dataItem["FLOW_ID"]);
 
     return sql;
   };
@@ -189,7 +189,7 @@ class FlowSQL {
                                   50
                                               `;
 
-    sql = sql.replace("dataItem.FLOW_NAME", dataItem["FLOW_NAME"]);
+    sql = sql.replaceAll("dataItem.FLOW_NAME", dataItem["FLOW_NAME"]);
 
     return sql;
   };
@@ -213,11 +213,14 @@ class FlowSQL {
                   AND tb_1.INUSE LIKE '%dataItem.INUSE%'
                   AND tb_1.PRODUCT_MAIN_ID = 'dataItem.PRODUCT_MAIN_ID' `;
 
-    sql = sql.replace("dataItem.PRODUCT_MAIN_ID", dataItem["PRODUCT_MAIN_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_MAIN_ID",
+      dataItem["PRODUCT_MAIN_ID"]
+    );
 
-    sql = sql.replace("dataItem.FLOW_NAME", dataItem["FLOW_NAME"]);
-    sql = sql.replace("dataItem.FLOW_CODE", dataItem["FLOW_CODE"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.FLOW_NAME", dataItem["FLOW_NAME"]);
+    sql = sql.replaceAll("dataItem.FLOW_CODE", dataItem["FLOW_CODE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
     sqlList.push(sql);
 
@@ -244,14 +247,17 @@ class FlowSQL {
                     , dataItem.Limit
           `;
 
-    sql = sql.replace("dataItem.PRODUCT_MAIN_ID", dataItem["PRODUCT_MAIN_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_MAIN_ID",
+      dataItem["PRODUCT_MAIN_ID"]
+    );
 
-    sql = sql.replace("dataItem.FLOW_NAME", dataItem["FLOW_NAME"]);
-    sql = sql.replace("dataItem.FLOW_CODE", dataItem["FLOW_CODE"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.Order", dataItem["Order"]);
-    sql = sql.replace("dataItem.Start", dataItem["Start"]);
-    sql = sql.replace("dataItem.Limit", dataItem["Limit"]);
+    sql = sql.replaceAll("dataItem.FLOW_NAME", dataItem["FLOW_NAME"]);
+    sql = sql.replaceAll("dataItem.FLOW_CODE", dataItem["FLOW_CODE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.Order", dataItem["Order"]);
+    sql = sql.replaceAll("dataItem.Start", dataItem["Start"]);
+    sql = sql.replaceAll("dataItem.Limit", dataItem["Limit"]);
     sqlList.push(sql);
 
     sqlList = sqlList.join(";");

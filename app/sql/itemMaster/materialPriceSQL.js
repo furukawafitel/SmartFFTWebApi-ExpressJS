@@ -22,7 +22,7 @@ class MaterialPriceSQL {
                         MATERIAL_PRICE_ID = 'dataItem.MATERIAL_PRICE_ID'
                     `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_PRICE_ID",
       dataItem["MATERIAL_PRICE_ID"]
     );
@@ -60,17 +60,17 @@ class MaterialPriceSQL {
 
                         dataItem.sqlWhere `;
 
-    sql = sql.replace("dataItem.sqlWhere", sqlWhere);
+    sql = sql.replaceAll("dataItem.sqlWhere", sqlWhere);
 
-    sql = sql.replace("dataItem.MATERIAL_ID", dataItem["MATERIAL_ID"]);
-    sql = sql.replace("dataItem.FISCAL_YEAR", dataItem["FISCAL_YEAR"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.MATERIAL_ID", dataItem["MATERIAL_ID"]);
+    sql = sql.replaceAll("dataItem.FISCAL_YEAR", dataItem["FISCAL_YEAR"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
     if (
       dataItem.hasOwnProperty("MATERIAL_CATEGORY_ID") &&
       dataItem["MATERIAL_CATEGORY_ID"] !== ""
     ) {
-      sql = sql.replace(
+      sql = sql.replaceAll(
         "dataItem.MATERIAL_CATEGORY_ID",
         dataItem["MATERIAL_CATEGORY_ID"]
       );
@@ -80,14 +80,14 @@ class MaterialPriceSQL {
       dataItem.hasOwnProperty("ORDER_TYPE_ID") &&
       dataItem["ORDER_TYPE_ID"] !== ""
     ) {
-      sql = sql.replace("dataItem.ORDER_TYPE_ID", dataItem["ORDER_TYPE_ID"]);
+      sql = sql.replaceAll("dataItem.ORDER_TYPE_ID", dataItem["ORDER_TYPE_ID"]);
     }
 
     if (
       dataItem.hasOwnProperty("PRODUCTION_PURPOSE_ID") &&
       dataItem["PRODUCTION_PURPOSE_ID"] !== ""
     ) {
-      sql = sql.replace(
+      sql = sql.replaceAll(
         "dataItem.PRODUCTION_PURPOSE_ID",
         dataItem["PRODUCTION_PURPOSE_ID"]
       );
@@ -149,29 +149,29 @@ class MaterialPriceSQL {
                 , dataItem.Limit
             `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCTION_PURPOSE_NAME",
       dataItem["PRODUCTION_PURPOSE_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCTION_PURPOSE_ALPHABET",
       dataItem["PRODUCTION_PURPOSE_ALPHABET"]
     );
 
-    sql = sql.replace("dataItem.sqlWhere", sqlWhere);
+    sql = sql.replaceAll("dataItem.sqlWhere", sqlWhere);
 
-    sql = sql.replace("dataItem.MATERIAL_ID", dataItem["MATERIAL_ID"]);
-    sql = sql.replace("dataItem.FISCAL_YEAR", dataItem["FISCAL_YEAR"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.Order", dataItem["Order"]);
-    sql = sql.replace("dataItem.Start", dataItem["Start"]);
-    sql = sql.replace("dataItem.Limit", dataItem["Limit"]);
+    sql = sql.replaceAll("dataItem.MATERIAL_ID", dataItem["MATERIAL_ID"]);
+    sql = sql.replaceAll("dataItem.FISCAL_YEAR", dataItem["FISCAL_YEAR"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.Order", dataItem["Order"]);
+    sql = sql.replaceAll("dataItem.Start", dataItem["Start"]);
+    sql = sql.replaceAll("dataItem.Limit", dataItem["Limit"]);
 
     if (
       dataItem.hasOwnProperty("MATERIAL_CATEGORY_ID") &&
       dataItem["MATERIAL_CATEGORY_ID"] !== ""
     ) {
-      sql = sql.replace(
+      sql = sql.replaceAll(
         "dataItem.MATERIAL_CATEGORY_ID",
         dataItem["MATERIAL_CATEGORY_ID"]
       );
@@ -181,14 +181,14 @@ class MaterialPriceSQL {
       dataItem.hasOwnProperty("ORDER_TYPE_ID") &&
       dataItem["ORDER_TYPE_ID"] !== ""
     ) {
-      sql = sql.replace("dataItem.ORDER_TYPE_ID", dataItem["ORDER_TYPE_ID"]);
+      sql = sql.replaceAll("dataItem.ORDER_TYPE_ID", dataItem["ORDER_TYPE_ID"]);
     }
 
     if (
       dataItem.hasOwnProperty("PRODUCTION_PURPOSE_ID") &&
       dataItem["PRODUCTION_PURPOSE_ID"] !== ""
     ) {
-      sql = sql.replace(
+      sql = sql.replaceAll(
         "dataItem.PRODUCTION_PURPOSE_ID",
         dataItem["PRODUCTION_PURPOSE_ID"]
       );
@@ -250,36 +250,39 @@ class MaterialPriceSQL {
                                     
                               `;
 
-    sql = sql.replace("dataItem.MATERIAL_ID", dataItem["MATERIAL_ID"]);
-    sql = sql.replace(
+    sql = sql.replaceAll("dataItem.MATERIAL_ID", dataItem["MATERIAL_ID"]);
+    sql = sql.replaceAll(
       "dataItem.PURCHASE_UNIT_QTY",
       dataItem["PURCHASE_UNIT_QTY"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PURCHASE_UNIT_ID",
       dataItem["PURCHASE_UNIT_ID"]
     );
-    sql = sql.replace("dataItem.CONVERT_RATIO", dataItem["CONVERT_RATIO"]);
-    sql = sql.replace(
+    sql = sql.replaceAll("dataItem.CONVERT_RATIO", dataItem["CONVERT_RATIO"]);
+    sql = sql.replaceAll(
       "dataItem.PURCHASE_PRICE_PER_UNIT",
       dataItem["PURCHASE_PRICE_PER_UNIT"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.USAGE_PRICE_PER_UNIT",
       dataItem["USAGE_PRICE_PER_UNIT"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.ESTIMATED_PRICE_PER_USAGE_UNIT",
       dataItem["ESTIMATED_PRICE_PER_USAGE_UNIT"]
     );
-    sql = sql.replace("dataItem.FISCAL_YEAR", dataItem["FISCAL_YEAR"]);
-    sql = sql.replace(
+    sql = sql.replaceAll("dataItem.FISCAL_YEAR", dataItem["FISCAL_YEAR"]);
+    sql = sql.replaceAll(
       "dataItem.DATE_CONTROL_OPTIONAL_NEED",
       dataItem["DATE_CONTROL_OPTIONAL_NEED"]
     );
-    sql = sql.replace("dataItem.EFFECTIVE_DATE", dataItem["EFFECTIVE_DATE"]);
-    sql = sql.replace("dataItem.EXPIRATION_DATE", dataItem["EXPIRATION_DATE"]);
-    sql = sql.replace("dataItem.REMARK", dataItem["REMARK"]);
+    sql = sql.replaceAll("dataItem.EFFECTIVE_DATE", dataItem["EFFECTIVE_DATE"]);
+    sql = sql.replaceAll(
+      "dataItem.EXPIRATION_DATE",
+      dataItem["EXPIRATION_DATE"]
+    );
+    sql = sql.replaceAll("dataItem.REMARK", dataItem["REMARK"]);
     sql = sql.replaceAll("dataItem.CREATE_BY", dataItem["CREATE_BY"]);
 
     return sql;
@@ -307,42 +310,45 @@ class MaterialPriceSQL {
                         MATERIAL_PRICE_ID = 'dataItem.MATERIAL_PRICE_ID'
                       `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_PRICE_ID",
       dataItem["MATERIAL_PRICE_ID"]
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PURCHASE_UNIT_QTY",
       dataItem["PURCHASE_UNIT_QTY"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PURCHASE_UNIT_ID",
       dataItem["PURCHASE_UNIT_ID"]
     );
-    sql = sql.replace("dataItem.CONVERT_RATIO", dataItem["CONVERT_RATIO"]);
-    sql = sql.replace(
+    sql = sql.replaceAll("dataItem.CONVERT_RATIO", dataItem["CONVERT_RATIO"]);
+    sql = sql.replaceAll(
       "dataItem.PURCHASE_PRICE_PER_UNIT",
       dataItem["PURCHASE_PRICE_PER_UNIT"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.USAGE_PRICE_PER_UNIT",
       dataItem["USAGE_PRICE_PER_UNIT"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.ESTIMATED_PRICE_PER_USAGE_UNIT",
       dataItem["ESTIMATED_PRICE_PER_USAGE_UNIT"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.DATE_CONTROL_OPTIONAL_NEED",
       dataItem["DATE_CONTROL_OPTIONAL_NEED"]
     );
-    sql = sql.replace("dataItem.EFFECTIVE_DATE", dataItem["EFFECTIVE_DATE"]);
-    sql = sql.replace("dataItem.EXPIRATION_DATE", dataItem["EXPIRATION_DATE"]);
-    sql = sql.replace("dataItem.REMARK", dataItem["REMARK"]);
+    sql = sql.replaceAll("dataItem.EFFECTIVE_DATE", dataItem["EFFECTIVE_DATE"]);
+    sql = sql.replaceAll(
+      "dataItem.EXPIRATION_DATE",
+      dataItem["EXPIRATION_DATE"]
+    );
+    sql = sql.replaceAll("dataItem.REMARK", dataItem["REMARK"]);
 
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
     return sql;
   };
 
@@ -358,11 +364,11 @@ class MaterialPriceSQL {
                         MATERIAL_PRICE_ID = 'dataItem.MATERIAL_PRICE_ID'
                       `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_PRICE_ID",
       dataItem["MATERIAL_PRICE_ID"]
     );
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
 
     return sql;
   };
@@ -386,9 +392,9 @@ class MaterialPriceSQL {
                             AND INUSE = 'dataItem.INUSE'
                                                 `;
 
-    sql = sql.replace("dataItem.MATERIAL_ID", dataItem["MATERIAL_ID"]);
-    sql = sql.replace("dataItem.FISCAL_YEAR", dataItem["FISCAL_YEAR"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.MATERIAL_ID", dataItem["MATERIAL_ID"]);
+    sql = sql.replaceAll("dataItem.FISCAL_YEAR", dataItem["FISCAL_YEAR"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
     return sql;
   };
 
@@ -405,7 +411,7 @@ class MaterialPriceSQL {
                                     MATERIAL_PRICE_ID = 'dataItem.MATERIAL_PRICE_ID'
                                                 `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_PRICE_ID",
       dataItem["MATERIAL_PRICE_ID"]
     );

@@ -28,10 +28,13 @@ class PermissionSQL {
                   AND C.MENU_LEAF = 1
               `;
 
-    sql = sql.replace("dataItem.USER_NAME", dataItem["USER_NAME"]);
-    sql = sql.replace("dataItem.USER_GROUP_NAME", dataItem["USER_GROUP_NAME"]);
-    sql = sql.replace("dataItem.MENU_NAME", dataItem["MENU_NAME"]);
-    sql = sql.replace(
+    sql = sql.replaceAll("dataItem.USER_NAME", dataItem["USER_NAME"]);
+    sql = sql.replaceAll(
+      "dataItem.USER_GROUP_NAME",
+      dataItem["USER_GROUP_NAME"]
+    );
+    sql = sql.replaceAll("dataItem.MENU_NAME", dataItem["MENU_NAME"]);
+    sql = sql.replaceAll(
       "dataItem.APPLICATION_NAME",
       dataItem["APPLICATION_NAME"]
     );
@@ -48,8 +51,8 @@ class PermissionSQL {
                 AND   USER_PASSWORD = 'dataItem.USER_PASSWORD'
               `;
 
-    sql = sql.replace("dataItem.USER_NAME", dataItem["USER_NAME"]);
-    sql = sql.replace("dataItem.USER_PASSWORD", dataItem["USER_PASSWORD"]);
+    sql = sql.replaceAll("dataItem.USER_NAME", dataItem["USER_NAME"]);
+    sql = sql.replaceAll("dataItem.USER_PASSWORD", dataItem["USER_PASSWORD"]);
 
     return sql;
   };
@@ -65,7 +68,7 @@ class PermissionSQL {
                 WHERE C.USER_NAME = 'dataItem.USER_NAME'
               `;
 
-    sql = sql.replace("dataItem.USER_NAME", dataItem["USER_NAME"]);
+    sql = sql.replaceAll("dataItem.USER_NAME", dataItem["USER_NAME"]);
     return sql;
   };
 
@@ -94,12 +97,15 @@ class PermissionSQL {
                 ORDER BY B.MENU_PARENT_ID, B.MENU_ID
               `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.APPLICATION_NAME",
       dataItem["APPLICATION_NAME"]
     );
-    sql = sql.replace("dataItem.USER_GROUP_NAME", dataItem["USER_GROUP_NAME"]);
-    sql = sql.replace("dataItem.USER_NAME", dataItem["USER_NAME"]);
+    sql = sql.replaceAll(
+      "dataItem.USER_GROUP_NAME",
+      dataItem["USER_GROUP_NAME"]
+    );
+    sql = sql.replaceAll("dataItem.USER_NAME", dataItem["USER_NAME"]);
     return sql;
   };
 }

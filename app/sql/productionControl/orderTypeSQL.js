@@ -16,7 +16,7 @@ class OrderTypeSQL {
                         ORDER_TYPE_ID = 'dataItem.ORDER_TYPE_ID'
                     `;
 
-    sql = sql.replace("dataItem.ORDER_TYPE_ID", dataItem["ORDER_TYPE_ID"]);
+    sql = sql.replaceAll("dataItem.ORDER_TYPE_ID", dataItem["ORDER_TYPE_ID"]);
 
     return sql;
   };
@@ -35,12 +35,15 @@ class OrderTypeSQL {
                         AND INUSE LIKE '%dataItem.INUSE%'
      `;
 
-    sql = sql.replace("dataItem.ORDER_TYPE_NAME", dataItem["ORDER_TYPE_NAME"]);
-    sql = sql.replace(
+    sql = sql.replaceAll(
+      "dataItem.ORDER_TYPE_NAME",
+      dataItem["ORDER_TYPE_NAME"]
+    );
+    sql = sql.replaceAll(
       "dataItem.ORDER_TYPE_ALPHABET",
       dataItem["ORDER_TYPE_ALPHABET"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
     sqlList.push(sql);
 
@@ -65,15 +68,18 @@ class OrderTypeSQL {
                     , dataItem.Limit
             `;
 
-    sql = sql.replace("dataItem.ORDER_TYPE_NAME", dataItem["ORDER_TYPE_NAME"]);
-    sql = sql.replace(
+    sql = sql.replaceAll(
+      "dataItem.ORDER_TYPE_NAME",
+      dataItem["ORDER_TYPE_NAME"]
+    );
+    sql = sql.replaceAll(
       "dataItem.ORDER_TYPE_ALPHABET",
       dataItem["ORDER_TYPE_ALPHABET"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.Order", dataItem["Order"]);
-    sql = sql.replace("dataItem.Start", dataItem["Start"]);
-    sql = sql.replace("dataItem.Limit", dataItem["Limit"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.Order", dataItem["Order"]);
+    sql = sql.replaceAll("dataItem.Start", dataItem["Start"]);
+    sql = sql.replaceAll("dataItem.Limit", dataItem["Limit"]);
     sqlList.push(sql);
 
     sqlList = sqlList.join(";");
@@ -103,8 +109,11 @@ class OrderTypeSQL {
                    
                               `;
 
-    sql = sql.replace("dataItem.ORDER_TYPE_NAME", dataItem["ORDER_TYPE_NAME"]);
-    sql = sql.replace(
+    sql = sql.replaceAll(
+      "dataItem.ORDER_TYPE_NAME",
+      dataItem["ORDER_TYPE_NAME"]
+    );
+    sql = sql.replaceAll(
       "dataItem.ORDER_TYPE_ALPHABET",
       dataItem["ORDER_TYPE_ALPHABET"]
     );
@@ -126,14 +135,17 @@ class OrderTypeSQL {
                             ORDER_TYPE_ID = 'dataItem.ORDER_TYPE_ID'
                       `;
 
-    sql = sql.replace("dataItem.ORDER_TYPE_ID", dataItem["ORDER_TYPE_ID"]);
-    sql = sql.replace("dataItem.ORDER_TYPE_NAME", dataItem["ORDER_TYPE_NAME"]);
-    sql = sql.replace(
+    sql = sql.replaceAll("dataItem.ORDER_TYPE_ID", dataItem["ORDER_TYPE_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.ORDER_TYPE_NAME",
+      dataItem["ORDER_TYPE_NAME"]
+    );
+    sql = sql.replaceAll(
       "dataItem.ORDER_TYPE_ALPHABET",
       dataItem["ORDER_TYPE_ALPHABET"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
     return sql;
   };
 
@@ -149,8 +161,8 @@ class OrderTypeSQL {
                             ORDER_TYPE_ID = 'dataItem.ORDER_TYPE_ID'
                       `;
 
-    sql = sql.replace("dataItem.ORDER_TYPE_ID", dataItem["ORDER_TYPE_ID"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.ORDER_TYPE_ID", dataItem["ORDER_TYPE_ID"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
 
     return sql;
   };
@@ -170,8 +182,11 @@ class OrderTypeSQL {
                             LIMIT 
                             50
                                                 `;
-    sql = sql.replace("dataItem.ORDER_TYPE_NAME", dataItem["ORDER_TYPE_NAME"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll(
+      "dataItem.ORDER_TYPE_NAME",
+      dataItem["ORDER_TYPE_NAME"]
+    );
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
     return sql;
   };
 
@@ -201,13 +216,16 @@ class OrderTypeSQL {
                             LIMIT 
                             50
                                                 `;
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCTION_PURPOSE_ID",
       dataItem["PRODUCTION_PURPOSE_ID"]
     );
 
-    sql = sql.replace("dataItem.ORDER_TYPE_NAME", dataItem["ORDER_TYPE_NAME"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll(
+      "dataItem.ORDER_TYPE_NAME",
+      dataItem["ORDER_TYPE_NAME"]
+    );
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
     return sql;
   };
 }

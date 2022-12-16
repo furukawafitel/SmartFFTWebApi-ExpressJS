@@ -16,7 +16,7 @@ class ProcessSQL {
                     PROCESS_ID = 'dataItem.PROCESS_ID'
                     `;
 
-    sql = sql.replace("dataItem.PROCESS_ID", dataItem["PROCESS_ID"]);
+    sql = sql.replaceAll("dataItem.PROCESS_ID", dataItem["PROCESS_ID"]);
 
     return sql;
   };
@@ -36,13 +36,16 @@ class ProcessSQL {
 
                     dataItem.sqlWhere `;
 
-    sql = sql.replace("dataItem.sqlWhere", sqlWhere);
+    sql = sql.replaceAll("dataItem.sqlWhere", sqlWhere);
 
-    sql = sql.replace("dataItem.PRODUCT_MAIN_ID", dataItem["PRODUCT_MAIN_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_MAIN_ID",
+      dataItem["PRODUCT_MAIN_ID"]
+    );
 
-    sql = sql.replace("dataItem.PROCESS_NAME", dataItem["PROCESS_NAME"]);
-    sql = sql.replace("dataItem.PROCESS_CODE", dataItem["PROCESS_CODE"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.PROCESS_NAME", dataItem["PROCESS_NAME"]);
+    sql = sql.replaceAll("dataItem.PROCESS_CODE", dataItem["PROCESS_CODE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
     sqlList.push(sql);
 
@@ -75,17 +78,20 @@ class ProcessSQL {
                     , dataItem.Limit
             `;
 
-    sql = sql.replace("dataItem.sqlWhere", sqlWhere);
+    sql = sql.replaceAll("dataItem.sqlWhere", sqlWhere);
 
-    sql = sql.replace("dataItem.PRODUCT_MAIN_ID", dataItem["PRODUCT_MAIN_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_MAIN_ID",
+      dataItem["PRODUCT_MAIN_ID"]
+    );
 
-    sql = sql.replace("dataItem.PROCESS_NAME", dataItem["PROCESS_NAME"]);
-    sql = sql.replace("dataItem.PROCESS_CODE", dataItem["PROCESS_CODE"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.PROCESS_NAME", dataItem["PROCESS_NAME"]);
+    sql = sql.replaceAll("dataItem.PROCESS_CODE", dataItem["PROCESS_CODE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
-    sql = sql.replace("dataItem.Order", dataItem["Order"]);
-    sql = sql.replace("dataItem.Start", dataItem["Start"]);
-    sql = sql.replace("dataItem.Limit", dataItem["Limit"]);
+    sql = sql.replaceAll("dataItem.Order", dataItem["Order"]);
+    sql = sql.replaceAll("dataItem.Start", dataItem["Start"]);
+    sql = sql.replaceAll("dataItem.Limit", dataItem["Limit"]);
     sqlList.push(sql);
 
     sqlList = sqlList.join(";");
@@ -121,10 +127,13 @@ class ProcessSQL {
                                 
                               `;
 
-    sql = sql.replace("dataItem.PRODUCT_MAIN_ID", dataItem["PRODUCT_MAIN_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_MAIN_ID",
+      dataItem["PRODUCT_MAIN_ID"]
+    );
 
-    sql = sql.replace("dataItem.PROCESS_NAME", dataItem["PROCESS_NAME"]);
-    sql = sql.replace(
+    sql = sql.replaceAll("dataItem.PROCESS_NAME", dataItem["PROCESS_NAME"]);
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_MAIN_ALPHABET",
       dataItem["PRODUCT_MAIN_ALPHABET"]
     );
@@ -145,10 +154,10 @@ class ProcessSQL {
                         PROCESS_ID = 'dataItem.PROCESS_ID'
                       `;
 
-    sql = sql.replace("dataItem.PROCESS_NAME", dataItem["PROCESS_NAME"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
-    sql = sql.replace("dataItem.PROCESS_ID", dataItem["PROCESS_ID"]);
+    sql = sql.replaceAll("dataItem.PROCESS_NAME", dataItem["PROCESS_NAME"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.PROCESS_ID", dataItem["PROCESS_ID"]);
     return sql;
   };
 
@@ -164,8 +173,8 @@ class ProcessSQL {
                             PROCESS_ID = 'dataItem.PROCESS_ID'
                       `;
 
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
-    sql = sql.replace("dataItem.PROCESS_ID", dataItem["PROCESS_ID"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.PROCESS_ID", dataItem["PROCESS_ID"]);
 
     return sql;
   };
@@ -186,10 +195,10 @@ class ProcessSQL {
                             , dataItem.Limit
                                                 `;
 
-    sql = sql.replace("dataItem.PROCESS_NAME", dataItem["PROCESS_NAME"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.Start", dataItem["Start"]);
-    sql = sql.replace("dataItem.Limit", dataItem["Limit"]);
+    sql = sql.replaceAll("dataItem.PROCESS_NAME", dataItem["PROCESS_NAME"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.Start", dataItem["Start"]);
+    sql = sql.replaceAll("dataItem.Limit", dataItem["Limit"]);
 
     return sql;
   };
@@ -211,12 +220,15 @@ class ProcessSQL {
                             , dataItem.Limit
                                                 `;
 
-    sql = sql.replace("dataItem.PRODUCT_MAIN_ID", dataItem["PRODUCT_MAIN_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_MAIN_ID",
+      dataItem["PRODUCT_MAIN_ID"]
+    );
 
-    sql = sql.replace("dataItem.PROCESS_NAME", dataItem["PROCESS_NAME"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.Start", dataItem["Start"]);
-    sql = sql.replace("dataItem.Limit", dataItem["Limit"]);
+    sql = sql.replaceAll("dataItem.PROCESS_NAME", dataItem["PROCESS_NAME"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.Start", dataItem["Start"]);
+    sql = sql.replaceAll("dataItem.Limit", dataItem["Limit"]);
 
     return sql;
   };

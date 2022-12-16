@@ -62,6 +62,7 @@ const SearchProductcategory = async (req, res) => {
         for (let i = 0; i < data[1].length; i++) {
           data[1][i]["No"] = i + 1;
         }
+
         res.send({
           Status: true,
           Message: "Search Data Success",

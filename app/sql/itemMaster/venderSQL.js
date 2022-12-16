@@ -16,7 +16,7 @@ class VenderSQL {
                         VENDOR_ID = 'dataItem.VENDOR_ID'
                     `;
 
-    sql = sql.replace("dataItem.VENDOR_ID", dataItem["VENDOR_ID"]);
+    sql = sql.replaceAll("dataItem.VENDOR_ID", dataItem["VENDOR_ID"]);
 
     return sql;
   };
@@ -34,9 +34,12 @@ class VenderSQL {
                     AND VENDOR_ALPHABET LIKE '%dataItem.VENDOR_ALPHABET%'
                     AND INUSE LIKE '%dataItem.INUSE%' `;
 
-    sql = sql.replace("dataItem.VENDOR_NAME", dataItem["VENDOR_NAME"]);
-    sql = sql.replace("dataItem.VENDOR_ALPHABET", dataItem["VENDOR_ALPHABET"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.VENDOR_NAME", dataItem["VENDOR_NAME"]);
+    sql = sql.replaceAll(
+      "dataItem.VENDOR_ALPHABET",
+      dataItem["VENDOR_ALPHABET"]
+    );
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
     sqlList.push(sql);
 
@@ -61,12 +64,15 @@ class VenderSQL {
             , dataItem.Limit
             `;
 
-    sql = sql.replace("dataItem.VENDOR_NAME", dataItem["VENDOR_NAME"]);
-    sql = sql.replace("dataItem.VENDOR_ALPHABET", dataItem["VENDOR_ALPHABET"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.Order", dataItem["Order"]);
-    sql = sql.replace("dataItem.Start", dataItem["Start"]);
-    sql = sql.replace("dataItem.Limit", dataItem["Limit"]);
+    sql = sql.replaceAll("dataItem.VENDOR_NAME", dataItem["VENDOR_NAME"]);
+    sql = sql.replaceAll(
+      "dataItem.VENDOR_ALPHABET",
+      dataItem["VENDOR_ALPHABET"]
+    );
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.Order", dataItem["Order"]);
+    sql = sql.replaceAll("dataItem.Start", dataItem["Start"]);
+    sql = sql.replaceAll("dataItem.Limit", dataItem["Limit"]);
 
     sqlList.push(sql);
 
@@ -97,8 +103,11 @@ class VenderSQL {
                    
                               `;
 
-    sql = sql.replace("dataItem.VENDOR_NAME", dataItem["VENDOR_NAME"]);
-    sql = sql.replace("dataItem.VENDOR_ALPHABET", dataItem["VENDOR_ALPHABET"]);
+    sql = sql.replaceAll("dataItem.VENDOR_NAME", dataItem["VENDOR_NAME"]);
+    sql = sql.replaceAll(
+      "dataItem.VENDOR_ALPHABET",
+      dataItem["VENDOR_ALPHABET"]
+    );
     sql = sql.replaceAll("dataItem.CREATE_BY", dataItem["CREATE_BY"]);
     return sql;
   };
@@ -117,11 +126,14 @@ class VenderSQL {
                         VENDOR_ID = 'dataItem.VENDOR_ID'
                       `;
 
-    sql = sql.replace("dataItem.VENDOR_ID", dataItem["VENDOR_ID"]);
-    sql = sql.replace("dataItem.VENDOR_NAME", dataItem["VENDOR_NAME"]);
-    sql = sql.replace("dataItem.VENDOR_ALPHABET", dataItem["VENDOR_ALPHABET"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.VENDOR_ID", dataItem["VENDOR_ID"]);
+    sql = sql.replaceAll("dataItem.VENDOR_NAME", dataItem["VENDOR_NAME"]);
+    sql = sql.replaceAll(
+      "dataItem.VENDOR_ALPHABET",
+      dataItem["VENDOR_ALPHABET"]
+    );
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
     return sql;
   };
 
@@ -137,8 +149,8 @@ class VenderSQL {
                         VENDOR_ID = 'dataItem.VENDOR_ID'
                       `;
 
-    sql = sql.replace("dataItem.VENDOR_ID", dataItem["VENDOR_ID"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.VENDOR_ID", dataItem["VENDOR_ID"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
 
     return sql;
   };
@@ -158,8 +170,8 @@ class VenderSQL {
                             50
                                                 `;
 
-    sql = sql.replace("dataItem.VENDOR_NAME", dataItem["VENDOR_NAME"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.VENDOR_NAME", dataItem["VENDOR_NAME"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
     return sql;
   };
@@ -178,8 +190,11 @@ class VenderSQL {
                                 LIMIT 
                                 50          `;
 
-    sql = sql.replace("dataItem.VENDOR_ALPHABET", dataItem["VENDOR_ALPHABET"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll(
+      "dataItem.VENDOR_ALPHABET",
+      dataItem["VENDOR_ALPHABET"]
+    );
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
     return sql;
   };

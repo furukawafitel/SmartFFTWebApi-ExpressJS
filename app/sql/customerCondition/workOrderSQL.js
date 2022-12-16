@@ -15,7 +15,7 @@ class WorkOrderSQL {
                         WORK_ORDER_ID = 'dataItem.WORK_ORDER_ID'
                     `;
 
-    sql = sql.replace("dataItem.WORK_ORDER_ID", dataItem["WORK_ORDER_ID"]);
+    sql = sql.replaceAll("dataItem.WORK_ORDER_ID", dataItem["WORK_ORDER_ID"]);
 
     return sql;
   };
@@ -34,12 +34,18 @@ class WorkOrderSQL {
 
                         dataItem.sqlWhere `;
 
-    sql = sql.replace("dataItem.sqlWhere", sqlWhere);
+    sql = sql.replaceAll("dataItem.sqlWhere", sqlWhere);
 
-    sql = sql.replace("dataItem.PRODUCT_MAIN_ID", dataItem["PRODUCT_MAIN_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_MAIN_ID",
+      dataItem["PRODUCT_MAIN_ID"]
+    );
 
-    sql = sql.replace("dataItem.WORK_ORDER_CODE", dataItem["WORK_ORDER_CODE"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll(
+      "dataItem.WORK_ORDER_CODE",
+      dataItem["WORK_ORDER_CODE"]
+    );
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
     sqlList.push(sql);
 
@@ -69,15 +75,21 @@ class WorkOrderSQL {
                 , dataItem.Limit
             `;
 
-    sql = sql.replace("dataItem.sqlWhere", sqlWhere);
+    sql = sql.replaceAll("dataItem.sqlWhere", sqlWhere);
 
-    sql = sql.replace("dataItem.PRODUCT_MAIN_ID", dataItem["PRODUCT_MAIN_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_MAIN_ID",
+      dataItem["PRODUCT_MAIN_ID"]
+    );
 
-    sql = sql.replace("dataItem.WORK_ORDER_CODE", dataItem["WORK_ORDER_CODE"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.Order", dataItem["Order"]);
-    sql = sql.replace("dataItem.Start", dataItem["Start"]);
-    sql = sql.replace("dataItem.Limit", dataItem["Limit"]);
+    sql = sql.replaceAll(
+      "dataItem.WORK_ORDER_CODE",
+      dataItem["WORK_ORDER_CODE"]
+    );
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.Order", dataItem["Order"]);
+    sql = sql.replaceAll("dataItem.Start", dataItem["Start"]);
+    sql = sql.replaceAll("dataItem.Limit", dataItem["Limit"]);
 
     sqlList.push(sql);
 
@@ -110,9 +122,15 @@ class WorkOrderSQL {
                    
                               `;
 
-    sql = sql.replace("dataItem.PRODUCT_MAIN_ID", dataItem["PRODUCT_MAIN_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_MAIN_ID",
+      dataItem["PRODUCT_MAIN_ID"]
+    );
 
-    sql = sql.replace("dataItem.WORK_ORDER_CODE", dataItem["WORK_ORDER_CODE"]);
+    sql = sql.replaceAll(
+      "dataItem.WORK_ORDER_CODE",
+      dataItem["WORK_ORDER_CODE"]
+    );
     sql = sql.replaceAll("dataItem.CREATE_BY", dataItem["CREATE_BY"]);
     return sql;
   };
@@ -131,12 +149,18 @@ class WorkOrderSQL {
                         WORK_ORDER_ID = 'dataItem.WORK_ORDER_ID'
                       `;
 
-    sql = sql.replace("dataItem.PRODUCT_MAIN_ID", dataItem["PRODUCT_MAIN_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_MAIN_ID",
+      dataItem["PRODUCT_MAIN_ID"]
+    );
 
-    sql = sql.replace("dataItem.WORK_ORDER_ID", dataItem["WORK_ORDER_ID"]);
-    sql = sql.replace("dataItem.WORK_ORDER_CODE", dataItem["WORK_ORDER_CODE"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.WORK_ORDER_ID", dataItem["WORK_ORDER_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.WORK_ORDER_CODE",
+      dataItem["WORK_ORDER_CODE"]
+    );
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
     return sql;
   };
 
@@ -152,8 +176,8 @@ class WorkOrderSQL {
                             WORK_ORDER_ID = 'dataItem.WORK_ORDER_ID'
                       `;
 
-    sql = sql.replace("dataItem.WORK_ORDER_ID", dataItem["WORK_ORDER_ID"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.WORK_ORDER_ID", dataItem["WORK_ORDER_ID"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
 
     return sql;
   };
@@ -173,8 +197,11 @@ class WorkOrderSQL {
                             50
                                                 `;
 
-    sql = sql.replace("dataItem.WORK_ORDER_CODE", dataItem["WORK_ORDER_CODE"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll(
+      "dataItem.WORK_ORDER_CODE",
+      dataItem["WORK_ORDER_CODE"]
+    );
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
     return sql;
   };
 
@@ -194,10 +221,16 @@ class WorkOrderSQL {
                         50
                              `;
 
-    sql = sql.replace("dataItem.PRODUCT_MAIN_ID", dataItem["PRODUCT_MAIN_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_MAIN_ID",
+      dataItem["PRODUCT_MAIN_ID"]
+    );
 
-    sql = sql.replace("dataItem.WORK_ORDER_CODE", dataItem["WORK_ORDER_CODE"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll(
+      "dataItem.WORK_ORDER_CODE",
+      dataItem["WORK_ORDER_CODE"]
+    );
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
     return sql;
   };
 }

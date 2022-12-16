@@ -16,7 +16,7 @@ class CustomerInvoiceSQL {
                         CUSTOMER_INVOICE_TO_ID = 'dataItem.CUSTOMER_INVOICE_TO_ID'
                     `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.CUSTOMER_INVOICE_TO_ID",
       dataItem["CUSTOMER_INVOICE_TO_ID"]
     );
@@ -37,15 +37,15 @@ class CustomerInvoiceSQL {
                             AND CUSTOMER_INVOICE_TO_ALPHABET LIKE '%dataItem.CUSTOMER_INVOICE_TO_ALPHABET%'
                             AND INUSE LIKE '%dataItem.INUSE%' `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.CUSTOMER_INVOICE_TO_NAME",
       dataItem["CUSTOMER_INVOICE_TO_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.CUSTOMER_INVOICE_TO_ALPHABET",
       dataItem["CUSTOMER_INVOICE_TO_ALPHABET"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
     sqlList.push(sql);
 
@@ -70,18 +70,18 @@ class CustomerInvoiceSQL {
                         , dataItem.Limit
             `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.CUSTOMER_INVOICE_TO_NAME",
       dataItem["CUSTOMER_INVOICE_TO_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.CUSTOMER_INVOICE_TO_ALPHABET",
       dataItem["CUSTOMER_INVOICE_TO_ALPHABET"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.Order", dataItem["Order"]);
-    sql = sql.replace("dataItem.Start", dataItem["Start"]);
-    sql = sql.replace("dataItem.Limit", dataItem["Limit"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.Order", dataItem["Order"]);
+    sql = sql.replaceAll("dataItem.Start", dataItem["Start"]);
+    sql = sql.replaceAll("dataItem.Limit", dataItem["Limit"]);
     sqlList.push(sql);
 
     sqlList = sqlList.join(";");
@@ -111,11 +111,11 @@ class CustomerInvoiceSQL {
                    
                               `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.CUSTOMER_INVOICE_TO_NAME",
       dataItem["CUSTOMER_INVOICE_TO_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.CUSTOMER_INVOICE_TO_ALPHABET",
       dataItem["CUSTOMER_INVOICE_TO_ALPHABET"]
     );
@@ -137,20 +137,20 @@ class CustomerInvoiceSQL {
                             CUSTOMER_INVOICE_TO_ID = 'dataItem.CUSTOMER_INVOICE_TO_ID'
                       `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.CUSTOMER_INVOICE_TO_ID",
       dataItem["CUSTOMER_INVOICE_TO_ID"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.CUSTOMER_INVOICE_TO_NAME",
       dataItem["CUSTOMER_INVOICE_TO_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.CUSTOMER_INVOICE_TO_ALPHABET",
       dataItem["CUSTOMER_INVOICE_TO_ALPHABET"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
     return sql;
   };
 
@@ -166,11 +166,11 @@ class CustomerInvoiceSQL {
                         CUSTOMER_INVOICE_TO_ID = 'dataItem.CUSTOMER_INVOICE_TO_ID'
                       `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.CUSTOMER_INVOICE_TO_ID",
       dataItem["CUSTOMER_INVOICE_TO_ID"]
     );
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
     return sql;
   };
 
@@ -189,11 +189,11 @@ class CustomerInvoiceSQL {
                             50
                                                 `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.CUSTOMER_INVOICE_TO_NAME",
       dataItem["CUSTOMER_INVOICE_TO_NAME"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
     return sql;
   };
 
@@ -212,11 +212,11 @@ class CustomerInvoiceSQL {
                             50
                                                 `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.CUSTOMER_INVOICE_TO_ALPHABET",
       dataItem["CUSTOMER_INVOICE_TO_ALPHABET"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
     return sql;
   };
@@ -242,11 +242,11 @@ class CustomerInvoiceSQL {
                                     50
                                                                                 `;
 
-      sql = sql.replace(
+      sql = sql.replaceAll(
         "dataItem.CUSTOMER_INVOICE_TO_ALPHABET",
         dataItem["CUSTOMER_INVOICE_TO_ALPHABET"]
       );
-      sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+      sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
       return sql;
     };

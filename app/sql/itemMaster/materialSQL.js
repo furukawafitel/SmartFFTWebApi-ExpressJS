@@ -20,7 +20,7 @@ class MaterialSQL {
                     MATERIAL_ID = 'dataItem.MATERIAL_ID'
                     `;
 
-    sql = sql.replace("dataItem.MATERIAL_ID", dataItem["MATERIAL_ID"]);
+    sql = sql.replaceAll("dataItem.MATERIAL_ID", dataItem["MATERIAL_ID"]);
     return sql;
   };
 
@@ -106,99 +106,105 @@ class MaterialSQL {
 
                     dataItem.sqlWhere `;
 
-    sql = sql.replace("dataItem.sqlWhere", sqlWhere);
+    sql = sql.replaceAll("dataItem.sqlWhere", sqlWhere);
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_MAIN_ID_FOR_MATERIAL_PRODUCT_MAIN",
       dataItem["PRODUCT_MAIN_ID_FOR_MATERIAL_PRODUCT_MAIN"]
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_CATEGORY_ID",
       dataItem["MATERIAL_CATEGORY_ID"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_PURPOSE_ID",
       dataItem["MATERIAL_PURPOSE_ID"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_TYPE_ID",
       dataItem["MATERIAL_TYPE_ID"]
     );
-    sql = sql.replace("dataItem.VENDOR_ID", dataItem["VENDOR_ID"]);
-    sql = sql.replace("dataItem.MAKER_ID", dataItem["MAKER_ID"]);
+    sql = sql.replaceAll("dataItem.VENDOR_ID", dataItem["VENDOR_ID"]);
+    sql = sql.replaceAll("dataItem.MAKER_ID", dataItem["MAKER_ID"]);
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_CATEGORY_ID",
       dataItem["PRODUCT_CATEGORY_ID"]
     );
-    sql = sql.replace("dataItem.PRODUCT_MAIN_ID", dataItem["PRODUCT_MAIN_ID"]);
-    sql = sql.replace("dataItem.PRODUCT_SUB_ID", dataItem["PRODUCT_SUB_ID"]);
-    sql = sql.replace("dataItem.PRODUCT_TYPE_ID", dataItem["PRODUCT_TYPE_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_MAIN_ID",
+      dataItem["PRODUCT_MAIN_ID"]
+    );
+    sql = sql.replaceAll("dataItem.PRODUCT_SUB_ID", dataItem["PRODUCT_SUB_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_TYPE_ID",
+      dataItem["PRODUCT_TYPE_ID"]
+    );
 
-    sql = sql.replace("dataItem.WORK_ORDER_ID", dataItem["WORK_ORDER_ID"]);
-    sql = sql.replace("dataItem.PART_NO_ID", dataItem["PART_NO_ID"]);
-    sql = sql.replace(
+    sql = sql.replaceAll("dataItem.WORK_ORDER_ID", dataItem["WORK_ORDER_ID"]);
+    sql = sql.replaceAll("dataItem.PART_NO_ID", dataItem["PART_NO_ID"]);
+    sql = sql.replaceAll(
       "dataItem.SPECIFICATION_ID",
       dataItem["SPECIFICATION_ID"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.CUSTOMER_ORDER_FROM_ID",
       dataItem["CUSTOMER_ORDER_FROM_ID"]
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_PROPERTY_COLOR_ID",
       dataItem["MATERIAL_PROPERTY_COLOR_ID"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_PROPERTY_SHAPE_ID",
       dataItem["MATERIAL_PROPERTY_SHAPE_ID"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_PROPERTY_MADE_BY_ID",
       dataItem["MATERIAL_PROPERTY_MADE_BY_ID"]
     );
-    sql = sql.replace("dataItem.WIDTH", dataItem["WIDTH"]);
-    sql = sql.replace("dataItem.HEIGHT", dataItem["HEIGHT"]);
-    sql = sql.replace("dataItem.DEPTH", dataItem["DEPTH"]);
-    sql = sql.replace("dataItem.USAGE_UNIT_ID", dataItem["USAGE_UNIT_ID"]);
+    sql = sql.replaceAll("dataItem.WIDTH", dataItem["WIDTH"]);
+    sql = sql.replaceAll("dataItem.HEIGHT", dataItem["HEIGHT"]);
+    sql = sql.replaceAll("dataItem.DEPTH", dataItem["DEPTH"]);
+    sql = sql.replaceAll("dataItem.USAGE_UNIT_ID", dataItem["USAGE_UNIT_ID"]);
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.ITEM_CODE_FOR_SUPPORT_MES",
       dataItem["ITEM_CODE_FOR_SUPPORT_MES"]
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_INTERNAL_CODE",
       dataItem["MATERIAL_INTERNAL_CODE"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_INTERNAL_FULL_NAME",
       dataItem["MATERIAL_INTERNAL_FULL_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_INTERNAL_SHORT_NAME",
       dataItem["MATERIAL_INTERNAL_SHORT_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_EXTERNAL_CODE",
       dataItem["MATERIAL_EXTERNAL_CODE"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_EXTERNAL_FULL_NAME",
       dataItem["MATERIAL_EXTERNAL_FULL_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_EXTERNAL_SHORT_NAME",
       dataItem["MATERIAL_EXTERNAL_SHORT_NAME"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
-    sql = sql.replace("dataItem.FISCAL_YEAR", dataItem["FISCAL_YEAR"]);
+    sql = sql.replaceAll("dataItem.FISCAL_YEAR", dataItem["FISCAL_YEAR"]);
 
     if (dataItem.hasOwnProperty("BOM_ID")) {
-      sql = sql.replace("dataItem.BOM_ID", dataItem["BOM_ID"]);
+      sql = sql.replaceAll("dataItem.BOM_ID", dataItem["BOM_ID"]);
     }
 
     sqlList.push(sql);
@@ -350,105 +356,111 @@ LIMIT
   , dataItem.Limit
             `;
 
-    sql = sql.replace("dataItem.sqlWhere", sqlWhere);
-    sql = sql.replace("dataItem.sqlSelect", sqlSelect);
+    sql = sql.replaceAll("dataItem.sqlWhere", sqlWhere);
+    sql = sql.replaceAll("dataItem.sqlSelect", sqlSelect);
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_MAIN_ID_FOR_MATERIAL_PRODUCT_MAIN",
       dataItem["PRODUCT_MAIN_ID_FOR_MATERIAL_PRODUCT_MAIN"]
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_CATEGORY_ID",
       dataItem["MATERIAL_CATEGORY_ID"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_PURPOSE_ID",
       dataItem["MATERIAL_PURPOSE_ID"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_TYPE_ID",
       dataItem["MATERIAL_TYPE_ID"]
     );
-    sql = sql.replace("dataItem.VENDOR_ID", dataItem["VENDOR_ID"]);
-    sql = sql.replace("dataItem.MAKER_ID", dataItem["MAKER_ID"]);
+    sql = sql.replaceAll("dataItem.VENDOR_ID", dataItem["VENDOR_ID"]);
+    sql = sql.replaceAll("dataItem.MAKER_ID", dataItem["MAKER_ID"]);
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_CATEGORY_ID",
       dataItem["PRODUCT_CATEGORY_ID"]
     );
-    sql = sql.replace("dataItem.PRODUCT_MAIN_ID", dataItem["PRODUCT_MAIN_ID"]);
-    sql = sql.replace("dataItem.PRODUCT_SUB_ID", dataItem["PRODUCT_SUB_ID"]);
-    sql = sql.replace("dataItem.PRODUCT_TYPE_ID", dataItem["PRODUCT_TYPE_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_MAIN_ID",
+      dataItem["PRODUCT_MAIN_ID"]
+    );
+    sql = sql.replaceAll("dataItem.PRODUCT_SUB_ID", dataItem["PRODUCT_SUB_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_TYPE_ID",
+      dataItem["PRODUCT_TYPE_ID"]
+    );
 
-    sql = sql.replace("dataItem.WORK_ORDER_ID", dataItem["WORK_ORDER_ID"]);
-    sql = sql.replace("dataItem.PART_NO_ID", dataItem["PART_NO_ID"]);
-    sql = sql.replace(
+    sql = sql.replaceAll("dataItem.WORK_ORDER_ID", dataItem["WORK_ORDER_ID"]);
+    sql = sql.replaceAll("dataItem.PART_NO_ID", dataItem["PART_NO_ID"]);
+    sql = sql.replaceAll(
       "dataItem.SPECIFICATION_ID",
       dataItem["SPECIFICATION_ID"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.CUSTOMER_ORDER_FROM_ID",
       dataItem["CUSTOMER_ORDER_FROM_ID"]
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_PROPERTY_COLOR_ID",
       dataItem["MATERIAL_PROPERTY_COLOR_ID"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_PROPERTY_SHAPE_ID",
       dataItem["MATERIAL_PROPERTY_SHAPE_ID"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_PROPERTY_MADE_BY_ID",
       dataItem["MATERIAL_PROPERTY_MADE_BY_ID"]
     );
-    sql = sql.replace("dataItem.WIDTH", dataItem["WIDTH"]);
-    sql = sql.replace("dataItem.HEIGHT", dataItem["HEIGHT"]);
-    sql = sql.replace("dataItem.DEPTH", dataItem["DEPTH"]);
+    sql = sql.replaceAll("dataItem.WIDTH", dataItem["WIDTH"]);
+    sql = sql.replaceAll("dataItem.HEIGHT", dataItem["HEIGHT"]);
+    sql = sql.replaceAll("dataItem.DEPTH", dataItem["DEPTH"]);
 
-    sql = sql.replace("dataItem.USAGE_UNIT_ID", dataItem["USAGE_UNIT_ID"]);
+    sql = sql.replaceAll("dataItem.USAGE_UNIT_ID", dataItem["USAGE_UNIT_ID"]);
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.ITEM_CODE_FOR_SUPPORT_MES",
       dataItem["ITEM_CODE_FOR_SUPPORT_MES"]
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_INTERNAL_CODE",
       dataItem["MATERIAL_INTERNAL_CODE"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_INTERNAL_FULL_NAME",
       dataItem["MATERIAL_INTERNAL_FULL_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_INTERNAL_SHORT_NAME",
       dataItem["MATERIAL_INTERNAL_SHORT_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_EXTERNAL_CODE",
       dataItem["MATERIAL_EXTERNAL_CODE"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_EXTERNAL_FULL_NAME",
       dataItem["MATERIAL_EXTERNAL_FULL_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_EXTERNAL_SHORT_NAME",
       dataItem["MATERIAL_EXTERNAL_SHORT_NAME"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
-    sql = sql.replace("dataItem.FISCAL_YEAR", dataItem["FISCAL_YEAR"]);
+    sql = sql.replaceAll("dataItem.FISCAL_YEAR", dataItem["FISCAL_YEAR"]);
 
     if (dataItem.hasOwnProperty("BOM_ID")) {
-      sql = sql.replace("dataItem.BOM_ID", dataItem["BOM_ID"]);
+      sql = sql.replaceAll("dataItem.BOM_ID", dataItem["BOM_ID"]);
     }
-    sql = sql.replace("dataItem.Order", dataItem["Order"]);
-    sql = sql.replace("dataItem.Start", dataItem["Start"]);
-    sql = sql.replace("dataItem.Limit", dataItem["Limit"]);
+    sql = sql.replaceAll("dataItem.Order", dataItem["Order"]);
+    sql = sql.replaceAll("dataItem.Start", dataItem["Start"]);
+    sql = sql.replaceAll("dataItem.Limit", dataItem["Limit"]);
 
     sqlList.push(sql);
 
@@ -527,111 +539,111 @@ LIMIT
                    
                               `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_CATEGORY_ID",
       dataItem["MATERIAL_CATEGORY_ID"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_PURPOSE_ID",
       dataItem["MATERIAL_PURPOSE_ID"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_TYPE_ID",
       dataItem["MATERIAL_TYPE_ID"]
     );
-    sql = sql.replace("dataItem.VENDOR_ID", dataItem["VENDOR_ID"]);
-    sql = sql.replace("dataItem.MAKER_ID", dataItem["MAKER_ID"]);
+    sql = sql.replaceAll("dataItem.VENDOR_ID", dataItem["VENDOR_ID"]);
+    sql = sql.replaceAll("dataItem.MAKER_ID", dataItem["MAKER_ID"]);
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.WIDTH",
       dataItem["WIDTH"] != "" ? dataItem["WIDTH"] : "NULL"
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.HEIGHT",
       dataItem["HEIGHT"] != "" ? dataItem["HEIGHT"] : "NULL"
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.DEPTH",
       dataItem["DEPTH"] != "" ? dataItem["DEPTH"] : "NULL"
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_PROPERTY_COLOR_ID",
       dataItem["MATERIAL_PROPERTY_COLOR_ID"] != ""
         ? dataItem["MATERIAL_PROPERTY_COLOR_ID"]
         : "NULL"
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_PROPERTY_SHAPE_ID",
       dataItem["MATERIAL_PROPERTY_SHAPE_ID"] != ""
         ? dataItem["MATERIAL_PROPERTY_SHAPE_ID"]
         : "NULL"
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_PROPERTY_MADE_BY_ID",
       dataItem["MATERIAL_PROPERTY_MADE_BY_ID"] != ""
         ? dataItem["MATERIAL_PROPERTY_MADE_BY_ID"]
         : "NULL"
     );
 
-    sql = sql.replace("dataItem.USAGE_UNIT_ID", dataItem["USAGE_UNIT_ID"]);
+    sql = sql.replaceAll("dataItem.USAGE_UNIT_ID", dataItem["USAGE_UNIT_ID"]);
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.IMAGE_PATH",
       "'" + dataItem["IMAGE_PATH"] + "'" != "" ? dataItem["IMAGE_PATH"] : "NULL"
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_INTERNAL_CODE",
       dataItem["MATERIAL_INTERNAL_CODE"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_INTERNAL_FULL_NAME",
       dataItem["MATERIAL_INTERNAL_FULL_NAME"]
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_INTERNAL_SHORT_NAME",
       "'" + dataItem["MATERIAL_INTERNAL_SHORT_NAME"] + "'" != ""
         ? dataItem["MATERIAL_INTERNAL_SHORT_NAME"]
         : "NULL"
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_EXTERNAL_CODE",
       dataItem["MATERIAL_EXTERNAL_CODE"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_EXTERNAL_FULL_NAME",
       dataItem["MATERIAL_EXTERNAL_FULL_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_EXTERNAL_SHORT_NAME",
       dataItem["MATERIAL_EXTERNAL_SHORT_NAME"]
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.ITEM_CODE_FOR_SUPPORT_MES",
       dataItem["ITEM_CODE_FOR_SUPPORT_MES"]
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_FULL_NAME",
       dataItem["IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_FULL_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_SHORT_NAME",
       dataItem["IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_SHORT_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_FULL_NAME",
       dataItem["IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_FULL_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_SHORT_NAME",
       dataItem["IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_SHORT_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.IS_SAME_ITEM_INTERNAL_CODE_FOR_ITEM_EXTERNAL_CODE",
       dataItem["IS_SAME_ITEM_INTERNAL_CODE_FOR_ITEM_EXTERNAL_CODE"]
     );
@@ -675,98 +687,98 @@ LIMIT
                             MATERIAL_ID = 'dataItem.MATERIAL_ID'
                       `;
 
-    sql = sql.replace("dataItem.MATERIAL_ID", dataItem["MATERIAL_ID"]);
+    sql = sql.replaceAll("dataItem.MATERIAL_ID", dataItem["MATERIAL_ID"]);
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.WIDTH",
       dataItem["WIDTH"] != "" ? dataItem["WIDTH"] : "NULL"
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.HEIGHT",
       dataItem["HEIGHT"] != "" ? dataItem["HEIGHT"] : "NULL"
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.DEPTH",
       dataItem["DEPTH"] != "" ? dataItem["DEPTH"] : "NULL"
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_PROPERTY_COLOR_ID",
       dataItem["MATERIAL_PROPERTY_COLOR_ID"] != ""
         ? dataItem["MATERIAL_PROPERTY_COLOR_ID"]
         : "NULL"
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_PROPERTY_SHAPE_ID",
       dataItem["MATERIAL_PROPERTY_SHAPE_ID"] != ""
         ? dataItem["MATERIAL_PROPERTY_SHAPE_ID"]
         : "NULL"
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_PROPERTY_MADE_BY_ID",
       dataItem["MATERIAL_PROPERTY_MADE_BY_ID"] != ""
         ? dataItem["MATERIAL_PROPERTY_MADE_BY_ID"]
         : "NULL"
     );
 
-    sql = sql.replace("dataItem.USAGE_UNIT_ID", dataItem["USAGE_UNIT_ID"]);
+    sql = sql.replaceAll("dataItem.USAGE_UNIT_ID", dataItem["USAGE_UNIT_ID"]);
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_INTERNAL_FULL_NAME",
       dataItem["MATERIAL_INTERNAL_FULL_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_INTERNAL_SHORT_NAME",
       "'" + dataItem["MATERIAL_INTERNAL_SHORT_NAME"] + "'" != ""
         ? dataItem["MATERIAL_INTERNAL_SHORT_NAME"]
         : "NULL"
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.IMAGE_PATH",
       "'" + dataItem["IMAGE_PATH"] + "'" != "" ? dataItem["IMAGE_PATH"] : "NULL"
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_EXTERNAL_CODE",
       dataItem["MATERIAL_EXTERNAL_CODE"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_EXTERNAL_FULL_NAME",
       dataItem["MATERIAL_EXTERNAL_FULL_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_EXTERNAL_SHORT_NAME",
       dataItem["MATERIAL_EXTERNAL_SHORT_NAME"]
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.ITEM_CODE_FOR_SUPPORT_MES",
       dataItem["ITEM_CODE_FOR_SUPPORT_MES"]
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_FULL_NAME",
       dataItem["IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_FULL_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_SHORT_NAME",
       dataItem["IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_SHORT_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_FULL_NAME",
       dataItem["IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_FULL_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_SHORT_NAME",
       dataItem["IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_SHORT_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.IS_SAME_ITEM_INTERNAL_CODE_FOR_ITEM_EXTERNAL_CODE",
       dataItem["IS_SAME_ITEM_INTERNAL_CODE_FOR_ITEM_EXTERNAL_CODE"]
     );
 
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
     return sql;
   };
 
@@ -782,8 +794,8 @@ LIMIT
                             MATERIAL_ID = 'dataItem.MATERIAL_ID'
                       `;
 
-    sql = sql.replace("dataItem.MATERIAL_ID", dataItem["MATERIAL_ID"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.MATERIAL_ID", dataItem["MATERIAL_ID"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
 
     return sql;
   };
@@ -833,98 +845,98 @@ SET
     MATERIAL_ID = 'dataItem.MATERIAL_ID'
                       `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.WIDTH",
       dataItem["WIDTH"] != "" ? dataItem["WIDTH"] : "NULL"
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.HEIGHT",
       dataItem["HEIGHT"] != "" ? dataItem["HEIGHT"] : "NULL"
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.DEPTH",
       dataItem["DEPTH"] != "" ? dataItem["DEPTH"] : "NULL"
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_PROPERTY_COLOR_ID",
       dataItem["MATERIAL_PROPERTY_COLOR_ID"] != ""
         ? dataItem["MATERIAL_PROPERTY_COLOR_ID"]
         : "NULL"
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_PROPERTY_SHAPE_ID",
       dataItem["MATERIAL_PROPERTY_SHAPE_ID"] != ""
         ? dataItem["MATERIAL_PROPERTY_SHAPE_ID"]
         : "NULL"
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_PROPERTY_MADE_BY_ID",
       dataItem["MATERIAL_PROPERTY_MADE_BY_ID"] != ""
         ? dataItem["MATERIAL_PROPERTY_MADE_BY_ID"]
         : "NULL"
     );
 
-    sql = sql.replace("dataItem.USAGE_UNIT_ID", dataItem["USAGE_UNIT_ID"]);
+    sql = sql.replaceAll("dataItem.USAGE_UNIT_ID", dataItem["USAGE_UNIT_ID"]);
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_INTERNAL_CODE",
       dataItem["MATERIAL_INTERNAL_CODE"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_INTERNAL_FULL_NAME",
       dataItem["MATERIAL_INTERNAL_FULL_NAME"]
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_INTERNAL_SHORT_NAME",
       "'" + dataItem["MATERIAL_INTERNAL_SHORT_NAME"] + "'" != ""
         ? dataItem["MATERIAL_INTERNAL_SHORT_NAME"]
         : "NULL"
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_EXTERNAL_CODE",
       dataItem["MATERIAL_EXTERNAL_CODE"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_EXTERNAL_FULL_NAME",
       dataItem["MATERIAL_EXTERNAL_FULL_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_EXTERNAL_SHORT_NAME",
       dataItem["MATERIAL_EXTERNAL_SHORT_NAME"]
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.IMAGE_PATH",
       "'" + dataItem["IMAGE_PATH"] + "'" != "" ? dataItem["IMAGE_PATH"] : "NULL"
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.ITEM_CODE_FOR_SUPPORT_MES",
       dataItem["ITEM_CODE_FOR_SUPPORT_MES"]
     );
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_FULL_NAME",
       dataItem["IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_FULL_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_SHORT_NAME",
       dataItem["IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_SHORT_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_FULL_NAME",
       dataItem["IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_FULL_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_SHORT_NAME",
       dataItem["IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_SHORT_NAME"]
     );
 
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
 
     return sql;
   };
@@ -944,11 +956,11 @@ SET
                             50
                                                 `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_INTERNAL_CODE",
       dataItem["MATERIAL_INTERNAL_CODE"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
     return sql;
   };
@@ -962,7 +974,7 @@ SET
                                 MATERIAL_CATEGORY_ID = 'dataItem.MATERIAL_CATEGORY_ID'
                                                 `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_CATEGORY_ID",
       dataItem["MATERIAL_CATEGORY_ID"]
     );
@@ -978,7 +990,7 @@ SET
                             MATERIAL_PURPOSE_ID = 'dataItem.MATERIAL_PURPOSE_ID'
                                                 `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_PURPOSE_ID",
       dataItem["MATERIAL_PURPOSE_ID"]
     );
@@ -994,7 +1006,7 @@ SET
                             MATERIAL_TYPE_ID = 'dataItem.MATERIAL_TYPE_ID'
                                                 `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.MATERIAL_TYPE_ID",
       dataItem["MATERIAL_TYPE_ID"]
     );
@@ -1010,7 +1022,7 @@ SET
                             VENDOR_ID = 'dataItem.VENDOR_ID'
                                                 `;
 
-    sql = sql.replace("dataItem.VENDOR_ID", dataItem["VENDOR_ID"]);
+    sql = sql.replaceAll("dataItem.VENDOR_ID", dataItem["VENDOR_ID"]);
     return sql;
   };
 
@@ -1023,7 +1035,7 @@ SET
                                 MAKER_ID = 'dataItem.MAKER_ID'
                                                 `;
 
-    sql = sql.replace("dataItem.MAKER_ID", dataItem["MAKER_ID"]);
+    sql = sql.replaceAll("dataItem.MAKER_ID", dataItem["MAKER_ID"]);
 
     return sql;
   };
@@ -1037,7 +1049,7 @@ SET
                             ITEM_CODE_FOR_SUPPORT_MES = 'dataItem.ITEM_CODE_FOR_SUPPORT_MES'
                                                 `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.ITEM_CODE_FOR_SUPPORT_MES",
       dataItem["ITEM_CODE_FOR_SUPPORT_MES"]
     );

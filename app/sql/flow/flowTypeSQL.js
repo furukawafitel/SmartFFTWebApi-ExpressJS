@@ -16,7 +16,7 @@ class FlowTypeSQL {
                     FLOW_TYPE_ID = 'dataItem.FLOW_TYPE_ID'
                     `;
 
-    sql = sql.replace("dataItem.FLOW_TYPE_ID", dataItem["FLOW_TYPE_ID"]);
+    sql = sql.replaceAll("dataItem.FLOW_TYPE_ID", dataItem["FLOW_TYPE_ID"]);
 
     return sql;
   };
@@ -34,12 +34,12 @@ class FlowTypeSQL {
                         AND FLOW_TYPE_ALPHABET LIKE '%dataItem.FLOW_TYPE_ALPHABET%'
                         AND INUSE LIKE '%dataItem.INUSE%' `;
 
-    sql = sql.replace("dataItem.FLOW_TYPE_NAME", dataItem["FLOW_TYPE_NAME"]);
-    sql = sql.replace(
+    sql = sql.replaceAll("dataItem.FLOW_TYPE_NAME", dataItem["FLOW_TYPE_NAME"]);
+    sql = sql.replaceAll(
       "dataItem.FLOW_TYPE_ALPHABET",
       dataItem["FLOW_TYPE_ALPHABET"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
     sqlList.push(sql);
 
@@ -64,15 +64,15 @@ class FlowTypeSQL {
                 , dataItem.Limit
             `;
 
-    sql = sql.replace("dataItem.FLOW_TYPE_NAME", dataItem["FLOW_TYPE_NAME"]);
-    sql = sql.replace(
+    sql = sql.replaceAll("dataItem.FLOW_TYPE_NAME", dataItem["FLOW_TYPE_NAME"]);
+    sql = sql.replaceAll(
       "dataItem.FLOW_TYPE_ALPHABET",
       dataItem["FLOW_TYPE_ALPHABET"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.Order", dataItem["Order"]);
-    sql = sql.replace("dataItem.Start", dataItem["Start"]);
-    sql = sql.replace("dataItem.Limit", dataItem["Limit"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.Order", dataItem["Order"]);
+    sql = sql.replaceAll("dataItem.Start", dataItem["Start"]);
+    sql = sql.replaceAll("dataItem.Limit", dataItem["Limit"]);
     sqlList.push(sql);
 
     sqlList = sqlList.join(";");
@@ -102,8 +102,8 @@ class FlowTypeSQL {
                    
                               `;
 
-    sql = sql.replace("dataItem.FLOW_TYPE_NAME", dataItem["FLOW_TYPE_NAME"]);
-    sql = sql.replace(
+    sql = sql.replaceAll("dataItem.FLOW_TYPE_NAME", dataItem["FLOW_TYPE_NAME"]);
+    sql = sql.replaceAll(
       "dataItem.FLOW_TYPE_ALPHABET",
       dataItem["FLOW_TYPE_ALPHABET"]
     );
@@ -125,14 +125,14 @@ class FlowTypeSQL {
                         FLOW_TYPE_ID = 'dataItem.FLOW_TYPE_ID'
                       `;
 
-    sql = sql.replace("dataItem.FLOW_TYPE_ID", dataItem["FLOW_TYPE_ID"]);
-    sql = sql.replace("dataItem.FLOW_TYPE_NAME", dataItem["FLOW_TYPE_NAME"]);
-    sql = sql.replace(
+    sql = sql.replaceAll("dataItem.FLOW_TYPE_ID", dataItem["FLOW_TYPE_ID"]);
+    sql = sql.replaceAll("dataItem.FLOW_TYPE_NAME", dataItem["FLOW_TYPE_NAME"]);
+    sql = sql.replaceAll(
       "dataItem.FLOW_TYPE_ALPHABET",
       dataItem["FLOW_TYPE_ALPHABET"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
     return sql;
   };
 
@@ -148,8 +148,8 @@ class FlowTypeSQL {
                         FLOW_TYPE_ID = 'dataItem.FLOW_TYPE_ID'
                       `;
 
-    sql = sql.replace("dataItem.FLOW_TYPE_ID", dataItem["FLOW_TYPE_ID"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.FLOW_TYPE_ID", dataItem["FLOW_TYPE_ID"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
 
     return sql;
   };
@@ -169,8 +169,8 @@ class FlowTypeSQL {
                         50
                                                 `;
 
-    sql = sql.replace("dataItem.FLOW_TYPE_NAME", dataItem["FLOW_TYPE_NAME"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.FLOW_TYPE_NAME", dataItem["FLOW_TYPE_NAME"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
     return sql;
   };
 }

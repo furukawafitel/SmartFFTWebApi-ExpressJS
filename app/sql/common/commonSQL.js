@@ -54,7 +54,7 @@ class CommonSQL {
                     tb_1.SCT_ID = 'dataItem.SCT_ID'
                 AND tb_4.INUSE = '1' `;
 
-    sql = sql.replace("dataItem.SCT_ID", dataItem);
+    sql = sql.replaceAll("dataItem.SCT_ID", dataItem);
 
     sqlList.push(sql);
 
@@ -133,7 +133,7 @@ class CommonSQL {
                     WHERE
                         tb_1.SCT_ID = 'dataItem.SCT_ID'  `;
 
-    sql = sql.replace("dataItem.SCT_ID", dataItem);
+    sql = sql.replaceAll("dataItem.SCT_ID", dataItem);
 
     sqlList.push(sql);
 
@@ -162,13 +162,38 @@ class CommonSQL {
                     WHERE
                     tb_1.SCT_ID = 'dataItem.SCT_ID' `;
 
-    sql = sql.replace("dataItem.SCT_ID", dataItem);
+    sql = sql.replaceAll("dataItem.SCT_ID", dataItem);
 
     sqlList.push(sql);
 
     sqlList = sqlList.join(";");
 
     return sqlList;
+  };
+
+  static GetYearNow = async () => {
+    let sql = ` SELECT YEAR(NOW()) as YEAR_NOW  `;
+    return sql;
+  };
+
+  static GetByLikeMonthShortNameEnglish = async (dataItem) => {
+    let sql = `  SELECT
+                        MONTH_ID
+                    , MONTH_FULL_NAME_THAI
+                    , MONTH_SHORT_NAME_THAI
+                    , MONTH_FULL_NAME_ENGLISH
+                    , MONTH_SHORT_NAME_ENGLISH
+                    FROM
+                    MONTH
+                    WHERE 
+                    MONTH_SHORT_NAME_ENGLISH LIKE '%dataItem.MONTH_SHORT_NAME_ENGLISH%' `;
+
+    sql = sql.replaceAll(
+      "dataItem.MONTH_SHORT_NAME_ENGLISH",
+      dataItem["MONTH_SHORT_NAME_ENGLISH"]
+    );
+
+    return sql;
   };
 }
 

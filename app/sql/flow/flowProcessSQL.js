@@ -16,7 +16,10 @@ class FlowProcessSQL {
                         FLOW_PROCESS_ID = 'dataItem.FLOW_PROCESS_ID'
                     `;
 
-    sql = sql.replace("dataItem.FLOW_PROCESS_ID", dataItem["FLOW_PROCESS_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.FLOW_PROCESS_ID",
+      dataItem["FLOW_PROCESS_ID"]
+    );
 
     return sql;
   };
@@ -34,15 +37,15 @@ class FlowProcessSQL {
                     AND FLOW_PROCESS_CODE LIKE '%dataItem.FLOW_PROCESS_CODE%'
                     AND INUSE LIKE '%dataItem.INUSE%' `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.FLOW_PROCESS_NAME",
       dataItem["FLOW_PROCESS_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.FLOW_PROCESS_CODE",
       dataItem["FLOW_PROCESS_CODE"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
     sqlList.push(sql);
 
@@ -67,18 +70,18 @@ class FlowProcessSQL {
                     , dataItem.Limit
             `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.FLOW_PROCESS_NAME",
       dataItem["FLOW_PROCESS_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.FLOW_PROCESS_CODE",
       dataItem["FLOW_PROCESS_CODE"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.Order", dataItem["Order"]);
-    sql = sql.replace("dataItem.Start", dataItem["Start"]);
-    sql = sql.replace("dataItem.Limit", dataItem["Limit"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.Order", dataItem["Order"]);
+    sql = sql.replaceAll("dataItem.Start", dataItem["Start"]);
+    sql = sql.replaceAll("dataItem.Limit", dataItem["Limit"]);
     sqlList.push(sql);
 
     sqlList = sqlList.join(";");
@@ -112,8 +115,8 @@ class FlowProcessSQL {
                    
                               `;
 
-    sql = sql.replace("dataItem.NO", dataItem["NO"]);
-    sql = sql.replace("dataItem.PROCESS_ID", dataItem["PROCESS_ID"]);
+    sql = sql.replaceAll("dataItem.NO", dataItem["NO"]);
+    sql = sql.replaceAll("dataItem.PROCESS_ID", dataItem["PROCESS_ID"]);
     sql = sql.replaceAll("dataItem.CREATE_BY", dataItem["CREATE_BY"]);
     return sql;
   };
@@ -131,13 +134,16 @@ class FlowProcessSQL {
                             FLOW_PROCESS_ID = 'dataItem.FLOW_PROCESS_ID' ;
                       `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.FLOW_PROCESS_NAME",
       dataItem["FLOW_PROCESS_NAME"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
-    sql = sql.replace("dataItem.FLOW_PROCESS_ID", dataItem["FLOW_PROCESS_ID"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll(
+      "dataItem.FLOW_PROCESS_ID",
+      dataItem["FLOW_PROCESS_ID"]
+    );
     return sql;
   };
 
@@ -153,8 +159,11 @@ class FlowProcessSQL {
                         FLOW_PROCESS_ID = 'dataItem.FLOW_PROCESS_ID'
                       `;
 
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
-    sql = sql.replace("dataItem.FLOW_PROCESS_ID", dataItem["FLOW_PROCESS_ID"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll(
+      "dataItem.FLOW_PROCESS_ID",
+      dataItem["FLOW_PROCESS_ID"]
+    );
     return sql;
   };
 
@@ -172,7 +181,7 @@ class FlowProcessSQL {
                             50
                                                 `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.FLOW_PROCESS_NAME",
       dataItem["FLOW_PROCESS_NAME"]
     );
@@ -197,7 +206,7 @@ class FlowProcessSQL {
                             tb_1.NO
                                                 `;
 
-    sql = sql.replace("dataItem.FLOW_ID", dataItem["FLOW_ID"]);
+    sql = sql.replaceAll("dataItem.FLOW_ID", dataItem["FLOW_ID"]);
     return sql;
   };
 
@@ -213,8 +222,8 @@ class FlowProcessSQL {
                                 AND INUSE = '1' ;
                                                 `;
 
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
-    sql = sql.replace("dataItem.FLOW_ID", dataItem["FLOW_ID"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.FLOW_ID", dataItem["FLOW_ID"]);
     return sql;
   };
 
@@ -241,9 +250,9 @@ class FlowProcessSQL {
                                                 ) ;
                                                 `;
 
-    sql = sql.replace("dataItem.FLOW_ID", dataItem["FLOW_ID"]);
-    sql = sql.replace("dataItem.NO", dataItem["NO"]);
-    sql = sql.replace("dataItem.PROCESS_ID", dataItem["PROCESS_ID"]);
+    sql = sql.replaceAll("dataItem.FLOW_ID", dataItem["FLOW_ID"]);
+    sql = sql.replaceAll("dataItem.NO", dataItem["NO"]);
+    sql = sql.replaceAll("dataItem.PROCESS_ID", dataItem["PROCESS_ID"]);
     sql = sql.replaceAll("dataItem.CREATE_BY", dataItem["CREATE_BY"]);
     return sql;
   };

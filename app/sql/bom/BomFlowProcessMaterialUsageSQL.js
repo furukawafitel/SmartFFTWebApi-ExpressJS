@@ -16,7 +16,7 @@ class BomFlowProcessMaterialUsageSQL {
                             BOM_FLOW_PROCESS_MATERIAL_USAGE_ID = 'dataItem.BOM_FLOW_PROCESS_MATERIAL_USAGE_ID'
                     `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.BOM_FLOW_PROCESS_MATERIAL_USAGE_ID",
       dataItem["BOM_FLOW_PROCESS_MATERIAL_USAGE_ID"]
     );
@@ -37,15 +37,15 @@ class BomFlowProcessMaterialUsageSQL {
                     AND BOM_FLOW_PROCESS_MATERIAL_USAGE_CODE LIKE '%dataItem.BOM_FLOW_PROCESS_MATERIAL_USAGE_CODE%'
                     AND INUSE LIKE '%dataItem.INUSE%' `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.BOM_FLOW_PROCESS_MATERIAL_USAGE_NAME",
       dataItem["BOM_FLOW_PROCESS_MATERIAL_USAGE_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.BOM_FLOW_PROCESS_MATERIAL_USAGE_CODE",
       dataItem["BOM_FLOW_PROCESS_MATERIAL_USAGE_CODE"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
     sqlList.push(sql);
 
@@ -70,18 +70,18 @@ class BomFlowProcessMaterialUsageSQL {
                 , dataItem.Limit
             `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.BOM_FLOW_PROCESS_MATERIAL_USAGE_NAME",
       dataItem["BOM_FLOW_PROCESS_MATERIAL_USAGE_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.BOM_FLOW_PROCESS_MATERIAL_USAGE_CODE",
       dataItem["BOM_FLOW_PROCESS_MATERIAL_USAGE_CODE"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.Order", dataItem["Order"]);
-    sql = sql.replace("dataItem.Start", dataItem["Start"]);
-    sql = sql.replace("dataItem.Limit", dataItem["Limit"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.Order", dataItem["Order"]);
+    sql = sql.replaceAll("dataItem.Start", dataItem["Start"]);
+    sql = sql.replaceAll("dataItem.Limit", dataItem["Limit"]);
 
     sqlList.push(sql);
 
@@ -120,10 +120,13 @@ class BomFlowProcessMaterialUsageSQL {
                    
                               `;
 
-    sql = sql.replace("dataItem.FLOW_PROCESS_ID", dataItem["FLOW_PROCESS_ID"]);
-    sql = sql.replace("dataItem.NO", dataItem["NO"]);
-    sql = sql.replace("dataItem.MATERIAL_ID", dataItem["MATERIAL_ID"]);
-    sql = sql.replace("dataItem.USAGE_QUANTITY", dataItem["USAGE_QUANTITY"]);
+    sql = sql.replaceAll(
+      "dataItem.FLOW_PROCESS_ID",
+      dataItem["FLOW_PROCESS_ID"]
+    );
+    sql = sql.replaceAll("dataItem.NO", dataItem["NO"]);
+    sql = sql.replaceAll("dataItem.MATERIAL_ID", dataItem["MATERIAL_ID"]);
+    sql = sql.replaceAll("dataItem.USAGE_QUANTITY", dataItem["USAGE_QUANTITY"]);
 
     sql = sql.replaceAll("dataItem.CREATE_BY", dataItem["CREATE_BY"]);
     return sql;
@@ -142,13 +145,13 @@ class BomFlowProcessMaterialUsageSQL {
                         BOM_FLOW_PROCESS_MATERIAL_USAGE_ID = 'dataItem.BOM_FLOW_PROCESS_MATERIAL_USAGE_ID'
                       `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.BOM_FLOW_PROCESS_MATERIAL_USAGE_NAME",
       dataItem["BOM_FLOW_PROCESS_MATERIAL_USAGE_NAME"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
-    sql = sql.replace(
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll(
       "dataItem.BOM_FLOW_PROCESS_MATERIAL_USAGE_ID",
       dataItem["BOM_FLOW_PROCESS_MATERIAL_USAGE_ID"]
     );
@@ -167,8 +170,8 @@ class BomFlowProcessMaterialUsageSQL {
                         BOM_FLOW_PROCESS_MATERIAL_USAGE_ID = 'dataItem.BOM_FLOW_PROCESS_MATERIAL_USAGE_ID'
                       `;
 
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
-    sql = sql.replace(
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll(
       "dataItem.BOM_FLOW_PROCESS_MATERIAL_USAGE_ID",
       dataItem["BOM_FLOW_PROCESS_MATERIAL_USAGE_ID"]
     );
@@ -189,7 +192,7 @@ class BomFlowProcessMaterialUsageSQL {
                                 50
                                                 `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.BOM_FLOW_PROCESS_MATERIAL_USAGE_NAME",
       dataItem["BOM_FLOW_PROCESS_MATERIAL_USAGE_NAME"]
     );
@@ -214,7 +217,7 @@ class BomFlowProcessMaterialUsageSQL {
                     tb_1.NO
                                                 `;
 
-    sql = sql.replace("dataItem.FLOW_ID", dataItem["FLOW_ID"]);
+    sql = sql.replaceAll("dataItem.FLOW_ID", dataItem["FLOW_ID"]);
     return sql;
   };
 
@@ -230,8 +233,8 @@ class BomFlowProcessMaterialUsageSQL {
                                 AND INUSE = '1'
                                                 `;
 
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
-    sql = sql.replace("dataItem.BOM_ID", dataItem["BOM_ID"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.BOM_ID", dataItem["BOM_ID"]);
     return sql;
   };
 
@@ -262,12 +265,15 @@ class BomFlowProcessMaterialUsageSQL {
                             )
                                                 `;
 
-    sql = sql.replace("dataItem.BOM_ID", dataItem["BOM_ID"]);
-    sql = sql.replace("dataItem.NO", dataItem["NO"]);
-    sql = sql.replace("dataItem.FLOW_PROCESS_ID", dataItem["FLOW_PROCESS_ID"]);
-    sql = sql.replace("dataItem.MATERIAL_ID", dataItem["MATERIAL_ID"]);
-    sql = sql.replace("dataItem.USAGE_QUANTITY", dataItem["USAGE_QUANTITY"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.BOM_ID", dataItem["BOM_ID"]);
+    sql = sql.replaceAll("dataItem.NO", dataItem["NO"]);
+    sql = sql.replaceAll(
+      "dataItem.FLOW_PROCESS_ID",
+      dataItem["FLOW_PROCESS_ID"]
+    );
+    sql = sql.replaceAll("dataItem.MATERIAL_ID", dataItem["MATERIAL_ID"]);
+    sql = sql.replaceAll("dataItem.USAGE_QUANTITY", dataItem["USAGE_QUANTITY"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
     return sql;
   };
 
@@ -305,9 +311,12 @@ class BomFlowProcessMaterialUsageSQL {
                 tb_1.NO
                                                 `;
 
-    sql = sql.replace("dataItem.BOM_ID", dataItem["BOM_ID"]);
-    sql = sql.replace("dataItem.FLOW_PROCESS_ID", dataItem["FLOW_PROCESS_ID"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.BOM_ID", dataItem["BOM_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.FLOW_PROCESS_ID",
+      dataItem["FLOW_PROCESS_ID"]
+    );
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
     return sql;
   };

@@ -31,8 +31,8 @@ class SettingSQL {
                 AND APPLICATION_ID = 'dataItem.APPLICATION_ID'
                                 `;
 
-    sql = sql.replace("dataItem.USER_GROUP_ID", dataItem["USER_GROUP_ID"]);
-    sql = sql.replace("dataItem.APPLICATION_ID", dataItem["APPLICATION_ID"]);
+    sql = sql.replaceAll("dataItem.USER_GROUP_ID", dataItem["USER_GROUP_ID"]);
+    sql = sql.replaceAll("dataItem.APPLICATION_ID", dataItem["APPLICATION_ID"]);
 
     return sql;
   };
@@ -62,10 +62,13 @@ class SettingSQL {
                     AND C.MENU_LEAF = 1
                                 `;
 
-    sql = sql.replace("dataItem.USER_NAME", dataItem["USER_NAME"]);
-    sql = sql.replace("dataItem.USER_GROUP_NAME", dataItem["USER_GROUP_NAME"]);
-    sql = sql.replace("dataItem.MENU_NAME", dataItem["MENU_NAME"]);
-    sql = sql.replace(
+    sql = sql.replaceAll("dataItem.USER_NAME", dataItem["USER_NAME"]);
+    sql = sql.replaceAll(
+      "dataItem.USER_GROUP_NAME",
+      dataItem["USER_GROUP_NAME"]
+    );
+    sql = sql.replaceAll("dataItem.MENU_NAME", dataItem["MENU_NAME"]);
+    sql = sql.replaceAll(
       "dataItem.APPLICATION_NAME",
       dataItem["APPLICATION_NAME"]
     );
@@ -82,8 +85,8 @@ class SettingSQL {
                 LEFT JOIN PERMISSION AS C ON (C.APPLICATION_ID = A.APPLICATION_ID AND C.MENU_ID = B.MENU_ID AND C.USER_GROUP_ID = 'dataItem.USER_GROUP_ID')
                 WHERE A.APPLICATION_ID = 'dataItem.APPLICATION_ID'  `;
 
-    sql = sql.replace("dataItem.APPLICATION_ID", dataItem["APPLICATION_ID"]);
-    sql = sql.replace("dataItem.USER_GROUP_ID", dataItem["USER_GROUP_ID"]);
+    sql = sql.replaceAll("dataItem.APPLICATION_ID", dataItem["APPLICATION_ID"]);
+    sql = sql.replaceAll("dataItem.USER_GROUP_ID", dataItem["USER_GROUP_ID"]);
 
     sqlList.push(sql);
 
@@ -107,10 +110,10 @@ class SettingSQL {
     ) TB
     WHERE RN > 'dataItem.Start' AND RN <= 'dataItem.Limit'  `;
 
-    sql = sql.replace("dataItem.APPLICATION_ID", dataItem["APPLICATION_ID"]);
-    sql = sql.replace("dataItem.USER_GROUP_ID", dataItem["USER_GROUP_ID"]);
-    sql = sql.replace("dataItem.Start", dataItem["Start"]);
-    sql = sql.replace("dataItem.Limit", dataItem["Limit"]);
+    sql = sql.replaceAll("dataItem.APPLICATION_ID", dataItem["APPLICATION_ID"]);
+    sql = sql.replaceAll("dataItem.USER_GROUP_ID", dataItem["USER_GROUP_ID"]);
+    sql = sql.replaceAll("dataItem.Start", dataItem["Start"]);
+    sql = sql.replaceAll("dataItem.Limit", dataItem["Limit"]);
 
     sqlList.push(sql);
 
@@ -150,15 +153,15 @@ class SettingSQL {
                     )
                                 `;
 
-    sql = sql.replace("dataItem.USER_GROUP_ID", dataItem["USER_GROUP_ID"]);
-    sql = sql.replace("dataItem.APPLICATION_ID", dataItem["APPLICATION_ID"]);
-    sql = sql.replace("dataItem.MENU_ID", dataItem["MENU_ID"]);
-    sql = sql.replace("dataItem.IS_CREATE", dataItem["IS_CREATE"]);
-    sql = sql.replace("dataItem.IS_UPDATE", dataItem["IS_UPDATE"]);
-    sql = sql.replace("dataItem.IS_DELETE", dataItem["IS_DELETE"]);
-    sql = sql.replace("dataItem.IS_SEARCH", dataItem["IS_SEARCH"]);
-    sql = sql.replace("dataItem.DESCRIPTION", dataItem["DESCRIPTION"]);
-    sql = sql.replace("dataItem.CREATE_USER", dataItem["CREATE_USER"]);
+    sql = sql.replaceAll("dataItem.USER_GROUP_ID", dataItem["USER_GROUP_ID"]);
+    sql = sql.replaceAll("dataItem.APPLICATION_ID", dataItem["APPLICATION_ID"]);
+    sql = sql.replaceAll("dataItem.MENU_ID", dataItem["MENU_ID"]);
+    sql = sql.replaceAll("dataItem.IS_CREATE", dataItem["IS_CREATE"]);
+    sql = sql.replaceAll("dataItem.IS_UPDATE", dataItem["IS_UPDATE"]);
+    sql = sql.replaceAll("dataItem.IS_DELETE", dataItem["IS_DELETE"]);
+    sql = sql.replaceAll("dataItem.IS_SEARCH", dataItem["IS_SEARCH"]);
+    sql = sql.replaceAll("dataItem.DESCRIPTION", dataItem["DESCRIPTION"]);
+    sql = sql.replaceAll("dataItem.CREATE_USER", dataItem["CREATE_USER"]);
 
     return sql;
   };
@@ -178,15 +181,15 @@ class SettingSQL {
                 AND MENU_ID = 'dataItem.MENU_ID'
                             `;
 
-    sql = sql.replace("dataItem.APPLICATION_ID", dataItem["APPLICATION_ID"]);
-    sql = sql.replace("dataItem.USER_GROUP_ID", dataItem["USER_GROUP_ID"]);
-    sql = sql.replace("dataItem.MENU_ID", dataItem["MENU_ID"]);
-    sql = sql.replace("dataItem.IS_CREATE", dataItem["IS_CREATE"]);
-    sql = sql.replace("dataItem.IS_UPDATE", dataItem["IS_UPDATE"]);
-    sql = sql.replace("dataItem.IS_DELETE", dataItem["IS_DELETE"]);
-    sql = sql.replace("dataItem.IS_SEARCH", dataItem["IS_SEARCH"]);
-    sql = sql.replace("dataItem.DESCRIPTION", dataItem["DESCRIPTION"]);
-    sql = sql.replace("dataItem.LAST_USER", dataItem["LAST_USER"]);
+    sql = sql.replaceAll("dataItem.APPLICATION_ID", dataItem["APPLICATION_ID"]);
+    sql = sql.replaceAll("dataItem.USER_GROUP_ID", dataItem["USER_GROUP_ID"]);
+    sql = sql.replaceAll("dataItem.MENU_ID", dataItem["MENU_ID"]);
+    sql = sql.replaceAll("dataItem.IS_CREATE", dataItem["IS_CREATE"]);
+    sql = sql.replaceAll("dataItem.IS_UPDATE", dataItem["IS_UPDATE"]);
+    sql = sql.replaceAll("dataItem.IS_DELETE", dataItem["IS_DELETE"]);
+    sql = sql.replaceAll("dataItem.IS_SEARCH", dataItem["IS_SEARCH"]);
+    sql = sql.replaceAll("dataItem.DESCRIPTION", dataItem["DESCRIPTION"]);
+    sql = sql.replaceAll("dataItem.LAST_USER", dataItem["LAST_USER"]);
     return sql;
   };
 
@@ -202,11 +205,14 @@ class SettingSQL {
                 WHERE PERMISSION_ID = 'dataItem.PERMISSION_ID'
               `;
 
-    sql = sql.replace("dataItem.PERMISSION_NAME", dataItem["PERMISSION_NAME"]);
-    sql = sql.replace("dataItem.PERMISSION_URL", dataItem["PERMISSION_URL"]);
-    sql = sql.replace("dataItem.DESCRIPTION", dataItem["DESCRIPTION"]);
-    sql = sql.replace("dataItem.LAST_USER", dataItem["LAST_USER"]);
-    sql = sql.replace("dataItem.PERMISSION_ID", dataItem["PERMISSION_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.PERMISSION_NAME",
+      dataItem["PERMISSION_NAME"]
+    );
+    sql = sql.replaceAll("dataItem.PERMISSION_URL", dataItem["PERMISSION_URL"]);
+    sql = sql.replaceAll("dataItem.DESCRIPTION", dataItem["DESCRIPTION"]);
+    sql = sql.replaceAll("dataItem.LAST_USER", dataItem["LAST_USER"]);
+    sql = sql.replaceAll("dataItem.PERMISSION_ID", dataItem["PERMISSION_ID"]);
 
     return sql;
   };
@@ -216,7 +222,7 @@ class SettingSQL {
                    WHERE PERMISSION_ID = 'dataItem.PERMISSION_ID'
               `;
 
-    sql = sql.replace("dataItem.PERMISSION_ID", dataItem["PERMISSION_ID"]);
+    sql = sql.replaceAll("dataItem.PERMISSION_ID", dataItem["PERMISSION_ID"]);
 
     return sql;
   };
@@ -227,8 +233,8 @@ class SettingSQL {
                     AND USER_GROUP_ID = 'dataItem.USER_GROUP_ID'
               `;
 
-    sql = sql.replace("dataItem.APPLICATION_ID", dataItem["APPLICATION_ID"]);
-    sql = sql.replace("dataItem.USER_GROUP_ID", dataItem["USER_GROUP_ID"]);
+    sql = sql.replaceAll("dataItem.APPLICATION_ID", dataItem["APPLICATION_ID"]);
+    sql = sql.replaceAll("dataItem.USER_GROUP_ID", dataItem["USER_GROUP_ID"]);
     return sql;
   };
 }

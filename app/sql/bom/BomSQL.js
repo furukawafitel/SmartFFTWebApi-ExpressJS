@@ -16,7 +16,7 @@ class BomSQL {
                         BOM_ID = 'dataItem.BOM_ID'
                     `;
 
-    sql = sql.replace("dataItem.BOM_ID", dataItem["BOM_ID"]);
+    sql = sql.replaceAll("dataItem.BOM_ID", dataItem["BOM_ID"]);
 
     return sql;
   };
@@ -54,22 +54,28 @@ class BomSQL {
 
                         dataItem.sqlWhere `;
 
-    sql = sql.replace("dataItem.sqlWhere", sqlWhere);
+    sql = sql.replaceAll("dataItem.sqlWhere", sqlWhere);
 
-    sql = sql.replace("dataItem.PRODUCT_TYPE_ID", dataItem["PRODUCT_TYPE_ID"]);
-    sql = sql.replace("dataItem.PRODUCT_SUB_ID", dataItem["PRODUCT_SUB_ID"]);
-    sql = sql.replace("dataItem.PRODUCT_MAIN_ID", dataItem["PRODUCT_MAIN_ID"]);
-    sql = sql.replace(
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_TYPE_ID",
+      dataItem["PRODUCT_TYPE_ID"]
+    );
+    sql = sql.replaceAll("dataItem.PRODUCT_SUB_ID", dataItem["PRODUCT_SUB_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_MAIN_ID",
+      dataItem["PRODUCT_MAIN_ID"]
+    );
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_CATEGORY_ID",
       dataItem["PRODUCT_CATEGORY_ID"]
     );
 
-    sql = sql.replace("dataItem.BOM_NAME", dataItem["BOM_NAME"]);
-    sql = sql.replace("dataItem.BOM_CODE", dataItem["BOM_CODE"]);
+    sql = sql.replaceAll("dataItem.BOM_NAME", dataItem["BOM_NAME"]);
+    sql = sql.replaceAll("dataItem.BOM_CODE", dataItem["BOM_CODE"]);
 
-    sql = sql.replace("dataItem.FLOW_ID", dataItem["FLOW_ID"]);
+    sql = sql.replaceAll("dataItem.FLOW_ID", dataItem["FLOW_ID"]);
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCTION_PURPOSE_ID",
       dataItem["PRODUCTION_PURPOSE_ID"]
     );
@@ -132,30 +138,36 @@ class BomSQL {
                     dataItem.Start, dataItem.Limit
               `;
 
-    sql = sql.replace("dataItem.sqlWhere", sqlWhere);
+    sql = sql.replaceAll("dataItem.sqlWhere", sqlWhere);
 
-    sql = sql.replace("dataItem.PRODUCT_TYPE_ID", dataItem["PRODUCT_TYPE_ID"]);
-    sql = sql.replace("dataItem.PRODUCT_SUB_ID", dataItem["PRODUCT_SUB_ID"]);
-    sql = sql.replace("dataItem.PRODUCT_MAIN_ID", dataItem["PRODUCT_MAIN_ID"]);
-    sql = sql.replace(
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_TYPE_ID",
+      dataItem["PRODUCT_TYPE_ID"]
+    );
+    sql = sql.replaceAll("dataItem.PRODUCT_SUB_ID", dataItem["PRODUCT_SUB_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_MAIN_ID",
+      dataItem["PRODUCT_MAIN_ID"]
+    );
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_CATEGORY_ID",
       dataItem["PRODUCT_CATEGORY_ID"]
     );
 
-    sql = sql.replace("dataItem.BOM_NAME", dataItem["BOM_NAME"]);
-    sql = sql.replace("dataItem.BOM_CODE", dataItem["BOM_CODE"]);
+    sql = sql.replaceAll("dataItem.BOM_NAME", dataItem["BOM_NAME"]);
+    sql = sql.replaceAll("dataItem.BOM_CODE", dataItem["BOM_CODE"]);
 
-    sql = sql.replace("dataItem.FLOW_ID", dataItem["FLOW_ID"]);
+    sql = sql.replaceAll("dataItem.FLOW_ID", dataItem["FLOW_ID"]);
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCTION_PURPOSE_ID",
       dataItem["PRODUCTION_PURPOSE_ID"]
     );
 
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.Order", dataItem["Order"]);
-    sql = sql.replace("dataItem.Start", dataItem["Start"]);
-    sql = sql.replace("dataItem.Limit", dataItem["Limit"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.Order", dataItem["Order"]);
+    sql = sql.replaceAll("dataItem.Start", dataItem["Start"]);
+    sql = sql.replaceAll("dataItem.Limit", dataItem["Limit"]);
     sqlList.push(sql);
 
     sqlList = sqlList.join(";");
@@ -221,17 +233,23 @@ class BomSQL {
                    
                               `;
 
-    sql = sql.replace("dataItem.BOM_NAME", dataItem["BOM_NAME"]);
+    sql = sql.replaceAll("dataItem.BOM_NAME", dataItem["BOM_NAME"]);
 
-    sql = sql.replace("dataItem.PRODUCT_TYPE_ID", dataItem["PRODUCT_TYPE_ID"]);
-    sql = sql.replace(
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_TYPE_ID",
+      dataItem["PRODUCT_TYPE_ID"]
+    );
+    sql = sql.replaceAll(
       "dataItem.PRODUCTION_PURPOSE_ID",
       dataItem["PRODUCTION_PURPOSE_ID"]
     );
-    sql = sql.replace("dataItem.FLOW_ID", dataItem["FLOW_ID"]);
-    sql = sql.replace("dataItem.PRODUCT_MAIN_ID", dataItem["PRODUCT_MAIN_ID"]);
+    sql = sql.replaceAll("dataItem.FLOW_ID", dataItem["FLOW_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_MAIN_ID",
+      dataItem["PRODUCT_MAIN_ID"]
+    );
 
-    sql = sql.replace("dataItem.CREATE_BY", dataItem["CREATE_BY"]);
+    sql = sql.replaceAll("dataItem.CREATE_BY", dataItem["CREATE_BY"]);
 
     return sql;
   };
@@ -250,12 +268,12 @@ class BomSQL {
                         BOM_ID = 'dataItem.BOM_ID'
                       `;
 
-    sql = sql.replace("dataItem.BOM_NAME", dataItem["BOM_NAME"]);
-    sql = sql.replace("dataItem.BOM_ID", dataItem["BOM_ID"]);
-    sql = sql.replace("dataItem.FLOW_ID", dataItem["FLOW_ID"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
-    sql = sql.replace("dataItem.BOM_ID", dataItem["BOM_ID"]);
+    sql = sql.replaceAll("dataItem.BOM_NAME", dataItem["BOM_NAME"]);
+    sql = sql.replaceAll("dataItem.BOM_ID", dataItem["BOM_ID"]);
+    sql = sql.replaceAll("dataItem.FLOW_ID", dataItem["FLOW_ID"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.BOM_ID", dataItem["BOM_ID"]);
     return sql;
   };
 
@@ -271,8 +289,8 @@ class BomSQL {
                             BOM_ID = 'dataItem.BOM_ID'
                       `;
 
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
-    sql = sql.replace("dataItem.BOM_ID", dataItem["BOM_ID"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll("dataItem.BOM_ID", dataItem["BOM_ID"]);
 
     return sql;
   };
@@ -291,7 +309,7 @@ class BomSQL {
                                 50
                                                 `;
 
-    sql = sql.replace("dataItem.BOM_NAME", dataItem["BOM_NAME"]);
+    sql = sql.replaceAll("dataItem.BOM_NAME", dataItem["BOM_NAME"]);
     return sql;
   };
 
@@ -308,9 +326,9 @@ class BomSQL {
                             AND tb_1.INUSE LIKE '%dataItem.INUSE%'
                                                 `;
 
-    sql = sql.replace("dataItem.BOM_NAME", dataItem["BOM_NAME"]);
-    sql = sql.replace("dataItem.BOM_CODE", dataItem["BOM_CODE"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.BOM_NAME", dataItem["BOM_NAME"]);
+    sql = sql.replaceAll("dataItem.BOM_CODE", dataItem["BOM_CODE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
     sqlList.push(sql);
 
     sql = `
@@ -349,13 +367,16 @@ class BomSQL {
                         dataItem.Start, dataItem.Limit
 `;
 
-    sql = sql.replace("dataItem.PRODUCT_TYPE_ID", dataItem["PRODUCT_TYPE_ID"]);
-    sql = sql.replace("dataItem.BOM_NAME", dataItem["BOM_NAME"]);
-    sql = sql.replace("dataItem.BOM_CODE", dataItem["BOM_CODE"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.Order", dataItem["Order"]);
-    sql = sql.replace("dataItem.Start", dataItem["Start"]);
-    sql = sql.replace("dataItem.Limit", dataItem["Limit"]);
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_TYPE_ID",
+      dataItem["PRODUCT_TYPE_ID"]
+    );
+    sql = sql.replaceAll("dataItem.BOM_NAME", dataItem["BOM_NAME"]);
+    sql = sql.replaceAll("dataItem.BOM_CODE", dataItem["BOM_CODE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.Order", dataItem["Order"]);
+    sql = sql.replaceAll("dataItem.Start", dataItem["Start"]);
+    sql = sql.replaceAll("dataItem.Limit", dataItem["Limit"]);
     sqlList.push(sql);
 
     sqlList = sqlList.join(";");
@@ -375,9 +396,9 @@ class BomSQL {
         AND tb_1.BOM_CODE LIKE '%dataItem.BOM_CODE%'
         AND tb_1.INUSE LIKE '%dataItem.INUSE%' `;
 
-    sql = sql.replace("dataItem.BOM_NAME", dataItem["BOM_NAME"]);
-    sql = sql.replace("dataItem.BOM_CODE", dataItem["BOM_CODE"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.BOM_NAME", dataItem["BOM_NAME"]);
+    sql = sql.replaceAll("dataItem.BOM_CODE", dataItem["BOM_CODE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
     sqlList.push(sql);
 
     sql = ` SELECT 
@@ -414,14 +435,17 @@ ORDER BY
 LIMIT 
   dataItem.Start, dataItem.Limit  `;
 
-    sql = sql.replace("dataItem.PRODUCT_TYPE_ID", dataItem["PRODUCT_TYPE_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_TYPE_ID",
+      dataItem["PRODUCT_TYPE_ID"]
+    );
 
-    sql = sql.replace("dataItem.BOM_NAME", dataItem["BOM_NAME"]);
-    sql = sql.replace("dataItem.BOM_CODE", dataItem["BOM_CODE"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.Order", dataItem["Order"]);
-    sql = sql.replace("dataItem.Start", dataItem["Start"]);
-    sql = sql.replace("dataItem.Limit", dataItem["Limit"]);
+    sql = sql.replaceAll("dataItem.BOM_NAME", dataItem["BOM_NAME"]);
+    sql = sql.replaceAll("dataItem.BOM_CODE", dataItem["BOM_CODE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.Order", dataItem["Order"]);
+    sql = sql.replaceAll("dataItem.Start", dataItem["Start"]);
+    sql = sql.replaceAll("dataItem.Limit", dataItem["Limit"]);
     sqlList.push(sql);
 
     sqlList = sqlList.join(";");
@@ -439,9 +463,9 @@ LIMIT
                 AND tb_1.BOM_CODE LIKE '%dataItem.BOM_CODE%'
                 AND tb_1.INUSE LIKE '%dataItem.INUSE%' `;
 
-    sql = sql.replace("dataItem.BOM_NAME", dataItem["BOM_NAME"]);
-    sql = sql.replace("dataItem.BOM_CODE", dataItem["BOM_CODE"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.BOM_NAME", dataItem["BOM_NAME"]);
+    sql = sql.replaceAll("dataItem.BOM_CODE", dataItem["BOM_CODE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
     sqlList.push(sql);
 
     sql = ` SELECT 
@@ -478,14 +502,17 @@ LIMIT
                 LIMIT 
                 dataItem.Start, dataItem.Limit `;
 
-    sql = sql.replace("dataItem.PRODUCT_TYPE_ID", dataItem["PRODUCT_TYPE_ID"]);
+    sql = sql.replaceAll(
+      "dataItem.PRODUCT_TYPE_ID",
+      dataItem["PRODUCT_TYPE_ID"]
+    );
 
-    sql = sql.replace("dataItem.BOM_NAME", dataItem["BOM_NAME"]);
-    sql = sql.replace("dataItem.BOM_CODE", dataItem["BOM_CODE"]);
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.Order", dataItem["Order"]);
-    sql = sql.replace("dataItem.Start", dataItem["Start"]);
-    sql = sql.replace("dataItem.Limit", dataItem["Limit"]);
+    sql = sql.replaceAll("dataItem.BOM_NAME", dataItem["BOM_NAME"]);
+    sql = sql.replaceAll("dataItem.BOM_CODE", dataItem["BOM_CODE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.Order", dataItem["Order"]);
+    sql = sql.replaceAll("dataItem.Start", dataItem["Start"]);
+    sql = sql.replaceAll("dataItem.Limit", dataItem["Limit"]);
     sqlList.push(sql);
 
     sqlList = sqlList.join(";");

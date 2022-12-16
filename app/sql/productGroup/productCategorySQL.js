@@ -16,7 +16,7 @@ class ProductCategorySQL {
                           PRODUCT_CATEGORY_ID = 'dataItem.PRODUCT_CATEGORY_ID'
               `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_CATEGORY_ID",
       dataItem["PRODUCT_CATEGORY_ID"]
     );
@@ -35,15 +35,15 @@ class ProductCategorySQL {
             AND PRODUCT_CATEGORY_CODE LIKE '%dataItem.PRODUCT_CATEGORY_CODE%'
             AND INUSE LIKE '%dataItem.INUSE%'  `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_CATEGORY_NAME",
       dataItem["PRODUCT_CATEGORY_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_CATEGORY_CODE",
       dataItem["PRODUCT_CATEGORY_CODE"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
 
     sqlList.push(sql);
 
@@ -61,22 +61,22 @@ class ProductCategorySQL {
         ORDER BY dataItem.Order
         LIMIT dataItem.Start, dataItem.Limit  `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_CATEGORY_NAME",
       dataItem["PRODUCT_CATEGORY_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_CATEGORY_CODE",
       dataItem["PRODUCT_CATEGORY_CODE"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_CATEGORY_ALPHABET",
       dataItem["PRODUCT_CATEGORY_ALPHABET"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.Order", dataItem["Order"]);
-    sql = sql.replace("dataItem.Start", dataItem["Start"]);
-    sql = sql.replace("dataItem.Limit", dataItem["Limit"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.Order", dataItem["Order"]);
+    sql = sql.replaceAll("dataItem.Start", dataItem["Start"]);
+    sql = sql.replaceAll("dataItem.Limit", dataItem["Limit"]);
 
     sqlList.push(sql);
 
@@ -107,11 +107,11 @@ class ProductCategorySQL {
     FROM PRODUCT_CATEGORY
               `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_CATEGORY_NAME",
       dataItem["PRODUCT_CATEGORY_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_CATEGORY_ALPHABET",
       dataItem["PRODUCT_CATEGORY_ALPHABET"]
     );
@@ -132,17 +132,17 @@ class ProductCategorySQL {
                             PRODUCT_CATEGORY_ID = 'dataItem.PRODUCT_CATEGORY_ID'
                 `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_CATEGORY_NAME",
       dataItem["PRODUCT_CATEGORY_NAME"]
     );
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_CATEGORY_ALPHABET",
       dataItem["PRODUCT_CATEGORY_ALPHABET"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
-    sql = sql.replace(
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_CATEGORY_ID",
       dataItem["PRODUCT_CATEGORY_ID"]
     );
@@ -162,8 +162,8 @@ class ProductCategorySQL {
                         PRODUCT_CATEGORY_ID = 'dataItem.PRODUCT_CATEGORY_ID'
                 `;
 
-    sql = sql.replace("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
-    sql = sql.replace(
+    sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_CATEGORY_ID",
       dataItem["PRODUCT_CATEGORY_ID"]
     );
@@ -187,11 +187,11 @@ class ProductCategorySQL {
                       50
                 `;
 
-    sql = sql.replace(
+    sql = sql.replaceAll(
       "dataItem.PRODUCT_CATEGORY_NAME",
       dataItem["PRODUCT_CATEGORY_NAME"]
     );
-    sql = sql.replace("dataItem.INUSE", dataItem["INUSE"]);
+    sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
     return sql;
   };
 }

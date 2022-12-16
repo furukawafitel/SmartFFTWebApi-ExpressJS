@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.json({ message: "SmartFFT API application is running :D" });
 });
-require("./app/routes/common/commonRoutes")(app);
+// require("./app/routes/common/commonRoutes")(app);
 require("./app/routes/common/ImageRoutes")(app);
 require("./app/routes/permission/permission/permissionRoutes")(app);
 require("./app/routes/productGroup/productCategoryRoutes")(app);
@@ -52,6 +52,22 @@ require("./app/routes/flow/flowProcessRoutes")(app);
 require("./app/routes/flow/flowRoutes")(app);
 require("./app/routes/Bom/BomRoutes")(app);
 require("./app/routes/Bom/BomFlowProcessMaterialUsageRoutes")(app);
+require("./app/routes/standardCost/costConditionForFiscalYearReferToProductMainRoutes")(
+  app
+);
+require("./app/routes/standardCost/costConditionForFiscalYearReferToProductTypeRoutes")(
+  app
+);
+require("./app/routes/standardCost/FiscalYearPeriodReferToCustomerInvoiceToRoutes")(
+  app
+);
+require("./app/routes/standardCost/SctSubCodeRoutes")(app);
+require("./app/routes/standardCost/SctRoutes")(app);
+
+require("./app/routes/common/CostConditionForFiscalYearReferToProductMain_ProductTypeRoutes")(
+  app
+);
+
 const PORT = process.env.PORT || 8091;
 app.listen(PORT, () => {
   console.log(`Server is running on port : ${PORT}`);
