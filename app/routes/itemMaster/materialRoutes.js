@@ -1,6 +1,6 @@
 module.exports = (app) => {
   const MaterialController = require("../../controllers/itemMaster/materialController");
-
+  const fileUpload = require("express-fileupload");
   var router = require("express").Router();
 
   // *** Get
@@ -10,7 +10,11 @@ module.exports = (app) => {
   router.get("/search", MaterialController.searchMaterial);
 
   // *** Create a new
-  router.post("/create", MaterialController.createMaterial);
+  router.post(
+    "/create",
+    fileUpload({ createParentPath: true }),
+    MaterialController.createMaterial
+  );
 
   // *** Update
   router.patch("/update", MaterialController.updateMaterial);

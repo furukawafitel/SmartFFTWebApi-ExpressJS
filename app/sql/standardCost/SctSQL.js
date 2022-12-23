@@ -512,21 +512,26 @@ class SctSQL {
   };
 
   // *** Function update
-  static updateSct = async (dataItem) => {
+  static updateSctStep1 = async (dataItem) => {
     let sql = `     UPDATE 
                             SCT 
                         SET
                             EFFECTIVE_DATE = 'dataItem.EFFECTIVE_DATE'
                             , EXPIRATION_DATE = 'dataItem.EXPIRATION_DATE'
+                            , SCT_CODE_FOR_SUPPORT_MES = 'dataItem.SCT_CODE_FOR_SUPPORT_MES'
                             , INUSE = 'dataItem.INUSE'
                             , UPDATE_BY = 'dataItem.UPDATE_BY'
                             , UPDATE_DATE = CURRENT_TIMESTAMP()
                         WHERE 
-                            SCT_ID = 'dataItem.SCT_ID'
+                            SCT_ID = 'dataItem.SCT_ID' ;
                       `;
 
     sql = sql.replaceAll("dataItem.SCT_ID", dataItem["SCT_ID"]);
     sql = sql.replaceAll("dataItem.EFFECTIVE_DATE", dataItem["EFFECTIVE_DATE"]);
+    sql = sql.replaceAll(
+      "dataItem.SCT_CODE_FOR_SUPPORT_MES",
+      dataItem["SCT_CODE_FOR_SUPPORT_MES"]
+    );
     sql = sql.replaceAll(
       "dataItem.EXPIRATION_DATE",
       dataItem["EXPIRATION_DATE"]
@@ -581,7 +586,7 @@ class SctSQL {
   };
 
   static CreateExistSctId = async (dataItem) => {
-    let sql = `    SET @sctId=('dataItem.SCT_ID');  `;
+    let sql = ` SET @sctId=('dataItem.SCT_ID')  ;  `;
     sql = sql.replaceAll("dataItem.SCT_ID", dataItem["SCT_ID"]);
     return sql;
   };

@@ -23,7 +23,7 @@ class SctBomSQL {
                             , 'dataItem.CREATE_BY'
                             , CURRENT_TIMESTAMP()
                             , 'dataItem.CREATE_BY'
-                        )  
+                        )  ;
                                                 
                                             `;
 
@@ -40,7 +40,7 @@ class SctBomSQL {
                     SCT_BOM
                 WHERE
                         SCT_ID = 'dataItem.SCT_ID'
-                    AND INUSE = 1
+                    AND INUSE = 1 ;
                                     `;
     sql = sql.replaceAll("dataItem.SCT_ID", dataItem["SCT_ID"]);
 

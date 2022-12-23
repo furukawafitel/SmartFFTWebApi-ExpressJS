@@ -1,6 +1,9 @@
 // ** Services
 
 const MaterialSQL = require("../../sql/itemMaster/materialSQL");
+const MaterialProductMainSQL = require("../../sql/itemMaster/materialProductMainSQL");
+const MaterialProductDetailSQL = require("../../sql/itemMaster/materialProductDetailSQL");
+const MaterialBomSQL = require("../../sql/itemMaster/materialBomSQL");
 const MySQLExecute = require("../../businessData/dbExecute");
 
 // **** constructor
@@ -186,151 +189,137 @@ class MaterialService {
   }
 
   static async createMaterial(dataItem, result) {
-    let query;
     let resultData;
     let args = [];
+    let sqlList = [];
 
-    //query = await MaterialSQL.InsertByProcedure();
-    args.push(dataItem["MATERIAL_CATEGORY_ID"]);
-    args.push(dataItem["MATERIAL_PURPOSE_ID"]);
-    args.push(dataItem["MATERIAL_TYPE_ID"]);
-    args.push(dataItem["VENDOR_ID"]);
-    args.push(dataItem["MAKER_ID"]);
+    if (dataItem["PRODUCT_TYPE_ID"] == "") {
+      args.push(dataItem["MATERIAL_CATEGORY_ID"]);
+      args.push(dataItem["MATERIAL_PURPOSE_ID"]);
+      args.push(dataItem["MATERIAL_TYPE_ID"]);
+      args.push(dataItem["VENDOR_ID"]);
+      args.push(dataItem["MAKER_ID"]);
+      args.push(dataItem["WIDTH"] != "" ? dataItem["WIDTH"] : null);
+      args.push(dataItem["HEIGHT"] != "" ? dataItem["HEIGHT"] : null);
+      args.push(dataItem["DEPTH"] != "" ? dataItem["DEPTH"] : null);
 
-    args.push(dataItem["WIDTH"] != "" ? dataItem["WIDTH"] : "");
-    args.push(dataItem["HEIGHT"] != "" ? dataItem["HEIGHT"] : "");
-    args.push(dataItem["DEPTH"] != "" ? dataItem["DEPTH"] : "");
+      args.push(
+        dataItem["MATERIAL_PROPERTY_COLOR_ID"] != ""
+          ? dataItem["MATERIAL_PROPERTY_COLOR_ID"]
+          : null
+      );
+      args.push(
+        dataItem["MATERIAL_PROPERTY_SHAPE_ID"] != ""
+          ? dataItem["MATERIAL_PROPERTY_SHAPE_ID"]
+          : null
+      );
+      args.push(
+        dataItem["MATERIAL_PROPERTY_MADE_BY_ID"] != ""
+          ? dataItem["MATERIAL_PROPERTY_MADE_BY_ID"]
+          : null
+      );
+      args.push(dataItem["USAGE_UNIT_ID"]);
+      args.push(dataItem["MATERIAL_INTERNAL_FULL_NAME"]);
+      args.push(
+        dataItem["MATERIAL_INTERNAL_SHORT_NAME"] != ""
+          ? dataItem["MATERIAL_INTERNAL_SHORT_NAME"]
+          : null
+      );
+      args.push(dataItem["MATERIAL_EXTERNAL_CODE"]);
+      args.push(dataItem["MATERIAL_EXTERNAL_FULL_NAME"]);
+      args.push(dataItem["MATERIAL_EXTERNAL_SHORT_NAME"]);
 
-    args.push(
-      dataItem["MATERIAL_PROPERTY_COLOR_ID"] != ""
-        ? dataItem["MATERIAL_PROPERTY_COLOR_ID"]
-        : ""
-    );
-    args.push(
-      dataItem["MATERIAL_PROPERTY_SHAPE_ID"] != ""
-        ? dataItem["MATERIAL_PROPERTY_SHAPE_ID"]
-        : ""
-    );
-    args.push(
-      dataItem["MATERIAL_PROPERTY_MADE_BY_ID"] != ""
-        ? dataItem["MATERIAL_PROPERTY_MADE_BY_ID"]
-        : ""
-    );
-    args.push(dataItem["USAGE_UNIT_ID"]);
-    args.push(dataItem["MATERIAL_INTERNAL_FULL_NAME"]);
-    args.push(
-      dataItem["MATERIAL_INTERNAL_SHORT_NAME"] != ""
-        ? dataItem["MATERIAL_INTERNAL_SHORT_NAME"]
-        : ""
-    );
-    args.push(dataItem["MATERIAL_EXTERNAL_CODE"]);
-    args.push(dataItem["MATERIAL_EXTERNAL_FULL_NAME"]);
-    args.push(dataItem["MATERIAL_EXTERNAL_SHORT_NAME"]);
+      args.push(
+        dataItem["IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_FULL_NAME"]
+      );
+      args.push(
+        dataItem["IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_SHORT_NAME"]
+      );
+      args.push(
+        dataItem["IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_FULL_NAME"]
+      );
+      args.push(
+        dataItem["IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_SHORT_NAME"]
+      );
+      args.push(dataItem["IS_SAME_ITEM_INTERNAL_CODE_FOR_ITEM_EXTERNAL_CODE"]);
 
-    args.push(
-      dataItem["IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_FULL_NAME"]
-    );
-    args.push(
-      dataItem["IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_SHORT_NAME"]
-    );
-    args.push(
-      dataItem["IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_FULL_NAME"]
-    );
-    args.push(
-      dataItem["IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_SHORT_NAME"]
-    );
-    args.push(dataItem["IS_SAME_ITEM_INTERNAL_CODE_FOR_ITEM_EXTERNAL_CODE"]);
+      args.push(dataItem["CREATE_BY"]);
+      args.push(dataItem["IMAGE"] != "" ? dataItem["IMAGE_ROOT_PATH"] : null);
+      args.push(dataItem["ITEM_CODE_FOR_SUPPORT_MES"]);
 
-    args.push(dataItem["CREATE_BY"]);
-    args.push(dataItem["IMAGE_ROOT_PATH"] != "" ? dataItem["IMAGE"] : "");
-    args.push(dataItem["ITEM_CODE_FOR_SUPPORT_MES"]);
-
-    console.log(args);
-    resultData = MySQLExecute.callProcedures(args, result);
+      resultData = MySQLExecute.call_JCode(args, result);
+    } else {
+      // ** Optional
+      if (dataItem["IMAGE"] != "") {
+        dataItem["IMAGE_PATH"] =
+          dataItem["IMAGE_ROOT_PATH"] +
+          dataItem["MATERIAL_INTERNAL_CODE"] +
+          ".png";
+      } else {
+        dataItem["IMAGE_PATH"] = "";
+      }
+      // ** insert list Data
+      sqlList += await MaterialSQL.CreateMaterialId();
+      sqlList += await MaterialSQL.createMaterial(dataItem);
+      sqlList += await MaterialProductDetailSQL.createMaterialProductDetail(
+        dataItem
+      );
+      sqlList += await MaterialProductMainSQL.InsertByMaterialIdGenKey(
+        dataItem
+      );
+      sqlList += await MaterialBomSQL.InsertByMaterialIdGenKey(dataItem);
+      resultData = MySQLExecute.createList(sqlList, result);
+    }
 
     return resultData;
   }
 
-  // static async createMaterial(dataItem, result) {
-  //   let query;
-  //   let resultData;
-  //   let args = [];
-
-  //   // query = await MaterialSQL.InsertByProcedure();
-  //   query = `CALL generate_jcode(?) `;
-  //   args.push(dataItem["MATERIAL_CATEGORY_ID"]);
-  //   args.push(dataItem["MATERIAL_PURPOSE_ID"]);
-  //   args.push(dataItem["MATERIAL_TYPE_ID"]);
-  //   args.push(dataItem["VENDOR_ID"]);
-  //   args.push(dataItem["MAKER_ID"]);
-
-  //   args.push(dataItem["WIDTH"] != "" ? dataItem["WIDTH"] : "");
-  //   args.push(dataItem["HEIGHT"] != "" ? dataItem["HEIGHT"] : "");
-  //   args.push(dataItem["DEPTH"] != "" ? dataItem["DEPTH"] : "");
-
-  //   args.push(
-  //     dataItem["MATERIAL_PROPERTY_COLOR_ID"] != ""
-  //       ? dataItem["MATERIAL_PROPERTY_COLOR_ID"]
-  //       : ""
-  //   );
-  //   args.push(
-  //     dataItem["MATERIAL_PROPERTY_SHAPE_ID"] != ""
-  //       ? dataItem["MATERIAL_PROPERTY_SHAPE_ID"]
-  //       : ""
-  //   );
-  //   args.push(
-  //     dataItem["MATERIAL_PROPERTY_MADE_BY_ID"] != ""
-  //       ? dataItem["MATERIAL_PROPERTY_MADE_BY_ID"]
-  //       : ""
-  //   );
-  //   args.push(dataItem["USAGE_UNIT_ID"]);
-  //   args.push(dataItem["MATERIAL_INTERNAL_FULL_NAME"]);
-  //   args.push(
-  //     dataItem["MATERIAL_INTERNAL_SHORT_NAME"] != ""
-  //       ? dataItem["MATERIAL_INTERNAL_SHORT_NAME"]
-  //       : ""
-  //   );
-  //   args.push(dataItem["MATERIAL_EXTERNAL_CODE"]);
-  //   args.push(dataItem["MATERIAL_EXTERNAL_FULL_NAME"]);
-  //   args.push(dataItem["MATERIAL_EXTERNAL_SHORT_NAME"]);
-
-  //   args.push(
-  //     dataItem["IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_FULL_NAME"]
-  //   );
-  //   args.push(
-  //     dataItem["IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_SHORT_NAME"]
-  //   );
-  //   args.push(
-  //     dataItem["IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_FULL_NAME"]
-  //   );
-  //   args.push(
-  //     dataItem["IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_SHORT_NAME"]
-  //   );
-  //   args.push(dataItem["IS_SAME_ITEM_INTERNAL_CODE_FOR_ITEM_EXTERNAL_CODE"]);
-
-  //   args.push(dataItem["CREATE_BY"]);
-  //   args.push(dataItem["IMAGE_ROOT_PATH"] != "" ? dataItem["IMAGE"] : "");
-  //   args.push(dataItem["ITEM_CODE_FOR_SUPPORT_MES"]);
-
-  //   resultData = MySQLExecute.callProcedures(query, result);
-
-  //   return resultData;
-  // }
-
   static async updateMaterial(dataItem, result) {
-    let query = await MaterialSQL.updateMaterial(dataItem);
-    let resultData = MySQLExecute.update(query, result);
+    let resultData;
+    let query;
+    let sqlList = [];
+
+    if (dataItem["IMAGE"] != "") {
+      dataItem["IMAGE_PATH"] =
+        dataItem["IMAGE_ROOT_PATH"] +
+        dataItem["MATERIAL_INTERNAL_CODE"] +
+        ".png";
+    }
+
+    if (
+      dataItem["MATERIAL_PRODUCT_DETAIL_ID"] == "" ||
+      dataItem["MATERIAL_PRODUCT_DETAIL_ID"] == null
+    ) {
+      query = await MaterialSQL.updateMaterial(dataItem);
+      resultData = MySQLExecute.update(query, result);
+    } else {
+      dataItem["CREATE_BY"] = dataItem["UPDATE_BY"];
+      sqlList += await MaterialSQL.UpdateIncludeMaterialInternalCode(dataItem);
+      sqlList += await MaterialProductDetailSQL.updateMaterialProductDetail(
+        dataItem
+      );
+      sqlList += await MaterialProductMainSQL.DeleteByOldProductMainId(
+        dataItem
+      );
+      sqlList += await MaterialProductMainSQL.createMaterialProductMain(
+        dataItem
+      );
+      sqlList += await MaterialBomSQL.DeleteByMaterialId(dataItem);
+      sqlList += await MaterialBomSQL.createMaterialBom(dataItem);
+      resultData = MySQLExecute.createList(sqlList, result);
+    }
+
     return resultData;
   }
 
   static async deleteMaterial(dataItem, result) {
     let query = await MaterialSQL.deleteMaterial(dataItem);
-    let resultData = MySQLExecute.delete(query, result);
+    let resultData = await MySQLExecute.delete(query, result);
     return resultData;
   }
 
-  static async GetByLikeMaterialNameAndInuse(dataItem, result) {
-    let query = await MaterialSQL.GetByLikeMaterialNameAndInuse(dataItem);
+  static async GetByLikeMaterialName(dataItem, result) {
+    let query = await MaterialSQL.GetByLikeMaterialName(dataItem);
     let resultData = MySQLExecute.search(query, result);
     return resultData;
   }

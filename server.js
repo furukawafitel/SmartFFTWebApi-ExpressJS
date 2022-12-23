@@ -40,12 +40,14 @@ require("./app/routes/itemMaster/materialCategoryRoutes")(app);
 require("./app/routes/itemMaster/materialPurposeRoutes")(app);
 require("./app/routes/itemMaster/materialTypeRoutes")(app);
 require("./app/routes/itemMaster/materialPriceRoutes")(app);
+require("./app/routes/itemMaster/materialProductMainRoutes")(app);
 require("./app/routes/itemMaster/materialRoutes")(app);
 require("./app/routes/itemMaster/materialPropertyColorRoutes")(app);
 require("./app/routes/itemMaster/materialPropertyMadeByRoutes")(app);
 require("./app/routes/itemMaster/materialPropertyShapeRoutes")(app);
 require("./app/routes/itemMaster/venderRoutes")(app);
 require("./app/routes/itemMaster/makerRoutes")(app);
+require("./app/routes/itemMaster/purchaseModuleRoutes")(app);
 require("./app/routes/process/processRoutes")(app);
 require("./app/routes/flow/flowTypeRoutes")(app);
 require("./app/routes/flow/flowProcessRoutes")(app);
@@ -55,7 +57,11 @@ require("./app/routes/Bom/BomFlowProcessMaterialUsageRoutes")(app);
 require("./app/routes/standardCost/costConditionForFiscalYearReferToProductMainRoutes")(
   app
 );
+require("./app/routes/standardCost/SctTotalCostRoutes")(app);
 require("./app/routes/standardCost/costConditionForFiscalYearReferToProductTypeRoutes")(
+  app
+);
+require("./app/routes/standardCost/SctBomFlowProcessMaterialUsagePriceRoutes")(
   app
 );
 require("./app/routes/standardCost/FiscalYearPeriodReferToCustomerInvoiceToRoutes")(
@@ -67,6 +73,38 @@ require("./app/routes/standardCost/SctRoutes")(app);
 require("./app/routes/common/CostConditionForFiscalYearReferToProductMain_ProductTypeRoutes")(
   app
 );
+require("./app/routes/standardCost/SctCostConditionForFiscalYearResultRoutes")(
+  app
+);
+require("./app/routes/standardCost/SctCostConditionForFiscalYearDefaultRoutes")(
+  app
+);
+
+require("./app/routes/common/SctFlowProcessProcessingCostByEngineer_SctFlowProcessProcessingCostByMfgRoutes")(
+  app
+);
+
+require("./app/routes/common/Sct_SctProcessingCostByMfgTotal_Bom_FlowRoutes")(
+  app
+);
+
+require("./app/routes/common/Sct_SctProcessingCostByEngineerTotal_Bom_FlowRoutes")(
+  app
+);
+
+require("./app/routes/common/BomFlowProcessMaterialUsageMaterialPriceRoutes")(
+  app
+);
+
+require("./app/routes/standardCost/SctProcessingCostByEngineerTotalRoutes")(
+  app
+);
+
+require("./app/routes/standardCost/SctFlowProcessProcessingCostByEngineerRoutes")(
+  app
+);
+
+require("./app/routes/standardCost/SctProcessingCostByMfgTotalRoutes")(app);
 
 const PORT = process.env.PORT || 8091;
 app.listen(PORT, () => {

@@ -10,10 +10,16 @@ module.exports = (app) => {
   router.get("/search", SctController.searchSct);
 
   // *** Create a new
-  router.post("/create", SctController.createSct);
+  router.post("/create/step1", SctController.createSctStep1);
+  router.post("/create/step2", SctController.createSctStep1);
+  router.post("/create/step3", SctController.createSctStep1);
+  router.post("/create/step4", SctController.createSctStep1);
 
   // *** Update
-  router.patch("/update", SctController.updateSct);
+  router.patch("/update/step1", SctController.updateSctStep1);
+  router.patch("/update/step2", SctController.updateSctStep2);
+  router.patch("/update/step3", SctController.updateSctStep3);
+  router.patch("/update/step4", SctController.updateSctStep4);
 
   // *** Delete
   router.delete("/delete", SctController.deleteSct);

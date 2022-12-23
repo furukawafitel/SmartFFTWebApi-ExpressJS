@@ -85,7 +85,7 @@ class SctTotalCostSQL {
                         , 'dataItem.CREATE_BY'
                         ,  CURRENT_TIMESTAMP()
                         , 'dataItem.CREATE_BY'  
-                    )
+                    ) ;
                                     
                                 `;
 
@@ -190,14 +190,14 @@ class SctTotalCostSQL {
     );
     sql = sql.replaceAll(
       "dataItem.REMARK_FOR_ADJUST_PRICE",
-      "'" + dataItem["REMARK_FOR_ADJUST_PRICE"] + "'" != ""
-        ? dataItem["REMARK_FOR_ADJUST_PRICE"]
+      dataItem["REMARK_FOR_ADJUST_PRICE"] != ""
+        ? "'" + dataItem["REMARK_FOR_ADJUST_PRICE"] + "'"
         : "NULL"
     );
     sql = sql.replaceAll("dataItem.SELLING_PRICE", dataItem["SELLING_PRICE"]);
     sql = sql.replaceAll(
       "dataItem.NOTE",
-      "'" + dataItem["NOTE"] + "'" != "" ? dataItem["NOTE"] : "NULL"
+      dataItem["NOTE"] != "" ? "'" + dataItem["NOTE"] + "'" : "NULL"
     );
 
     sql = sql.replaceAll(
@@ -273,7 +273,7 @@ class SctTotalCostSQL {
                             SCT_TOTAL_COST
                         WHERE
                                 SCT_ID = 'dataItem.SCT_ID'
-                            AND INUSE = 1
+                            AND INUSE = 1 ;
                         `;
 
     sql = sql.replaceAll("dataItem.SCT_ID", dataItem["SCT_ID"]);

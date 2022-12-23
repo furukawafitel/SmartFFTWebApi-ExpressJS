@@ -29,7 +29,7 @@ class SctBomFlowProcessMaterialUsagePriceSQL {
                         , 'dataItem.CREATE_BY'
                         ,  CURRENT_TIMESTAMP()
                         , 'dataItem.CREATE_BY'  
-                    )
+                    ) ;
                                               
                                           `;
 
@@ -50,7 +50,7 @@ class SctBomFlowProcessMaterialUsagePriceSQL {
   };
 
   // *** Function Delete
-  static DeleteBySctId = async (dataItem) => {
+  static GetBySctId = async (dataItem) => {
     let sql = `     
                             SELECT 
                             tb_5.FLOW_PROCESS_ID 
@@ -100,7 +100,7 @@ class SctBomFlowProcessMaterialUsagePriceSQL {
                         AND tb_1.SCT_ID = 'dataItem.SCT_ID'
                         ORDER BY 
                         tb_5.NO
-                        , tb_7.NO
+                        , tb_7.NO  ;
                                   `;
 
     sql = sql.replaceAll("dataItem.SCT_ID", dataItem["SCT_ID"]);

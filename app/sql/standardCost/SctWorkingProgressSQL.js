@@ -70,7 +70,7 @@ class SctWorkingProgressSQL {
                     , UPDATE_BY = 'dataItem.CREATE_BY'
                     , UPDATE_DATE = CURRENT_TIMESTAMP()
                     WHERE 
-                    SCT_ID = 'dataItem.SCT_ID'
+                    SCT_ID = 'dataItem.SCT_ID' ;
                       `;
 
     sql = sql.replaceAll("dataItem.SCT_ID", dataItem["SCT_ID"]);
@@ -103,7 +103,7 @@ class SctWorkingProgressSQL {
                         , UPDATE_BY = 'dataItem.CREATE_BY'
                         , UPDATE_DATE = CURRENT_TIMESTAMP()
                         WHERE 
-                        SCT_ID = 'dataItem.SCT_ID'
+                        SCT_ID = 'dataItem.SCT_ID' ;
                       `;
 
     sql = sql.replaceAll("dataItem.SCT_ID", dataItem["SCT_ID"]);
@@ -136,7 +136,7 @@ class SctWorkingProgressSQL {
                         , UPDATE_BY = 'dataItem.CREATE_BY'
                         , UPDATE_DATE = CURRENT_TIMESTAMP()
                         WHERE 
-                        SCT_ID = 'dataItem.SCT_ID'
+                        SCT_ID = 'dataItem.SCT_ID' ;
                       `;
 
     sql = sql.replaceAll("dataItem.SCT_ID", dataItem["SCT_ID"]);
@@ -163,7 +163,7 @@ class SctWorkingProgressSQL {
                             UPDATE_BY = 'dataItem.CREATE_BY'
                         , UPDATE_DATE = CURRENT_TIMESTAMP()
                         WHERE 
-                        SCT_ID = 'dataItem.SCT_ID'
+                        SCT_ID = 'dataItem.SCT_ID' ;
                       `;
 
     sql = sql.replaceAll("dataItem.CREATE_BY", dataItem["CREATE_BY"]);

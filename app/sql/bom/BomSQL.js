@@ -229,7 +229,7 @@ class BomSQL {
                 BOM
             WHERE
                 PRODUCT_TYPE_ID = 'dataItem.PRODUCT_TYPE_ID'
-                AND PRODUCTION_PURPOSE_ID = 'dataItem.PRODUCTION_PURPOSE_ID';
+                AND PRODUCTION_PURPOSE_ID = 'dataItem.PRODUCTION_PURPOSE_ID' ;
                    
                               `;
 
@@ -450,6 +450,12 @@ LIMIT
 
     sqlList = sqlList.join(";");
     return sqlList;
+  };
+
+  static createBomId = async (dataItem) => {
+    let sql = ` SET @bomId=(SELECT DATE_FORMAT(NOW(6) , '%y%m%d-%H%i%s-%f')); `;
+
+    return sql;
   };
 
   static SearchByProductTypeId = async (dataItem) => {

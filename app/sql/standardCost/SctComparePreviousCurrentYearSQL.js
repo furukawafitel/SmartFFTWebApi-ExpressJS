@@ -43,7 +43,7 @@ class SctComparePreviousCurrentYearSQL {
                     SCT_COMPARE_PREVIOUS_CURRENT_YEAR
                 WHERE
                         SCT_CURRENT_YEAR_ID = 'dataItem.SCT_ID'
-                    AND INUSE = 1
+                    AND INUSE = 1 ;
                                 `;
 
     sql = sql.replaceAll("dataItem.SCT_ID", dataItem["SCT_ID"]);

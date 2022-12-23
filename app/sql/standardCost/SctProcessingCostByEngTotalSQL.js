@@ -25,7 +25,7 @@ class SctProcessingCostByEngTotalSQL {
                         , 'dataItem.CREATE_BY'
                         , CURRENT_TIMESTAMP()
                         , 'dataItem.CREATE_BY'  
-                    )
+                    ) ;
                                         
                                     `;
 
@@ -64,7 +64,7 @@ class SctProcessingCostByEngTotalSQL {
                     SCT_PROCESSING_COST_BY_ENGINEER_TOTAL
                 WHERE
                      SCT_ID = 'dataItem.SCT_ID'
-                    AND INUSE = 1
+                    AND INUSE = 1 ;
                             `;
 
     sql = sql.replaceAll("dataItem.SCT_ID", dataItem["SCT_ID"]);

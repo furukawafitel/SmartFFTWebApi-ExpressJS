@@ -1,6 +1,7 @@
 // ** Services
 
 const BomFlowProcessMaterialUsageSQL = require("../../sql/bom/BomFlowProcessMaterialUsageSQL");
+const BomSQL = require("../../sql/bom/BomSQL");
 const MySQLExecute = require("../../businessData/dbExecute");
 
 // **** constructor
@@ -27,11 +28,22 @@ class BomFlowProcessMaterialUsageService {
   }
 
   static async createBomFlowProcessMaterialUsage(dataItem, result) {
-    let query =
-      await BomFlowProcessMaterialUsageSQL.createBomFlowProcessMaterialUsage(
-        dataItem
-      );
-    let resultData = MySQLExecute.create(query, result);
+    let resultData;
+    let sqlList = [];
+
+    sqlList += await BomSQL.createBomId();
+    sqlList += await BomSQL.createBom(dataItem);
+
+    for (const [index, item] of dataItem[
+      "FLOW_PROCESS_MATERIAL_USAGE"
+    ].entries()) {
+      sqlList +=
+        await BomFlowProcessMaterialUsageSQL.createBomFlowProcessMaterialUsage(
+          item
+        );
+    }
+
+    resultData = MySQLExecute.createList(sqlList, result);
     return resultData;
   }
 

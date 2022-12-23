@@ -1,5 +1,7 @@
 const MaterialModels = require("../../models/itemMaster/materialModel");
 
+const fs = require("fs");
+
 // ** Get productMain
 const getMaterial = async (req, res) => {
   try {
@@ -145,13 +147,38 @@ const createMaterial = async (req, res) => {
 
     if (dataItem !== "") {
       MaterialModels.createMaterial(dataItem, (err, data) => {
-        res.send({
-          Status: true,
-          Message: "Insert Data Success",
-          ResultOnDb: data,
-          MethodOnDb: "Create Material",
-          TotalCountOnDb: ""
-        });
+        if (data[0][0]["errorStatus"] == 0 && dataItem["IMAGE"] != "") {
+          // ** Insert PIC
+          var base64Data = dataItem["IMAGE"].replace(
+            /^data:image\/png;base64,/,
+            ""
+          );
+
+          require("fs").writeFile(
+            data[0][0]["IMAGE_PATH"],
+            base64Data,
+            "base64",
+            function (err) {
+              console.log(err);
+            }
+          );
+
+          res.send({
+            Status: true,
+            Message: "Insert Data Success",
+            ResultOnDb: data,
+            MethodOnDb: "Create Material",
+            TotalCountOnDb: ""
+          });
+        } else {
+          res.send({
+            Status: true,
+            Message: "Insert Data Success",
+            ResultOnDb: data,
+            MethodOnDb: "Create Material",
+            TotalCountOnDb: ""
+          });
+        }
       });
     }
   } catch (err) {
@@ -173,13 +200,43 @@ const updateMaterial = async (req, res) => {
 
     if (dataItem !== "") {
       MaterialModels.updateMaterial(dataItem, (err, data) => {
-        res.send({
-          Status: true,
-          Message: "Update Data Success",
-          ResultOnDb: data,
-          MethodOnDb: "Update Material",
-          TotalCountOnDb: ""
-        });
+        if (dataItem["IMAGE"] != "") {
+          dataItem["IMAGE_PATH"] =
+            dataItem["IMAGE_ROOT_PATH"] +
+            dataItem["MATERIAL_INTERNAL_CODE"] +
+            ".png";
+
+          // ** Insert PIC
+          var base64Data = dataItem["IMAGE"].replace(
+            /^data:image\/png;base64,/,
+            ""
+          );
+
+          require("fs").writeFile(
+            dataItem["IMAGE_PATH"],
+            base64Data,
+            "base64",
+            function (err) {
+              console.log(err);
+            }
+          );
+
+          res.send({
+            Status: true,
+            Message: "Insert Data Success",
+            ResultOnDb: data,
+            MethodOnDb: "Create Material",
+            TotalCountOnDb: ""
+          });
+        } else {
+          res.send({
+            Status: true,
+            Message: "Insert Data Success",
+            ResultOnDb: data,
+            MethodOnDb: "Create Material",
+            TotalCountOnDb: ""
+          });
+        }
       });
     }
   } catch (err) {

@@ -4,9 +4,16 @@ const SctSQL = require("../../sql/standardCost/SctSQL");
 const SctWorkingProgressSQL = require("../../sql/standardCost/SctWorkingProgressSQL");
 const SctCostConditionForFiscalYearResultSQL = require("../../sql/standardCost/SctCostConditionForFiscalYearResultSQL");
 const SctCostConditionForFiscalYearDefaultSQL = require("../../sql/standardCost/SctCostConditionForFiscalYearDefaultSQL");
-
 const SctComparePreviousCurrentYearSQL = require("../../sql/standardCost/SctComparePreviousCurrentYearSQL");
 const SctCompareLastYearSQL = require("../../sql/standardCost/SctCompareLastYearSQL");
+const SctFlowProcessProcessingCostByEngineerSQL = require("../../sql/standardCost/SctFlowProcessProcessingCostByEngineerSQL");
+const SctFlowProcessProcessingCostByMfgSQL = require("../../sql/standardCost/SctFlowProcessProcessingCostByMfgSQL");
+const SctFlowProcessSequenceSQL = require("../../sql/standardCost/SctFlowProcessSequenceSQL");
+const SctProcessingCostByEngTotalSQL = require("../../sql/standardCost/SctProcessingCostByEngTotalSQL");
+const SctProcessingCostByMfgTotalSQL = require("../../sql/standardCost/SctProcessingCostByMfgTotalSQL");
+const SctBomSQL = require("../../sql/standardCost/SctBomSQL");
+const SctTotalCostSQL = require("../../sql/standardCost/SctTotalCostSQL");
+const SctBomFlowProcessMaterialUsagePriceSQL = require("../../sql/standardCost/SctBomFlowProcessMaterialUsagePriceSQL");
 
 const MySQLExecute = require("../../businessData/dbExecute");
 
@@ -115,9 +122,209 @@ class SctService {
     return resultData;
   }
 
-  static async updateSct(dataItem, result) {
-    let query = await SctSQL.updateSct(dataItem);
-    let resultData = MySQLExecute.update(query, result);
+  static async createSctStep2(dataItem, result) {
+    let sqlList = [];
+    let resultData;
+
+    for (const [index, item] of dataItem[
+      "FLOW_PROCESS_PROCESSING_COST"
+    ].entries()) {
+      sqlList +=
+        await SctFlowProcessProcessingCostByEngineerSQL.createSctFlowProcessProcessingCostByEngineer(
+          item
+        );
+      sqlList += await SctFlowProcessSequenceSQL.createSctFlowProcessSequence(
+        item
+      );
+    }
+
+    sqlList +=
+      await SctProcessingCostByEngTotalSQL.createSctProcessingCostByEngTotal(
+        dataItem
+      );
+
+    sqlList += await SctWorkingProgressSQL.UpdateStep2(dataItem);
+    sqlList += await SctBomSQL.createSctBom(dataItem);
+
+    resultData = MySQLExecute.createList(sqlList, result);
+    return resultData;
+  }
+
+  static async createSctStep3(dataItem, result) {
+    let sqlList = [];
+    let resultData;
+
+    for (const [index, item] of dataItem[
+      "FLOW_PROCESS_PROCESSING_COST"
+    ].entries()) {
+      sqlList +=
+        await SctFlowProcessProcessingCostByMfgSQL.createSctFlowProcessProcessingCostByMfg(
+          item
+        );
+    }
+
+    sqlList +=
+      await SctProcessingCostByMfgTotalSQL.createSctProcessingCostByMfgTotal(
+        dataItem
+      );
+    sqlList += await SctWorkingProgressSQL.UpdateStep3(dataItem);
+
+    resultData = MySQLExecute.createList(sqlList, result);
+    return resultData;
+  }
+
+  static async createSctStep4(dataItem, result) {
+    let sqlList = [];
+    let resultData;
+
+    for (const [index, item] of dataItem[
+      "SCT_BOM_FLOW_PROCESS_MATERIAL_USAGE_PRICE"
+    ].entries()) {
+      sqlList +=
+        await SctBomFlowProcessMaterialUsagePriceSQL.createSctBomFlowProcessMaterialUsagePrice(
+          item
+        );
+    }
+
+    sqlList += await SctTotalCostSQL.createSctTotalCost(dataItem);
+    sqlList += await SctWorkingProgressSQL.UpdateStep4(dataItem);
+
+    resultData = MySQLExecute.createList(sqlList, result);
+    return resultData;
+  }
+
+  static async updateSctStep1(dataItem, result) {
+    let sqlList = [];
+    let resultData;
+    sqlList += await SctSQL.CreateExistSctId(dataItem);
+    sqlList += await SctSQL.updateSctStep1(dataItem);
+
+    sqlList += await SctCostConditionForFiscalYearResultSQL.DeleteBySctId(
+      dataItem
+    );
+    sqlList += await SctCostConditionForFiscalYearDefaultSQL.DeleteBySctId(
+      dataItem
+    );
+    sqlList +=
+      await SctCostConditionForFiscalYearResultSQL.createSctCostConditionForFiscalYearResult(
+        dataItem
+      );
+    sqlList +=
+      await SctCostConditionForFiscalYearDefaultSQL.createSctCostConditionForFiscalYearDefault(
+        dataItem
+      );
+    sqlList += await SctComparePreviousCurrentYearSQL.DeleteBySctId(dataItem);
+    sqlList += await SctCompareLastYearSQL.DeleteBySctId(dataItem);
+
+    if (dataItem["SCT_PREVIOUS_CURRENT_YEAR_ID"] !== "") {
+      sqlList +=
+        await SctComparePreviousCurrentYearSQL.createSctComparePreviousCurrentYear(
+          dataItem
+        );
+    }
+
+    if (dataItem["SCT_LAST_YEAR_ID"] !== "") {
+      sqlList += await SctCompareLastYearSQL.createSctCompareLastYear(dataItem);
+    }
+
+    sqlList += await SctWorkingProgressSQL.UpdateUpdateByAndUpdateDate(
+      dataItem
+    );
+
+    resultData = MySQLExecute.createList(sqlList, result);
+    return resultData;
+  }
+
+  static async updateSctStep2(dataItem, result) {
+    let sqlList = [];
+    let resultData;
+
+    sqlList += await SctSQL.CreateExistSctId(dataItem);
+    sqlList += await SctFlowProcessSequenceSQL.DeleteBySctId(dataItem);
+    sqlList += await SctFlowProcessProcessingCostByEngineerSQL.DeleteBySctId(
+      dataItem
+    );
+
+    for (const [index, item] of dataItem[
+      "FLOW_PROCESS_PROCESSING_COST"
+    ].entries()) {
+      sqlList +=
+        await SctFlowProcessProcessingCostByEngineerSQL.createSctFlowProcessProcessingCostByEngineer(
+          item
+        );
+      sqlList += await SctFlowProcessSequenceSQL.createSctFlowProcessSequence(
+        item
+      );
+    }
+
+    sqlList += await SctProcessingCostByEngTotalSQL.DeleteBySctId(dataItem);
+    sqlList += await SctBomSQL.DeleteBySctId(dataItem);
+    sqlList +=
+      await SctProcessingCostByEngTotalSQL.createSctProcessingCostByEngTotal(
+        dataItem
+      );
+    sqlList += await SctBomSQL.createSctBom(dataItem);
+    sqlList += await SctWorkingProgressSQL.UpdateUpdateByAndUpdateDate(
+      dataItem
+    );
+    resultData = MySQLExecute.createList(sqlList, result);
+    return resultData;
+  }
+
+  static async updateSctStep3(dataItem, result) {
+    let sqlList = [];
+    let resultData;
+
+    sqlList += await SctFlowProcessProcessingCostByMfgSQL.DeleteBySctId(
+      dataItem
+    );
+
+    for (const [index, item] of dataItem[
+      "FLOW_PROCESS_PROCESSING_COST"
+    ].entries()) {
+      sqlList +=
+        await SctFlowProcessProcessingCostByMfgSQL.createSctFlowProcessProcessingCostByMfg(
+          item
+        );
+    }
+
+    sqlList += await SctProcessingCostByMfgTotalSQL.DeleteBySctId(dataItem);
+    sqlList +=
+      await SctProcessingCostByMfgTotalSQL.createSctProcessingCostByMfgTotal(
+        dataItem
+      );
+
+    sqlList += await SctWorkingProgressSQL.UpdateUpdateByAndUpdateDate(
+      dataItem
+    );
+
+    resultData = MySQLExecute.createList(sqlList, result);
+    return resultData;
+  }
+
+  static async updateSctStep4(dataItem, result) {
+    let sqlList = [];
+    let resultData;
+
+    sqlList += await SctBomFlowProcessMaterialUsagePriceSQL.DeleteBySctId(
+      dataItem
+    );
+
+    for (const [index, item] of dataItem[
+      "SCT_BOM_FLOW_PROCESS_MATERIAL_USAGE_PRICE"
+    ].entries()) {
+      sqlList +=
+        await SctBomFlowProcessMaterialUsagePriceSQL.createSctBomFlowProcessMaterialUsagePrice(
+          item
+        );
+    }
+    sqlList += await SctTotalCostSQL.DeleteBySctId(dataItem);
+    sqlList += await SctTotalCostSQL.createSctTotalCost(dataItem);
+    sqlList += await SctWorkingProgressSQL.UpdateUpdateByAndUpdateDate(
+      dataItem
+    );
+
+    resultData = MySQLExecute.createList(sqlList, result);
     return resultData;
   }
 

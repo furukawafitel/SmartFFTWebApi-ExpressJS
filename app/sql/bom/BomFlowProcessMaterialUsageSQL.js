@@ -6,7 +6,7 @@ class BomFlowProcessMaterialUsageSQL {
   // *** Function Get
   static getBomFlowProcessMaterialUsage = async (dataItem) => {
     let sql = `      SELECT
-                                BOM_FLOW_PROCESS_MATERIAL_USAGE_ID
+                              BOM_FLOW_PROCESS_MATERIAL_USAGE_ID
                             , BOM_FLOW_PROCESS_MATERIAL_USAGE_NAME
                             , BOM_FLOW_PROCESS_MATERIAL_USAGE_CODE
                             , INUSE
@@ -50,8 +50,8 @@ class BomFlowProcessMaterialUsageSQL {
     sqlList.push(sql);
 
     sql = `
-                    SELECT 
-                    BOM_FLOW_PROCESS_MATERIAL_USAGE_ID
+                SELECT 
+                  BOM_FLOW_PROCESS_MATERIAL_USAGE_ID
                 , BOM_FLOW_PROCESS_MATERIAL_USAGE_CODE
                 , BOM_FLOW_PROCESS_MATERIAL_USAGE_NAME
                 , UPDATE_BY
@@ -66,7 +66,7 @@ class BomFlowProcessMaterialUsageSQL {
                 ORDER BY 
                 dataItem.Order
                 LIMIT 
-                    dataItem.Start 
+                  dataItem.Start 
                 , dataItem.Limit
             `;
 
@@ -95,7 +95,7 @@ class BomFlowProcessMaterialUsageSQL {
     let sql = `  
                         INSERT INTO BOM_FLOW_PROCESS_MATERIAL_USAGE
                         (
-                            BOM_FLOW_PROCESS_MATERIAL_USAGE_ID
+                              BOM_FLOW_PROCESS_MATERIAL_USAGE_ID
                             , BOM_ID
                             , FLOW_PROCESS_ID
                             , NO
@@ -116,7 +116,7 @@ class BomFlowProcessMaterialUsageSQL {
                             , 'dataItem.CREATE_BY'
                             , CURRENT_TIMESTAMP()
                             , 'dataItem.CREATE_BY'
-                        )
+                        )   ;
                    
                               `;
 
@@ -134,10 +134,10 @@ class BomFlowProcessMaterialUsageSQL {
 
   // *** Function update
   static updateBomFlowProcessMaterialUsage = async (dataItem) => {
-    let sql = `     UPDATE
-                            BOM_FLOW_PROCESS_MATERIAL_USAGE
+    let sql = `         UPDATE
+                          BOM_FLOW_PROCESS_MATERIAL_USAGE
                         SET
-                            BOM_FLOW_PROCESS_MATERIAL_USAGE_NAME = 'dataItem.BOM_FLOW_PROCESS_MATERIAL_USAGE_NAME'
+                          BOM_FLOW_PROCESS_MATERIAL_USAGE_NAME = 'dataItem.BOM_FLOW_PROCESS_MATERIAL_USAGE_NAME'
                         , INUSE = 'dataItem.INUSE'
                         , UPDATE_BY = 'dataItem.UPDATE_BY'
                         , UPDATE_DATE = CURRENT_TIMESTAMP()
@@ -179,9 +179,9 @@ class BomFlowProcessMaterialUsageSQL {
   };
 
   static GetByLikeBomFlowProcessMaterialUsageName = async (dataItem) => {
-    let sql = `           SELECT
-                                    BOM_FLOW_PROCESS_MATERIAL_USAGE_ID
-                                , BOM_FLOW_PROCESS_MATERIAL_USAGE_NAME 
+    let sql = `                 SELECT
+                                 BOM_FLOW_PROCESS_MATERIAL_USAGE_ID
+                                ,BOM_FLOW_PROCESS_MATERIAL_USAGE_NAME 
                                 FROM
                                 BOM_FLOW_PROCESS_MATERIAL_USAGE                    
                                 WHERE 
@@ -189,8 +189,7 @@ class BomFlowProcessMaterialUsageSQL {
                                 ORDER BY 
                                 BOM_FLOW_PROCESS_MATERIAL_USAGE_NAME ASC
                                 LIMIT 
-                                50
-                                                `;
+                                50 ; `;
 
     sql = sql.replaceAll(
       "dataItem.BOM_FLOW_PROCESS_MATERIAL_USAGE_NAME",
@@ -200,7 +199,7 @@ class BomFlowProcessMaterialUsageSQL {
   };
 
   static GetByFlowId = async (dataItem) => {
-    let sql = `          SELECT
+    let sql = `     SELECT
                         tb_1.BOM_FLOW_PROCESS_MATERIAL_USAGE_ID
                     , tb_1.PROCESS_ID
                     , tb_2.PROCESS_NAME

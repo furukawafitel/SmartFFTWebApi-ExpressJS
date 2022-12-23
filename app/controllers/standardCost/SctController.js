@@ -286,7 +286,7 @@ const searchSct = async (req, res) => {
   }
 };
 
-const createSct = async (req, res) => {
+const createSctStep1 = async (req, res) => {
   try {
     let dataItem;
     if (Object.entries(req.body).length === 0) {
@@ -296,7 +296,7 @@ const createSct = async (req, res) => {
     }
 
     if (dataItem !== "") {
-      SctModels.createSct(dataItem, (err, data) => {
+      SctModels.createSctStep1(dataItem, (err, data) => {
         res.send({
           Status: true,
           Message: "Insert Data Success",
@@ -314,7 +314,7 @@ const createSct = async (req, res) => {
   }
 };
 
-const updateSct = async (req, res) => {
+const createSctStep2 = async (req, res) => {
   try {
     let dataItem;
     if (Object.entries(req.body).length === 0) {
@@ -324,7 +324,175 @@ const updateSct = async (req, res) => {
     }
 
     if (dataItem !== "") {
-      SctModels.updateSct(dataItem, (err, data) => {
+      SctModels.createSctStep2(dataItem, (err, data) => {
+        res.send({
+          Status: true,
+          Message: "Insert Data Success",
+          ResultOnDb: data,
+          MethodOnDb: "Create Sct",
+          TotalCountOnDb: ""
+        });
+      });
+    }
+  } catch (err) {
+    res.send({
+      Message: err.message,
+      Status: false
+    });
+  }
+};
+
+const createSctStep3 = async (req, res) => {
+  try {
+    let dataItem;
+    if (Object.entries(req.body).length === 0) {
+      dataItem = JSON.parse(req.query.data);
+    } else {
+      dataItem = req.body;
+    }
+
+    if (dataItem !== "") {
+      SctModels.createSctStep3(dataItem, (err, data) => {
+        res.send({
+          Status: true,
+          Message: "Insert Data Success",
+          ResultOnDb: data,
+          MethodOnDb: "Create Sct",
+          TotalCountOnDb: ""
+        });
+      });
+    }
+  } catch (err) {
+    res.send({
+      Message: err.message,
+      Status: false
+    });
+  }
+};
+
+const createSctStep4 = async (req, res) => {
+  try {
+    let dataItem;
+    if (Object.entries(req.body).length === 0) {
+      dataItem = JSON.parse(req.query.data);
+    } else {
+      dataItem = req.body;
+    }
+
+    if (dataItem !== "") {
+      SctModels.createSctStep4(dataItem, (err, data) => {
+        res.send({
+          Status: true,
+          Message: "Insert Data Success",
+          ResultOnDb: data,
+          MethodOnDb: "Create Sct",
+          TotalCountOnDb: ""
+        });
+      });
+    }
+  } catch (err) {
+    res.send({
+      Message: err.message,
+      Status: false
+    });
+  }
+};
+
+const updateSctStep1 = async (req, res) => {
+  try {
+    let dataItem;
+    if (Object.entries(req.body).length === 0) {
+      dataItem = JSON.parse(req.query.data);
+    } else {
+      dataItem = req.body;
+    }
+
+    if (dataItem !== "") {
+      SctModels.updateSctStep1(dataItem, (err, data) => {
+        res.send({
+          Status: true,
+          Message: "Update Data Success",
+          ResultOnDb: data,
+          MethodOnDb: "Update Sct",
+          TotalCountOnDb: ""
+        });
+      });
+    }
+  } catch (err) {
+    res.send({
+      Message: err.message,
+      Status: false
+    });
+  }
+};
+
+const updateSctStep2 = async (req, res) => {
+  try {
+    let dataItem;
+    if (Object.entries(req.body).length === 0) {
+      dataItem = JSON.parse(req.query.data);
+    } else {
+      dataItem = req.body;
+    }
+
+    if (dataItem !== "") {
+      SctModels.updateSctStep2(dataItem, (err, data) => {
+        res.send({
+          Status: true,
+          Message: "Update Data Success",
+          ResultOnDb: data,
+          MethodOnDb: "Update Sct",
+          TotalCountOnDb: ""
+        });
+      });
+    }
+  } catch (err) {
+    res.send({
+      Message: err.message,
+      Status: false
+    });
+  }
+};
+
+const updateSctStep3 = async (req, res) => {
+  try {
+    let dataItem;
+    if (Object.entries(req.body).length === 0) {
+      dataItem = JSON.parse(req.query.data);
+    } else {
+      dataItem = req.body;
+    }
+
+    if (dataItem !== "") {
+      SctModels.updateSctStep3(dataItem, (err, data) => {
+        res.send({
+          Status: true,
+          Message: "Update Data Success",
+          ResultOnDb: data,
+          MethodOnDb: "Update Sct",
+          TotalCountOnDb: ""
+        });
+      });
+    }
+  } catch (err) {
+    res.send({
+      Message: err.message,
+      Status: false
+    });
+  }
+};
+
+const updateSctStep4 = async (req, res) => {
+  try {
+    let dataItem;
+    if (Object.entries(req.body).length === 0) {
+      dataItem = JSON.parse(req.query.data);
+    } else {
+      dataItem = req.body;
+    }
+
+    if (dataItem !== "") {
+      SctModels.updateSctStep4(dataItem, (err, data) => {
         res.send({
           Status: true,
           Message: "Update Data Success",
@@ -399,8 +567,14 @@ const getByLikeSctNameAndInuse = async (req, res) => {
 module.exports = {
   getSct,
   searchSct,
-  createSct,
-  updateSct,
+  createSctStep1,
+  createSctStep2,
+  createSctStep3,
+  createSctStep4,
+  updateSctStep1,
+  updateSctStep2,
+  updateSctStep3,
+  updateSctStep4,
   deleteSct,
   getByLikeSctNameAndInuse,
   GetExcelFromURL

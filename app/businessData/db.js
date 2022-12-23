@@ -4,7 +4,7 @@ const Config = require("../config/default");
 const connection = (configDb) => {
   let con;
   if (configDb) {
-    con = mysql.createPool({
+    con = mysql.createConnection({
       multipleStatements: true,
 
       host: Config[configDb].HOST,
@@ -13,7 +13,7 @@ const connection = (configDb) => {
       database: Config[configDb].DB
     });
   } else {
-    con = mysql.createPool({
+    con = mysql.createConnection({
       multipleStatements: true,
       host: Config["Default"].HOST,
       user: Config["Default"].USER,

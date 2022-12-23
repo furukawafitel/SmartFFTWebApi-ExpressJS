@@ -534,8 +534,8 @@ LIMIT
             , 'dataItem.ITEM_CODE_FOR_SUPPORT_MES'
             , 'dataItem.CREATE_BY'
             ,  CURRENT_TIMESTAMP()
-            , 'dataItem.CREATE_BY'
-    )
+            , 'dataItem.CREATE_BY' 
+            ) ;
                    
                               `;
 
@@ -590,7 +590,7 @@ LIMIT
 
     sql = sql.replaceAll(
       "dataItem.IMAGE_PATH",
-      "'" + dataItem["IMAGE_PATH"] + "'" != "" ? dataItem["IMAGE_PATH"] : "NULL"
+      dataItem["IMAGE_PATH"] != "" ? "'" + dataItem["IMAGE_PATH"] + "'" : "NULL"
     );
 
     sql = sql.replaceAll(
@@ -604,8 +604,8 @@ LIMIT
 
     sql = sql.replaceAll(
       "dataItem.MATERIAL_INTERNAL_SHORT_NAME",
-      "'" + dataItem["MATERIAL_INTERNAL_SHORT_NAME"] + "'" != ""
-        ? dataItem["MATERIAL_INTERNAL_SHORT_NAME"]
+      dataItem["MATERIAL_INTERNAL_SHORT_NAME"] != ""
+        ? "'" + dataItem["MATERIAL_INTERNAL_SHORT_NAME"] + "'"
         : "NULL"
     );
 
@@ -684,7 +684,7 @@ LIMIT
                             , UPDATE_BY = 'dataItem.UPDATE_BY'
                             , UPDATE_DATE = CURRENT_TIMESTAMP()
                         WHERE 
-                            MATERIAL_ID = 'dataItem.MATERIAL_ID'
+                            MATERIAL_ID = 'dataItem.MATERIAL_ID' 
                       `;
 
     sql = sql.replaceAll("dataItem.MATERIAL_ID", dataItem["MATERIAL_ID"]);
@@ -729,13 +729,15 @@ LIMIT
     );
     sql = sql.replaceAll(
       "dataItem.MATERIAL_INTERNAL_SHORT_NAME",
-      "'" + dataItem["MATERIAL_INTERNAL_SHORT_NAME"] + "'" != ""
-        ? dataItem["MATERIAL_INTERNAL_SHORT_NAME"]
+      dataItem["MATERIAL_INTERNAL_SHORT_NAME"] != ""
+        ? "'" + dataItem["MATERIAL_INTERNAL_SHORT_NAME"] + "'"
         : "NULL"
     );
     sql = sql.replaceAll(
       "dataItem.IMAGE_PATH",
-      "'" + dataItem["IMAGE_PATH"] + "'" != "" ? dataItem["IMAGE_PATH"] : "NULL"
+      dataItem["IMAGE_PATH"] != ""
+        ? "'" + "\\\\" + dataItem["IMAGE_PATH"] + "'"
+        : "NULL"
     );
 
     sql = sql.replaceAll(
@@ -779,6 +781,7 @@ LIMIT
 
     sql = sql.replaceAll("dataItem.INUSE", dataItem["INUSE"]);
     sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
+
     return sql;
   };
 
@@ -791,7 +794,7 @@ LIMIT
                             , UPDATE_BY = 'dataItem.UPDATE_BY'
                             , UPDATE_DATE = CURRENT_TIMESTAMP()
                         WHERE
-                            MATERIAL_ID = 'dataItem.MATERIAL_ID'
+                            MATERIAL_ID = 'dataItem.MATERIAL_ID' ;
                       `;
 
     sql = sql.replaceAll("dataItem.MATERIAL_ID", dataItem["MATERIAL_ID"]);
@@ -806,43 +809,43 @@ LIMIT
   };
 
   static CreateMaterialId = async (dataItem) => {
-    let sql = ` SET @materialId=(SELECT DATE_FORMAT(NOW(6) , '%y%m%d-%H%i%s-%f')); `;
+    let sql = ` SET @materialId=(SELECT DATE_FORMAT(NOW(6) , '%y%m%d-%H%i%s-%f')) ; `;
     return sql;
   };
 
   static UpdateIncludeMaterialInternalCode = async (dataItem) => {
     let sql = `     UPDATE 
-    MATERIAL 
-SET
-      WIDTH = dataItem.WIDTH
-    , HEIGHT = dataItem.HEIGHT
-    , DEPTH = dataItem.DEPTH
-    , MATERIAL_PROPERTY_COLOR_ID = dataItem.MATERIAL_PROPERTY_COLOR_ID
-    , MATERIAL_PROPERTY_SHAPE_ID = dataItem.MATERIAL_PROPERTY_SHAPE_ID
-    , MATERIAL_PROPERTY_MADE_BY_ID = dataItem.MATERIAL_PROPERTY_MADE_BY_ID
-    , USAGE_UNIT_ID = 'dataItem.USAGE_UNIT_ID'
+                          MATERIAL 
+                      SET
+                            WIDTH = dataItem.WIDTH
+                          , HEIGHT = dataItem.HEIGHT
+                          , DEPTH = dataItem.DEPTH
+                          , MATERIAL_PROPERTY_COLOR_ID = dataItem.MATERIAL_PROPERTY_COLOR_ID
+                          , MATERIAL_PROPERTY_SHAPE_ID = dataItem.MATERIAL_PROPERTY_SHAPE_ID
+                          , MATERIAL_PROPERTY_MADE_BY_ID = dataItem.MATERIAL_PROPERTY_MADE_BY_ID
+                          , USAGE_UNIT_ID = 'dataItem.USAGE_UNIT_ID'
 
-    , MATERIAL_INTERNAL_CODE = 'dataItem.MATERIAL_INTERNAL_CODE'
-    , MATERIAL_INTERNAL_FULL_NAME = 'dataItem.MATERIAL_INTERNAL_FULL_NAME'
-    , MATERIAL_INTERNAL_SHORT_NAME = dataItem.MATERIAL_INTERNAL_SHORT_NAME
-    , MATERIAL_EXTERNAL_CODE = 'dataItem.MATERIAL_EXTERNAL_CODE'
-    , MATERIAL_EXTERNAL_FULL_NAME = 'dataItem.MATERIAL_EXTERNAL_FULL_NAME'
-    , MATERIAL_EXTERNAL_SHORT_NAME = 'dataItem.MATERIAL_EXTERNAL_SHORT_NAME'
+                          , MATERIAL_INTERNAL_CODE = 'dataItem.MATERIAL_INTERNAL_CODE'
+                          , MATERIAL_INTERNAL_FULL_NAME = 'dataItem.MATERIAL_INTERNAL_FULL_NAME'
+                          , MATERIAL_INTERNAL_SHORT_NAME = dataItem.MATERIAL_INTERNAL_SHORT_NAME
+                          , MATERIAL_EXTERNAL_CODE = 'dataItem.MATERIAL_EXTERNAL_CODE'
+                          , MATERIAL_EXTERNAL_FULL_NAME = 'dataItem.MATERIAL_EXTERNAL_FULL_NAME'
+                          , MATERIAL_EXTERNAL_SHORT_NAME = 'dataItem.MATERIAL_EXTERNAL_SHORT_NAME'
 
-    , IMAGE_PATH = dataItem.IMAGE_PATH
+                          , IMAGE_PATH = dataItem.IMAGE_PATH
 
-    , IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_FULL_NAME = 'dataItem.IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_FULL_NAME'
-    , IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_SHORT_NAME = 'dataItem.IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_SHORT_NAME'
-    , IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_FULL_NAME = 'dataItem.IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_FULL_NAME'
-    , IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_SHORT_NAME = 'dataItem.IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_SHORT_NAME'
+                          , IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_FULL_NAME = 'dataItem.IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_FULL_NAME'
+                          , IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_SHORT_NAME = 'dataItem.IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_EXTERNAL_SHORT_NAME'
+                          , IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_FULL_NAME = 'dataItem.IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_FULL_NAME'
+                          , IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_SHORT_NAME = 'dataItem.IS_SAME_MATERIAL_TYPE_NAME_FOR_MATERIAL_INTERNAL_SHORT_NAME'
 
-    , ITEM_CODE_FOR_SUPPORT_MES = 'dataItem.ITEM_CODE_FOR_SUPPORT_MES'
+                          , ITEM_CODE_FOR_SUPPORT_MES = 'dataItem.ITEM_CODE_FOR_SUPPORT_MES'
 
-    , INUSE = 'dataItem.INUSE'
-    , UPDATE_BY = 'dataItem.UPDATE_BY'
-    , UPDATE_DATE = CURRENT_TIMESTAMP()
-        WHERE 
-    MATERIAL_ID = 'dataItem.MATERIAL_ID'
+                          , INUSE = 'dataItem.INUSE'
+                          , UPDATE_BY = 'dataItem.UPDATE_BY'
+                          , UPDATE_DATE = CURRENT_TIMESTAMP()
+                              WHERE 
+                          MATERIAL_ID = 'dataItem.MATERIAL_ID' ;
                       `;
 
     sql = sql.replaceAll(
@@ -890,8 +893,8 @@ SET
 
     sql = sql.replaceAll(
       "dataItem.MATERIAL_INTERNAL_SHORT_NAME",
-      "'" + dataItem["MATERIAL_INTERNAL_SHORT_NAME"] + "'" != ""
-        ? dataItem["MATERIAL_INTERNAL_SHORT_NAME"]
+      dataItem["MATERIAL_INTERNAL_SHORT_NAME"] != ""
+        ? "'" + dataItem["MATERIAL_INTERNAL_SHORT_NAME"] + "'"
         : "NULL"
     );
 
@@ -910,7 +913,7 @@ SET
 
     sql = sql.replaceAll(
       "dataItem.IMAGE_PATH",
-      "'" + dataItem["IMAGE_PATH"] + "'" != "" ? dataItem["IMAGE_PATH"] : "NULL"
+      dataItem["IMAGE_PATH"] != "" ? "'" + dataItem["IMAGE_PATH"] + "'" : "NULL"
     );
 
     sql = sql.replaceAll(

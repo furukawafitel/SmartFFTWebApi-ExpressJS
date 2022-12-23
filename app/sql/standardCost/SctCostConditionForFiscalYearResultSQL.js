@@ -241,7 +241,7 @@ class SctCostConditionForFiscalYearResultSQL {
                             SCT_COST_CONDITION_FOR_FISCAL_YEAR_RESULT
                         WHERE
                                 SCT_ID = 'dataItem.SCT_ID'
-                            AND INUSE = 1
+                            AND INUSE = 1 ;
                                                 `;
 
     sql = sql.replaceAll("dataItem.SCT_ID", dataItem["SCT_ID"]);
