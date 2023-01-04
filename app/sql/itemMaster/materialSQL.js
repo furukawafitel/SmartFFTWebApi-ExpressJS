@@ -847,7 +847,7 @@ LIMIT
                               WHERE 
                           MATERIAL_ID = 'dataItem.MATERIAL_ID' ;
                       `;
-
+    sql = sql.replaceAll("dataItem.MATERIAL_ID", dataItem["MATERIAL_ID"]);
     sql = sql.replaceAll(
       "dataItem.WIDTH",
       dataItem["WIDTH"] != "" ? dataItem["WIDTH"] : "NULL"
@@ -913,7 +913,9 @@ LIMIT
 
     sql = sql.replaceAll(
       "dataItem.IMAGE_PATH",
-      dataItem["IMAGE_PATH"] != "" ? "'" + dataItem["IMAGE_PATH"] + "'" : "NULL"
+      dataItem["IMAGE_PATH"] != ""
+        ? "'" + "\\\\" + dataItem["IMAGE_PATH"] + "'"
+        : "NULL"
     );
 
     sql = sql.replaceAll(

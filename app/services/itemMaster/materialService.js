@@ -306,7 +306,7 @@ class MaterialService {
       );
       sqlList += await MaterialBomSQL.DeleteByMaterialId(dataItem);
       sqlList += await MaterialBomSQL.createMaterialBom(dataItem);
-      resultData = MySQLExecute.createList(sqlList, result);
+      resultData = MySQLExecute.updateList(sqlList, result);
     }
 
     return resultData;

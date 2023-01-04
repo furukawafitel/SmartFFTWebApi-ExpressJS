@@ -223,7 +223,7 @@ const updateMaterial = async (req, res) => {
 
           res.send({
             Status: true,
-            Message: "Insert Data Success",
+            Message: "Update Data Success",
             ResultOnDb: data,
             MethodOnDb: "Create Material",
             TotalCountOnDb: ""
@@ -231,7 +231,7 @@ const updateMaterial = async (req, res) => {
         } else {
           res.send({
             Status: true,
-            Message: "Insert Data Success",
+            Message: "Update Data Success",
             ResultOnDb: data,
             MethodOnDb: "Create Material",
             TotalCountOnDb: ""
