@@ -229,7 +229,7 @@ class BomFlowProcessMaterialUsageSQL {
                             , UPDATE_DATE = CURRENT_TIMESTAMP()
                             WHERE 
                                     BOM_ID = 'dataItem.BOM_ID'
-                                AND INUSE = '1'
+                                AND INUSE = '1' ;
                                                 `;
 
     sql = sql.replaceAll("dataItem.UPDATE_BY", dataItem["UPDATE_BY"]);
@@ -261,7 +261,7 @@ class BomFlowProcessMaterialUsageSQL {
                                 , 'dataItem.UPDATE_BY'
                                 , CURRENT_TIMESTAMP()
                                 , 'dataItem.UPDATE_BY'
-                            )
+                            ) ;
                                                 `;
 
     sql = sql.replaceAll("dataItem.BOM_ID", dataItem["BOM_ID"]);

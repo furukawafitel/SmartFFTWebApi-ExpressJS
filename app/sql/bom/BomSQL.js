@@ -265,7 +265,7 @@ class BomSQL {
                         , UPDATE_BY = 'dataItem.UPDATE_BY'
                         , UPDATE_DATE = CURRENT_TIMESTAMP()
                     WHERE
-                        BOM_ID = 'dataItem.BOM_ID'
+                        BOM_ID = 'dataItem.BOM_ID' ;
                       `;
 
     sql = sql.replaceAll("dataItem.BOM_NAME", dataItem["BOM_NAME"]);

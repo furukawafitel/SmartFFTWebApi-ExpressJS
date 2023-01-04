@@ -104,7 +104,12 @@ require("./app/routes/standardCost/SctFlowProcessProcessingCostByEngineerRoutes"
   app
 );
 
+require("./app/routes/standardCost/SctFlowProcessProcessingCostByMfgRoutes")(
+  app
+);
+
 require("./app/routes/standardCost/SctProcessingCostByMfgTotalRoutes")(app);
+require("./app/routes/common/flowFlowProcessRoutes")(app);
 
 const PORT = process.env.PORT || 8091;
 app.listen(PORT, () => {

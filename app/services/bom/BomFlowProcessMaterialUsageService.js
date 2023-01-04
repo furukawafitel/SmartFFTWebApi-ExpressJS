@@ -48,11 +48,19 @@ class BomFlowProcessMaterialUsageService {
   }
 
   static async updateBomFlowProcessMaterialUsage(dataItem, result) {
-    let query =
-      await BomFlowProcessMaterialUsageSQL.updateBomFlowProcessMaterialUsage(
-        dataItem
-      );
-    let resultData = MySQLExecute.update(query, result);
+    let resultData;
+    let sqlList = [];
+
+    sqlList += await BomFlowProcessMaterialUsageSQL.DeleteByBomId(dataItem);
+    sqlList += await BomSQL.updateBom(dataItem);
+
+    for (const [index, item] of dataItem[
+      "FLOW_PROCESS_MATERIAL_USAGE"
+    ].entries()) {
+      sqlList += await BomFlowProcessMaterialUsageSQL.InsertByExistBomId(item);
+    }
+
+    resultData = MySQLExecute.createList(sqlList, result);
     return resultData;
   }
 

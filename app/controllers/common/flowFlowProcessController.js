@@ -12,13 +12,32 @@ const GetByBomId = async (req, res) => {
 
     if (dataItem !== "") {
       Flow_FlowProcessModel.GetByBomId(dataItem, (err, data) => {
-        for (let i = 0; i < data.length; i++) {
-          data["No"] = i + 1;
-        }
+        const allowed = [
+          "PROCESS_ID",
+          "PROCESS_NO",
+          "PROCESS_NAME",
+          "FLOW_PROCESS_ID"
+        ];
+        (hash = data.reduce(
+          (p, c) => (
+            p[c.PROCESS_ID] ? p[c.PROCESS_ID].push(c) : (p[c.PROCESS_ID] = [c]),
+            p
+          ),
+          {}
+        )),
+          (newData = Object.keys(hash).map((k) => ({
+            PROCESS_ID: k,
+            PROCESS_NO: hash[k][0]["PROCESS_NO"],
+            PROCESS_NAME: hash[k][0]["PROCESS_NAME"],
+            FLOW_PROCESS_ID: hash[k][0]["FLOW_PROCESS_ID"],
+            LIST_MATERIAL_IN_PROCESS:
+              hash[k][0]["MATERIAL_ID"] != null ? hash[k] : []
+          })));
+
         res.send({
           Status: true,
           Message: "Search Data Success",
-          ResultOnDb: data,
+          ResultOnDb: newData,
           MethodOnDb: "Search GetByBomId",
           TotalCountOnDb: ""
         });

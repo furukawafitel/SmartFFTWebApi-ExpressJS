@@ -11,9 +11,9 @@ module.exports = (app) => {
 
   // *** Create a new
   router.post("/create/step1", SctController.createSctStep1);
-  router.post("/create/step2", SctController.createSctStep1);
-  router.post("/create/step3", SctController.createSctStep1);
-  router.post("/create/step4", SctController.createSctStep1);
+  router.post("/create/step2", SctController.createSctStep2);
+  router.post("/create/step3", SctController.createSctStep3);
+  router.post("/create/step4", SctController.createSctStep4);
 
   // *** Update
   router.patch("/update/step1", SctController.updateSctStep1);
