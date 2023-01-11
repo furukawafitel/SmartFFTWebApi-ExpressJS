@@ -14,7 +14,7 @@ class PermissionService {
 
   static async signin(dataItem, result) {
     let query = await PermissionSQL.signin(dataItem);
-    let resultData = await MySQLExecute.search(query, result, configDb);
+    let resultData = await MySQLExecute.signin(query, result, configDb);
     return resultData;
   }
 

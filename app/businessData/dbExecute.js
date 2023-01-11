@@ -9,7 +9,6 @@ class MySQLExecute {
       con.query(query, (err, res) => {
         if (err) {
           console.log("error: ", err);
-
           reject(result(null, err));
         }
         console.log("Get data successfully");
@@ -130,6 +129,23 @@ class MySQLExecute {
           resolve(result(null, res));
         }
       );
+      con.end();
+    });
+  }
+
+  static async signin(query, result, configDb) {
+    return new Promise((resolve, reject) => {
+      let con = sql.connection(configDb);
+      con.query(query, (err, res) => {
+        if (err) {
+          console.log("error: ", err);
+          res.StatusOnDb = false;
+          reject(result(null, err));
+        }
+        console.log("Get data successfully");
+        res.StatusOnDb = true;
+        resolve(result(null, res));
+      });
       con.end();
     });
   }
