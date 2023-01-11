@@ -307,7 +307,7 @@ class MaterialPriceSQL {
                         , UPDATE_BY = 'dataItem.UPDATE_BY'
                         , UPDATE_DATE = CURRENT_TIMESTAMP()
                     WHERE 
-                        MATERIAL_PRICE_ID = 'dataItem.MATERIAL_PRICE_ID'
+                        MATERIAL_PRICE_ID = 'dataItem.MATERIAL_PRICE_ID' ;
                       `;
 
     sql = sql.replaceAll(

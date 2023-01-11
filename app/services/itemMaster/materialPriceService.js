@@ -64,7 +64,7 @@ class MaterialPriceService {
     if (dataItem["SCT_ID"] !== "") {
       sqlList += await MaterialPriceSctSQL.updateMaterialPriceSct(dataItem);
     }
-    let resultData = MySQLExecute.updateList(query, result);
+    let resultData = MySQLExecute.updateList(sqlList, result);
     return resultData;
   }
 
